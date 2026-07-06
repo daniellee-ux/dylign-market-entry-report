@@ -11,5 +11,5 @@
 .DS_Store
 **/.DS_Store
 
-# board screenshots: only the referenced subset is tracked
+# board screenshots: only the referenced subset is tracked (52 files used by the step viewer)
 board/screenshots/
