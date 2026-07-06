@@ -178,6 +178,36 @@
   footer{max-width:1080px;margin:0 auto;padding:40px 24px 60px;border-top:1px solid var(--line);color:var(--ink-faint);font-size:13px;}
   footer .fbrand{font-weight:800;color:var(--ink);font-size:15px;}
 
+
+  /* ---------- charts ---------- */
+  .chart{background:var(--paper-raised);border:1px solid var(--line-strong);border-radius:14px;padding:20px 22px 16px;margin:26px 0;}
+  .chart-title{font:800 15px/1.35 var(--sans);color:var(--ink);margin:0 0 3px;letter-spacing:-.01em;}
+  .chart-sub{font:600 12px/1.5 var(--sans);color:var(--ink-soft);margin:0 0 14px;}
+  .chart svg{width:100%;height:auto;display:block;overflow:visible;}
+  .chart text{font-family:var(--sans);}
+  .chart .ax{fill:var(--ink-faint);font:500 11px var(--mono);}
+  .chart .axlbl{fill:var(--ink-soft);font:700 11px var(--sans);}
+  .chart .val{fill:var(--ink);font:800 12px var(--sans);}
+  .chart .grid{stroke:var(--line);stroke-width:1;}
+  .chart .c-orange{fill:var(--orange);} .chart .c-ink{fill:var(--ink);} .chart .c-mute{fill:var(--line-strong);}
+  .chart-note{font-size:12.5px;color:var(--ink-faint);margin:12px 0 0;line-height:1.55;}
+  .chart-legend{display:flex;flex-wrap:wrap;gap:7px 16px;margin:13px 0 0;font:600 12px/1.3 var(--sans);color:var(--ink-soft);}
+  .chart-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .chart-legend i{width:11px;height:11px;border-radius:3px;flex-shrink:0;}
+  @media (max-width:640px){ .chart{padding:16px 13px 12px;} .chart text{font-size:11px;} }
+
+  /* ---------- collapsible data ---------- */
+  details.data{background:var(--paper-raised);border:1px solid var(--line-strong);border-radius:12px;margin:14px 0;overflow:hidden;}
+  details.data>summary{cursor:pointer;list-style:none;padding:16px 20px;display:flex;align-items:center;gap:12px;font-weight:700;color:var(--ink);font-size:14.5px;}
+  details.data>summary::-webkit-details-marker{display:none;}
+  details.data>summary:hover{background:var(--orange-tint);}
+  details.data>summary .badge{font:700 10px/1 var(--mono);background:var(--orange-soft);color:var(--orange-deep);padding:4px 7px;border-radius:5px;text-transform:uppercase;letter-spacing:.03em;flex-shrink:0;}
+  details.data>summary .chev{margin-left:auto;color:var(--orange-deep);font-family:var(--mono);font-weight:700;font-size:18px;transition:transform .2s;}
+  details.data[open]>summary .chev{transform:rotate(90deg);}
+  details.data .data-body{padding:2px 18px 14px;border-top:1px solid var(--line);}
+  details.data .data-body .tbl-wrap{border:none;border-radius:0;margin:14px 0 0;}
+  details.data .src{font:600 11px/1.55 var(--mono);color:var(--ink-faint);margin:12px 0 0;}
+
   /* ---------- misc ---------- */
   .divider{height:1px;background:var(--line);margin:40px 0;border:0;}
   .footnote{font-size:13px;color:var(--ink-faint);line-height:1.6;}
@@ -203,6 +233,8 @@
       <a href="#decisions">决策</a>
       <a href="#board">交互看板</a>
       <a href="#appendix">附录</a>
+      <a href="#gtm-data">GTM 数据</a>
+
     </nav>
   </div>
 </header>
@@ -281,6 +313,13 @@
         </tbody>
       </table></div>
 
+      <figure class="chart">
+        <p class="chart-title">首年营收：保守 / 基准 / 乐观</p>
+        <p class="chart-sub">自底向上漏斗 × 自顶向下份额 双向交叉，落在同一量级</p>
+        <svg viewBox="0 0 720 208" role="img" aria-label="首年营收三档"><line class="grid" x1="96" y1="22" x2="96" y2="160"/><text class="ax" x="96" y="178" text-anchor="middle">$0k</text><line class="grid" x1="244.5" y1="22" x2="244.5" y2="160"/><text class="ax" x="244.5" y="178" text-anchor="middle">$40k</text><line class="grid" x1="393" y1="22" x2="393" y2="160"/><text class="ax" x="393" y="178" text-anchor="middle">$80k</text><line class="grid" x1="541.5" y1="22" x2="541.5" y2="160"/><text class="ax" x="541.5" y="178" text-anchor="middle">$120k</text><line class="grid" x1="690" y1="22" x2="690" y2="160"/><text class="ax" x="690" y="178" text-anchor="middle">$160k</text><text class="axlbl" x="84" y="47" text-anchor="end">保守</text><rect class="c-mute" x="188.8125" y="30" width="55.6875" height="26" rx="4" opacity="0.85"/><text class="val" x="253.5" y="47">$25–40k</text><text class="axlbl" x="84" y="95" text-anchor="end">基准</text><rect class="c-orange" x="281.625" y="78" width="148.5" height="26" rx="4"/><text class="val" x="439.125" y="95">$50–90k</text><text class="axlbl" x="84" y="143" text-anchor="end">乐观</text><rect class="c-ink" x="541.5" y="126" width="111.375" height="26" rx="4" opacity="0.85"/><text class="val" x="661.875" y="143">$120–150k</text></svg>
+        <p class="chart-note">基准档 $50–90k 的成立前提是付费 cohort 健康 + 混合获客结构，而非用 SEO 掩盖广告亏损。</p>
+      </figure>
+
       <p>这张表真正想传达的是三点：</p>
       <p><strong>其一，扣除获客成本前的正单位经济有扎实基础。</strong> 约 65% 的稳态毛利由中国走量 / 复购返批采购实价支撑；100–300 张首单更薄，但这正是需要数量阶梯、复购返批与规格溢价的原因。</p>
       <p><strong>其二，这门生意的钱在第二单以后才真正释放。</strong> 标签是消耗品，复购率按消耗品基准取 35%（而非一次性 novelty 贴纸的约 10%），使多年 LTV:CAC 达到约 2.2:1。<strong>首年 LTV:CAC 小于 1（约 0.8）是正常且预期之内的</strong>——前提是用品牌资产库、一键复购、补货提醒和多 SKU 扩展，把"一次下单"运营成"长期标签账户"。</p>
@@ -338,6 +377,13 @@
           <tr class="col-em"><td><strong>Dylign（建议）</strong></td><td class="num"><strong>100–300 张</strong></td></tr>
         </tbody>
       </table></div>
+      <figure class="chart">
+        <p class="chart-title">卷标侧的起订门槛：竞品从 250 张起，空位在下方</p>
+        <p class="chart-sub">灰条＝各家"只接 X 张以上"的可服务区；橙条＝Dylign 落在无人干净接单的 100–300 空位</p>
+        <svg viewBox="0 0 720 250" role="img" aria-label="竞品起订门槛对比"><rect x="210" y="32" width="113.8095238095238" height="154" fill="var(--orange)" opacity="0.06"/><text class="axlbl" x="266.9047619047619" y="22" text-anchor="middle" fill="var(--orange-deep)">↓ 结构性空位</text><line class="grid" x1="210" y1="32" x2="210" y2="186" /><text class="ax" x="210" y="202" text-anchor="middle">0</text><line class="grid" x1="323.8095238095238" y1="32" x2="323.8095238095238" y2="186" stroke-dasharray="4 3" stroke="var(--orange)" opacity="0.5"/><text class="ax" x="323.8095238095238" y="202" text-anchor="middle">250</text><line class="grid" x1="437.6190476190476" y1="32" x2="437.6190476190476" y2="186" /><text class="ax" x="437.6190476190476" y="202" text-anchor="middle">500</text><line class="grid" x1="551.4285714285714" y1="32" x2="551.4285714285714" y2="186" /><text class="ax" x="551.4285714285714" y="202" text-anchor="middle">750</text><line class="grid" x1="665.2380952380952" y1="32" x2="665.2380952380952" y2="186" /><text class="ax" x="665.2380952380952" y="202" text-anchor="middle">1000</text><text class="ax" x="688" y="220" text-anchor="end">竞品真实起订门槛（张）</text><text class="axlbl" x="198" y="61" text-anchor="end" style="font-size:11px">noissue</text><rect class="c-mute" x="665.2380952380952" y="46" width="22.761904761904816" height="22" rx="4" opacity="0.55"/><line x1="665.2380952380952" y1="43" x2="665.2380952380952" y2="71" stroke="var(--ink-faint)" stroke-width="2"/><text class="val" x="673.2380952380952" y="61" fill="var(--ink-soft)">≥ 1,000</text><text class="axlbl" x="198" y="101" text-anchor="end" style="font-size:11px">Avery</text><rect class="c-mute" x="665.2380952380952" y="86" width="22.761904761904816" height="22" rx="4" opacity="0.55"/><line x1="665.2380952380952" y1="83" x2="665.2380952380952" y2="111" stroke="var(--ink-faint)" stroke-width="2"/><text class="val" x="673.2380952380952" y="101" fill="var(--ink-soft)">≥ 千张档</text><text class="axlbl" x="198" y="141" text-anchor="end" style="font-size:11px">EcoEnclose · StickerYou · CustomStickers</text><rect class="c-mute" x="323.8095238095238" y="126" width="364.1904761904762" height="22" rx="4" opacity="0.55"/><line x1="323.8095238095238" y1="123" x2="323.8095238095238" y2="151" stroke="var(--ink-faint)" stroke-width="2"/><text class="val" x="331.8095238095238" y="141" fill="var(--ink-soft)">≥ 250</text><text class="axlbl" x="198" y="181" text-anchor="end" fill="var(--orange-deep)" style="font-size:11px">Dylign（建议）</text><rect class="c-orange" x="255.52380952380952" y="166" width="91.04761904761904" height="22" rx="4"/><text class="val" x="354.57142857142856" y="181">100–300</text></svg>
+        <p class="chart-note">"无最低起订量"只是贴纸侧话术；进入卷标后门槛普遍抬到 250 张以上。</p>
+      </figure>
+
       <p>"无最低起订量"是贴纸侧的营销话术；一旦进入卷标，门槛普遍抬到 250 张以上。<strong>Dylign 的 100–300 张覆盖了对手门槛下方及附近的小批量首单需求</strong>——不必比谁更便宜、更快，只需接住那些"想订 150 张、却被要求最少订 250 或 1,000 张"的订单，并把 300 张以上的客户引导到更健康的数量阶梯。</p>
 
       <h3>2.4 竞品体验：值得借鉴的 vs 待解决的痛点</h3>
@@ -412,6 +458,14 @@
       <h3>4.1 成本结构：小批量为什么贵</h3>
       <p>小批量订单的成本被<strong>固定成本</strong>吃掉。每一票订单不论大小，都要摊销：海关手续费（MPF，每票约 $33.58）、物流与清关、proof 与制版人工；再叠加约 37.5% 的关税（视 HTS 归类，约 35%–37.5%）。<strong>单张成本对订单量高度敏感</strong>——这既解释大厂为何设高起订量，也说明 Dylign 接 100–300 张必须靠"批量返单摊薄固定成本 + 规格溢价"维持毛利。</p>
       <div class="callout"><span class="tag">一手 RFQ 印证</span>Jiangsu OPT 3″ 异形贴（工厂价）：100 张 <strong>$0.35/张</strong>、300 张 <strong>$0.17/张</strong>、1,000 张 <strong>$0.09/张</strong>——单张成本随量下降近 4 倍。挂牌上常见的 $0.02–0.07/张只在数千张走量档成立；<strong>在目标的 100–300 张档，真实单张成本高得多、首单毛利更薄</strong>。</div>
+      <figure class="chart">
+        <p class="chart-title">小批量为什么贵：单张成本随数量骤降（一手 RFQ）</p>
+        <p class="chart-sub">Jiangsu OPT 100→1,000 张：$0.35 → $0.09，单张成本降近 4 倍</p>
+        <svg viewBox="0 0 720 300" role="img" aria-label="单张成本随数量下降"><rect x="96" y="34" width="282" height="210" fill="var(--orange)" opacity="0.05"/><text class="ax" x="237" y="26" text-anchor="middle" fill="var(--orange-deep)">目标档 100–300 张</text><line class="grid" x1="96" y1="244" x2="660" y2="244"/><text class="ax" x="86" y="248" text-anchor="end">$0.00</text><line class="grid" x1="96" y1="191.5" x2="660" y2="191.5"/><text class="ax" x="86" y="195.5" text-anchor="end">$0.30</text><line class="grid" x1="96" y1="139" x2="660" y2="139"/><text class="ax" x="86" y="143" text-anchor="end">$0.60</text><line class="grid" x1="96" y1="86.5" x2="660" y2="86.5"/><text class="ax" x="86" y="90.5" text-anchor="end">$0.90</text><line class="grid" x1="96" y1="34" x2="660" y2="34"/><text class="ax" x="86" y="38" text-anchor="end">$1.20</text><rect x="96" y="231.75" width="564" height="8.75" fill="var(--ink)" opacity="0.05"/><text class="ax" x="660" y="239.125" text-anchor="end" fill="var(--ink-faint)">挂牌走量地板 $0.02–0.07（仅数千张档）</text><text class="axlbl" x="96" y="266" text-anchor="middle">100 张</text><text class="axlbl" x="378" y="266" text-anchor="middle">300 张</text><text class="axlbl" x="660" y="266" text-anchor="middle">1,000 张</text><path d="M96 51.49999999999997 L378 179.25 L660 224.75 " fill="none" stroke="var(--warn)" stroke-width="2" stroke-dasharray="1 0" opacity="0.9"/><circle cx="96" cy="51.49999999999997" r="3.5" fill="var(--warn)"/><circle cx="378" cy="179.25" r="3.5" fill="var(--warn)"/><circle cx="660" cy="224.75" r="3.5" fill="var(--warn)"/><path d="M96 130.25 L378 195 L660 219.5 " fill="none" stroke="var(--teal)" stroke-width="2" stroke-dasharray="1 0" opacity="0.9"/><circle cx="96" cy="130.25" r="3.5" fill="var(--teal)"/><circle cx="378" cy="195" r="3.5" fill="var(--teal)"/><circle cx="660" cy="219.5" r="3.5" fill="var(--teal)"/><path d="M96 182.75 L378 214.25 L660 228.25 " fill="none" stroke="var(--orange)" stroke-width="3.2" /><circle cx="96" cy="182.75" r="5" fill="var(--orange)"/><text class="val" x="96" y="171.75" text-anchor="middle">$0.35</text><circle cx="378" cy="214.25" r="5" fill="var(--orange)"/><text class="val" x="378" y="203.25" text-anchor="middle">$0.17</text><circle cx="660" cy="228.25" r="5" fill="var(--orange)"/><text class="val" x="660" y="217.25" text-anchor="middle">$0.09</text></svg>
+        <div class="chart-legend"><span><i style="background:var(--orange)"></i>Jiangsu OPT（工厂价）</span><span><i style="background:var(--teal)"></i>Ningbo Skyline（含运费）</span><span><i style="background:var(--warn)"></i>Guangdong Juncheng（开机费制）</span></div>
+        <p class="chart-note">100–300 张档单张成本被开机费/打样/制版主导，远高于挂牌地板价——这正是策略默认引导数量阶梯与复购返批的成本理由。</p>
+      </figure>
+
 
       <h3>4.2 利润空间：毛利健康，价差仍在</h3>
       <p><strong>这不是一门低毛利的走量生意。</strong> 扣除获客成本前的<strong>稳态</strong>毛利率约 <strong>65%</strong>（走量 / 复购档），在电商品类里属健康水平——由中国采购实价支撑，而非靠压价硬挤。"直邮免税"红利虽已消失，但<strong>批量返单</strong>对标美国本地零售价仍便宜约 <strong>37%–49%</strong>。</p>
@@ -456,6 +510,14 @@
           <tr><td>直接/口碑/推荐</td><td class="num">~10%</td><td class="num">低</td><td>复购提醒、推荐激励</td><td>稳定承接</td></tr>
         </tbody>
       </table></div>
+      <figure class="chart">
+        <p class="chart-title">首年获客结构（示意，待 CRM 校准）</p>
+        <p class="chart-sub">仅约 45% 来自付费；交叉销售与自然流量把混合获客成本从 $225 拉向 $90–120</p>
+        <svg viewBox="0 0 720 150" role="img" aria-label="首年获客结构"><rect x="24" y="34" width="166" height="56" fill="var(--good)" rx="6"/><text x="108" y="58" text-anchor="middle" fill="#fff" style="font:800 15px var(--sans)">25%</text><text x="108" y="76" text-anchor="middle" fill="#fff" style="font:600 10px var(--mono);opacity:.9">≈ $0</text><rect x="192" y="34" width="132.40000000000003" height="56" fill="var(--teal)"/><text x="259.20000000000005" y="58" text-anchor="middle" fill="#fff" style="font:800 15px var(--sans)">20%</text><text x="259.20000000000005" y="76" text-anchor="middle" fill="#fff" style="font:600 10px var(--mono);opacity:.9">≈ $0 边际</text><rect x="326.40000000000003" y="34" width="300.40000000000003" height="56" fill="var(--orange)"/><text x="477.6" y="58" text-anchor="middle" fill="#fff" style="font:800 15px var(--sans)">45%</text><text x="477.6" y="76" text-anchor="middle" fill="#fff" style="font:600 10px var(--mono);opacity:.9">$150–250</text><rect x="628.8000000000001" y="34" width="67.19999999999993" height="56" fill="var(--line-strong)"/><text x="662.4000000000001" y="58" text-anchor="middle" fill="var(--ink)" style="font:800 15px var(--sans)">10%</text><text x="662.4000000000001" y="76" text-anchor="middle" fill="var(--ink)" style="font:600 10px var(--mono)">低</text></svg>
+        <div class="chart-legend"><span><i style="background:var(--good)"></i>既有客户交叉销售</span><span><i style="background:var(--teal)"></i>自然流量新客</span><span><i style="background:var(--orange)"></i>付费搜索新客</span><span><i style="background:var(--line-strong)"></i>直接/口碑/推荐</span></div>
+        <p class="chart-note">混合获客成本可解释整体风险，但不能替代 paid cohort 健康度——低质词簇即便混合 CAC 好看也应停投。</p>
+      </figure>
+
       <div class="callout warn"><span class="tag">关键洞察</span>混合获客成本可以解释整体业务风险，<strong>但不能替代 paid cohort 健康度</strong>。若某词簇买来的多是一次性低客单用户，即使整体混合 CAC 好看，也应停止；若买来的是高 AOV、可复购、多 SKU 的商业买家，则可逐步放量。</div>
 
       <h3>4.5 Stage-gate：什么条件下该退出</h3>
@@ -550,6 +612,20 @@
       <h3>6.1 渠道现实：付费搜索是基本盘，但 Dylign 拼不过预算</h3>
       <p><strong>第一，付费搜索是这个品类的基本盘。</strong> 检查的六家主要竞品无一例外都在投 Google 广告——从 Sttark（约 23 条）、Blue Label（约 30 条），到 OnlineLabels（约 3,000 条），乃至 Avery（约 800 条）。</p>
       <p><strong>第二，渠道选择跟着商业模式走。</strong> DTC 电商型玩家双线投 Google + Meta、CTA 是"立即购买"；B2B 询价型印刷厂几乎只投 Google 搜索、CTA 是"获取报价"。</p>
+      <figure class="chart">
+        <p class="chart-title">竞品自然流量与域名权重（Ubersuggest 实测）</p>
+        <p class="chart-sub">没有人靠 SEO 占住"custom 食品/饮料 label"商业词——赢家靠免费工具、通用词或旁支内容</p>
+        <svg viewBox="0 0 720 268" role="img" aria-label="竞品自然流量"><line class="grid" x1="128" y1="22" x2="128" y2="226"/><text class="ax" x="128" y="240" text-anchor="middle">1K</text><line class="grid" x1="272.1974173592008" y1="22" x2="272.1974173592008" y2="226"/><text class="ax" x="272.1974173592008" y="240" text-anchor="middle">10K</text><line class="grid" x1="416.3948347184017" y1="22" x2="416.3948347184017" y2="226"/><text class="ax" x="416.3948347184017" y="240" text-anchor="middle">100K</text><line class="grid" x1="560.5922520776024" y1="22" x2="560.5922520776024" y2="226"/><text class="ax" x="560.5922520776024" y="240" text-anchor="middle">1M</text><text class="ax" x="604" y="258" text-anchor="end">自然流量/月（对数轴）</text><text class="axlbl" x="118" y="43" text-anchor="end" style="font-size:11px">avery.com</text><rect class="c-ink" x="128" y="30" width="469.4018880363127" height="18" rx="3" opacity="0.78"/><text class="val" x="605.4018880363127" y="43">1.8M · DA 65<tspan class="ax" dx="6">免费模板帝国</tspan></text><text class="axlbl" x="118" y="77" text-anchor="end" style="font-size:11px">onlinelabels.com</text><rect class="c-ink" x="128" y="64" width="356.59292051887604" height="18" rx="3" opacity="0.78"/><text class="val" x="492.59292051887604" y="77">297K · DA 59<tspan class="ax" dx="6">免费工具</tspan></text><text class="axlbl" x="118" y="111" text-anchor="end" style="font-size:11px">stickermule.com</text><rect class="c-ink" x="128" y="98" width="343.0295417770876" height="18" rx="3" opacity="0.78"/><text class="val" x="479.0295417770876" y="111">239K · DA 77<tspan class="ax" dx="6">通用贴纸</tspan></text><text class="axlbl" x="118" y="145" text-anchor="end" style="font-size:11px">bluelabelpackaging.com</text><rect class="c-ink" x="128" y="132" width="216.9682477924033" height="18" rx="3" opacity="0.78"/><text class="val" x="352.9682477924033" y="145">32K · DA 32<tspan class="ax" dx="6">B2B 精酿</tspan></text><text class="axlbl" x="118" y="179" text-anchor="end" style="font-size:11px" fill="var(--orange-deep)">noissue.co</text><rect class="c-orange" x="128" y="166" width="192.6909505272289" height="18" rx="3" /><text class="val" x="328.6909505272289" y="179">22K · DA 41<tspan class="ax" dx="6">最贴近 Dylign ICP</tspan></text><text class="axlbl" x="118" y="213" text-anchor="end" style="font-size:11px">sttark.com</text><rect class="c-ink" x="128" y="200" width="52.078482758001485" height="18" rx="3" opacity="0.78"/><text class="val" x="188.07848275800148" y="213">2.3K · DA 36<tspan class="ax" dx="6">B2B 精品</tspan></text></svg>
+        <p class="chart-note">相关标签玩家 DA 32–59（Sticker Mule 77 例外）；Dylign 以"工具+内容+反链"飞轮，12–24 月达 DA 30–40 现实可行。</p>
+      </figure>
+      <figure class="chart">
+        <p class="chart-title">付费搜索是基本盘：6/6 竞品全投 Google（广告库实测）</p>
+        <p class="chart-sub">DTC＝Google+Meta 双线；B2B（Blue Label / Sttark）＝几乎只投 Google 询价，社群≈0</p>
+        <svg viewBox="0 0 720 300" role="img" aria-label="竞品广告投放"><line class="grid" x1="118" y1="22" x2="118" y2="260"/><text class="ax" x="118" y="274" text-anchor="middle">1</text><line class="grid" x1="262.37230203537234" y1="22" x2="262.37230203537234" y2="260"/><text class="ax" x="262.37230203537234" y="274" text-anchor="middle">10</text><line class="grid" x1="406.7446040707447" y1="22" x2="406.7446040707447" y2="260"/><text class="ax" x="406.7446040707447" y="274" text-anchor="middle">100</text><line class="grid" x1="551.1169061061171" y1="22" x2="551.1169061061171" y2="260"/><text class="ax" x="551.1169061061171" y="274" text-anchor="middle">1000</text><text class="ax" x="620" y="292" text-anchor="end">在投广告创意数（对数轴）</text><text class="axlbl" x="108" y="48" text-anchor="end" style="font-size:11px">Sticker Mule</text><rect class="c-ink" x="118" y="33" width="502" height="11" rx="2" opacity="0.82"/><text class="ax" x="626" y="43" style="font-size:9.5px">~3k</text><rect class="c-orange" x="118" y="46" width="389.6565126504099" height="11" rx="2"/><text class="ax" x="513.6565126504099" y="56" style="font-size:9.5px">~500</text><text class="axlbl" x="108" y="82" text-anchor="end" style="font-size:11px">OnlineLabels</text><rect class="c-ink" x="118" y="67" width="502" height="11" rx="2" opacity="0.82"/><text class="ax" x="626" y="77" style="font-size:9.5px">~3k</text><rect class="c-orange" x="118" y="80" width="187.83269549107945" height="11" rx="2"/><text class="ax" x="311.83269549107945" y="90" style="font-size:9.5px">~20</text><text class="axlbl" x="108" y="116" text-anchor="end" style="font-size:11px">Avery</text><rect class="c-ink" x="118" y="101" width="419.12578443786606" height="11" rx="2" opacity="0.82"/><text class="ax" x="543.1257844378661" y="111" style="font-size:9.5px">~800</text><text class="ax" x="118" y="124" style="font-size:9.5px">—</text><text class="axlbl" x="108" y="150" text-anchor="end" style="font-size:11px" fill="var(--orange-deep)">noissue</text><rect class="c-ink" x="118" y="135" width="357.62769796462766" height="11" rx="2" opacity="0.82"/><text class="ax" x="481.62769796462766" y="145" style="font-size:9.5px">~300</text><rect class="c-orange" x="118" y="148" width="280.0128593424748" height="11" rx="2"/><text class="ax" x="404.0128593424748" y="158" style="font-size:9.5px">~87</text><text class="axlbl" x="108" y="184" text-anchor="end" style="font-size:11px">Blue Label</text><rect class="c-ink" x="118" y="169" width="213.25539592925526" height="11" rx="2" opacity="0.82"/><text class="ax" x="337.25539592925526" y="179" style="font-size:9.5px">~30</text><rect class="c-orange" x="118" y="182" width="1" height="11" rx="2"/><text class="ax" x="124" y="192" style="font-size:9.5px">~1</text><text class="axlbl" x="108" y="218" text-anchor="end" style="font-size:11px">Sttark</text><rect class="c-ink" x="118" y="203" width="196.59578243150588" height="11" rx="2" opacity="0.82"/><text class="ax" x="320.5957824315059" y="213" style="font-size:9.5px">~23</text><text class="ax" x="118" y="226" style="font-size:9.5px" fill="var(--bad)">0（无在投）</text><text class="axlbl" x="108" y="252" text-anchor="end" style="font-size:11px">StickerYou</text><text class="ax" x="118" y="247" style="font-size:9.5px">—</text><rect class="c-orange" x="118" y="250" width="250.1096751373559" height="11" rx="2"/><text class="ax" x="374.1096751373559" y="260" style="font-size:9.5px">~54</text></svg>
+        <div class="chart-legend"><span><i style="background:var(--ink)"></i>Google（全时段创意数）</span><span><i style="background:var(--orange)"></i>Meta（在投 active）</span></div>
+        <p class="chart-note">跨平台"广告数"定义不同、不宜横比花费；此处看的是渠道有无与组合。付费不是"投不投"的问题，而是渠道与 CTA 跟着商业模式走。</p>
+      </figure>
+
       <div class="callout"><span class="tag">对 Dylign 的含义</span>付费搜索要投，但<strong>无法在预算上与这些玩家硬拼</strong>。真正的主力杠杆，是下面的搜索引擎与免费工具策略——这个品类里资本效率最高、且能复利积累护城河的楔子。</div>
 
       <h3>6.2 主力楔子：SEO 四支柱</h3>
@@ -565,6 +641,14 @@
         <li><strong>中尾（流量主力）</strong>：barcode generator（368K；免费变体 27.1K / 难度 13）、candle labels（2,900 / 26）、waterproof labels（2,400 / 31）、custom bottle labels（1,300 / 27）、soap labels（880 / 21）、cosmetic labels（320 / 22）；食品词作 Phase-2。</li>
         <li><strong>超长尾（程序化聚合）</strong>：custom [垂直] labels 等，单词量近零但难度极低（约 4）——用批量模板页 + FAQ 聚合，价值在"量大取胜 + 撑起主题权威"。</li>
       </ul>
+      <figure class="chart">
+        <p class="chart-title">关键词地图：搜量 × SEO 难度（越靠左上越理想：低难度 × 高搜量）</p>
+        <p class="chart-sub">barcode 工具＝高量低难度磁铁；candle/soap 垂直＝低难度入口；custom stickers＝难度 65 的红区，放弃</p>
+        <svg viewBox="0 0 720 380" role="img" aria-label="关键词搜量与难度"><rect x="60" y="30" width="313" height="235.1733486285912" fill="var(--good)" opacity="0.06"/><text class="axlbl" x="77.88571428571429" y="46" fill="var(--good)">甜蜜区：低难度 · 有量</text><line class="grid" x1="60" y1="300" x2="686" y2="300"/><text class="ax" x="52" y="304" text-anchor="end">100</text><line class="grid" x1="60" y1="227.00670735812952" x2="686" y2="227.00670735812952"/><text class="ax" x="52" y="231.00670735812952" text-anchor="end">1K</text><line class="grid" x1="60" y1="154.013414716259" x2="686" y2="154.013414716259"/><text class="ax" x="52" y="158.013414716259" text-anchor="end">10K</text><line class="grid" x1="60" y1="81.0201220743885" x2="686" y2="81.0201220743885"/><text class="ax" x="52" y="85.0201220743885" text-anchor="end">100K</text><line class="grid" x1="60" y1="30" x2="60" y2="300" opacity="0.5"/><text class="ax" x="60" y="318" text-anchor="middle">0</text><line class="grid" x1="149.42857142857144" y1="30" x2="149.42857142857144" y2="300" opacity="0.5"/><text class="ax" x="149.42857142857144" y="318" text-anchor="middle">10</text><line class="grid" x1="238.85714285714286" y1="30" x2="238.85714285714286" y2="300" opacity="0.5"/><text class="ax" x="238.85714285714286" y="318" text-anchor="middle">20</text><line class="grid" x1="328.2857142857143" y1="30" x2="328.2857142857143" y2="300" opacity="0.5"/><text class="ax" x="328.2857142857143" y="318" text-anchor="middle">30</text><line class="grid" x1="417.7142857142857" y1="30" x2="417.7142857142857" y2="300" opacity="0.5"/><text class="ax" x="417.7142857142857" y="318" text-anchor="middle">40</text><line class="grid" x1="507.14285714285717" y1="30" x2="507.14285714285717" y2="300" opacity="0.5"/><text class="ax" x="507.14285714285717" y="318" text-anchor="middle">50</text><line class="grid" x1="596.5714285714286" y1="30" x2="596.5714285714286" y2="300" opacity="0.5"/><text class="ax" x="596.5714285714286" y="318" text-anchor="middle">60</text><line class="grid" x1="686" y1="30" x2="686" y2="300" opacity="0.5"/><text class="ax" x="686" y="318" text-anchor="middle">70</text><text class="ax" x="373" y="338" text-anchor="middle" fill="var(--ink-soft)">SEO 难度（越右越难打）→</text><text class="ax" x="52" y="18" text-anchor="start" fill="var(--ink-soft)">↑ 月搜量（对数）</text><circle cx="408.7714285714286" cy="39.717026655188306" r="8" fill="var(--orange)" opacity="0.85" stroke="#fff" stroke-width="1"/><text x="396.7714285714286" y="42.717026655188306" text-anchor="end" style="font:600 10px var(--sans)" fill="var(--ink)">barcode generator</text><circle cx="641.2857142857143" cy="84.18448501890398" r="8" fill="var(--bad)" opacity="0.85" stroke="#fff" stroke-width="1"/><text x="629.2857142857143" y="87.18448501890398" text-anchor="end" style="font:600 10px var(--sans)" fill="var(--ink)">custom stickers</text><circle cx="176.25714285714287" cy="122.4095605625204" r="8" fill="var(--orange)" opacity="0.85" stroke="#fff" stroke-width="1"/><text x="188.25714285714287" y="125.4095605625204" text-anchor="start" style="font:600 10px var(--sans)" fill="var(--ink)">barcode free online</text><circle cx="292.51428571428573" cy="193.25475498047598" r="5.5" fill="var(--teal)" opacity="0.85" stroke="#fff" stroke-width="1"/><text x="292.51428571428573" y="183.25475498047598" text-anchor="middle" style="font:600 10px var(--sans)" fill="var(--ink)">candle labels</text><circle cx="426.6571428571429" cy="193.25475498047598" r="5.5" fill="var(--ink-faint)" opacity="0.85" stroke="#fff" stroke-width="1"/><text x="426.6571428571429" y="183.25475498047598" text-anchor="middle" style="font:600 10px var(--sans)" fill="var(--ink)">product labels</text><circle cx="337.2285714285714" cy="199.2538369261453" r="5.5" fill="var(--warn)" opacity="0.85" stroke="#fff" stroke-width="1"/><text x="346.7285714285714" y="205.2538369261453" text-anchor="start" style="font:600 10px var(--sans)" fill="var(--ink)">waterproof labels</text><circle cx="301.45714285714286" cy="218.6896068986008" r="5.5" fill="var(--teal)" opacity="0.85" stroke="#fff" stroke-width="1"/><circle cx="292.51428571428573" cy="218.6896068986008" r="5.5" fill="var(--teal)" opacity="0.85" stroke="#fff" stroke-width="1"/><circle cx="364.0571428571429" cy="227.00670735812952" r="5.5" fill="var(--teal)" opacity="0.85" stroke="#fff" stroke-width="1"/><text x="373.5571428571429" y="233.00670735812952" text-anchor="start" style="font:600 10px var(--sans)" fill="var(--ink)">jar labels</text><circle cx="247.79999999999998" cy="231.0590999165669" r="5.5" fill="var(--teal)" opacity="0.85" stroke="#fff" stroke-width="1"/><text x="238.29999999999998" y="234.0590999165669" text-anchor="end" style="font:600 10px var(--sans)" fill="var(--ink)">soap labels</text><circle cx="301.45714285714286" cy="243.7329735306304" r="5.5" fill="var(--ink-faint)" opacity="0.85" stroke="#fff" stroke-width="1"/><text x="301.45714285714286" y="266.7329735306304" text-anchor="middle" style="font:600 10px var(--sans)" fill="var(--ink)">roll labels</text><circle cx="256.74285714285713" cy="263.12743980446055" r="5.5" fill="var(--teal)" opacity="0.85" stroke="#fff" stroke-width="1"/><circle cx="283.57142857142856" cy="283.1787744428322" r="5.5" fill="var(--teal)" opacity="0.85" stroke="#fff" stroke-width="1"/><text x="283.57142857142856" y="305.1787744428322" text-anchor="middle" style="font:600 10px var(--sans)" fill="var(--ink)">essential oil labels</text><text x="489.25714285714287" y="208.3735266897005" style="font:600 10.5px var(--sans)" fill="var(--ink-soft)">＋ bottle · beer · cosmetic ·</text><text x="489.25714285714287" y="222.3735266897005" style="font:600 10.5px var(--sans)" fill="var(--ink-soft)">essential oil labels（SD 21–34）</text><text x="489.25714285714287" y="236.3735266897005" class="ax" style="font-size:9.5px">未标注，见下方数据表</text></svg>
+        <div class="chart-legend"><span><i style="background:var(--orange)"></i>工具磁铁</span><span><i style="background:var(--teal)"></i>目标垂直</span><span><i style="background:var(--warn)"></i>能力钩子</span><span><i style="background:var(--bad)"></i>应避开（贵+难+客户错）</span></div>
+        <p class="chart-note">数据：barcode generator 368K/难度39（免费变体 27.1K/难度13）、candle 2,900/26、soap 880/21、custom stickers 90,500/65。食品词作 Phase-2。</p>
+      </figure>
+
 
       <h3>6.4 投入产出：付费渠道如何跑正</h3>
       <p class="footnote">共同假设：客单 $100、扣获客成本前稳态毛利 65%（即每单毛利 $65）。</p>
@@ -587,6 +671,13 @@
           <tr><td class="num">~7%</td><td class="num">~$65</td><td class="num yes">≈ $0（首单打平）</td></tr>
         </tbody>
       </table></div>
+      <figure class="chart">
+        <p class="chart-title">转化率是最软的杠杆：CAC = 有效点击 $4.5 ÷ 转化率</p>
+        <p class="chart-sub">首单打平需约 7% 转化（对冷流量偏高）——所以不能只看首单，要看 60/90/120 天 cohort 回收</p>
+        <svg viewBox="0 0 720 300" role="img" aria-label="CAC 随转化率变化"><line class="grid" x1="74" y1="244" x2="660" y2="244"/><text class="ax" x="65" y="248" text-anchor="end">$0</text><line class="grid" x1="74" y1="190.5" x2="660" y2="190.5"/><text class="ax" x="65" y="194.5" text-anchor="end">$80</text><line class="grid" x1="74" y1="137" x2="660" y2="137"/><text class="ax" x="65" y="141" text-anchor="end">$160</text><line class="grid" x1="74" y1="83.5" x2="660" y2="83.5"/><text class="ax" x="65" y="87.5" text-anchor="end">$240</text><line class="grid" x1="74" y1="30" x2="660" y2="30"/><text class="ax" x="65" y="34" text-anchor="end">$320</text><rect x="74" y="200.53125" width="586" height="43.46875" fill="var(--good)" opacity="0.07"/><line x1="74" y1="200.53125" x2="660" y2="200.53125" stroke="var(--good)" stroke-width="1.5" stroke-dasharray="5 3"/><text class="axlbl" x="80" y="216.53125" fill="var(--good)">每单毛利 $65 = 首单打平线</text><path d="M74 12.5 L83.3 29 L92.6 43.4 L101.9 55.9 L111.2 67 L120.5 76.8 L129.8 85.6 L139.1 93.5 L148.4 100.7 L157.7 107.2 L167 113.2 L176.3 118.6 L185.6 123.6 L194.9 128.3 L204.2 132.5 L213.5 136.5 L222.8 140.2 L232.1 143.7 L241.4 146.9 L250.7 150 L260 152.8 L269.3 155.5 L278.6 158 L287.9 160.4 L297.2 162.7 L306.5 164.8 L315.8 166.8 L325.1 168.8 L334.4 170.6 L343.7 172.3 L353 174 L362.3 175.6 L371.7 177.1 L381 178.6 L390.3 180 L399.6 181.3 L408.9 182.6 L418.2 183.8 L427.5 185 L436.8 186.1 L446.1 187.2 L455.4 188.3 L464.7 189.3 L474 190.3 L483.3 191.2 L492.6 192.1 L501.9 193 L511.2 193.8 L520.5 194.7 L529.8 195.5 L539.1 196.2 L548.4 197 L557.7 197.7 L567 198.4 L576.3 199.1 L585.6 199.7 L594.9 200.4 L604.2 201 L613.5 201.6 L622.8 202.2 L632.1 202.8 L641.4 203.3 L650.7 203.9 L660 204.4 " fill="none" stroke="var(--orange)" stroke-width="3"/><circle cx="92.6031746031746" cy="43.375" r="4.5" fill="var(--orange)"/><text class="val" x="92.6031746031746" y="33.375" text-anchor="middle">$300</text><text class="ax" x="92.6031746031746" y="264" text-anchor="middle">1.5%</text><circle cx="139.11111111111111" cy="93.53125" r="4.5" fill="var(--orange)"/><text class="val" x="139.11111111111111" y="83.53125" text-anchor="middle">$225</text><text class="ax" x="139.11111111111111" y="264" text-anchor="middle">2%</text><circle cx="232.12698412698413" cy="143.6875" r="4.5" fill="var(--orange)"/><text class="val" x="232.12698412698413" y="133.6875" text-anchor="middle">$150</text><text class="ax" x="232.12698412698413" y="264" text-anchor="middle">3%</text><circle cx="418.1587301587302" cy="183.8125" r="4.5" fill="var(--orange)"/><text class="val" x="418.1587301587302" y="173.8125" text-anchor="middle">$90</text><text class="ax" x="418.1587301587302" y="264" text-anchor="middle">5%</text><circle cx="604.1904761904761" cy="200.53125" r="4.5" fill="var(--orange)"/><text class="val" x="604.1904761904761" y="190.53125" text-anchor="middle">$65</text><text class="ax" x="604.1904761904761" y="264" text-anchor="middle">7%</text><circle cx="604.1904761904761" cy="200.53125" r="6" fill="none" stroke="var(--good)" stroke-width="2"/><text class="axlbl" x="598.1904761904761" y="186.53125" text-anchor="end" fill="var(--good)">首单打平 ≈ 7%</text><text class="ax" x="367" y="284" text-anchor="middle" fill="var(--ink-soft)">点击→下单 转化率</text></svg>
+        <p class="chart-note">绿色区＝首单即盈利区；早期真实判据是 cohort 生命周期健康度，而非单看首单 ROAS。</p>
+      </figure>
+
       <div class="callout warn"><span class="tag">两个回本门槛，别混淆</span><strong>首单打平</strong>需要约 <strong>7%</strong> 转化——对冷流量偏高，不能作早期唯一标准。真正相关的是 <strong>cohort 生命周期健康度</strong>：看 AOV、二单率、多 SKU 扩展和 60 / 90 / 120 天毛利回收曲线。</div>
       <div class="tbl-wrap"><table>
         <caption>付费策略：从"首购型广告"转为"复购账户型广告"</caption>
@@ -734,6 +825,120 @@
       <div class="callout"><span class="tag">如何复用到新品类</span>"多智能体竞品扫描 → 登录态一手数据抓取 → 广告库交叉验证 → 费米建模"是一套可复用模板——换一个消费品包装/供应链品类，只需替换竞品名单与关键词种子，即可在数小时内产出同级别的市场 + 供应链 + GTM 判断。</div>
     </div>
   </section>
+  <!-- ===================== GTM DATA ===================== -->
+  <section id="gtm-data">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">⌗</span><div><h2>GTM 原始数据（可展开）</h2><span class="sec-tag">一手抓取 · 点击展开每份证据</span></div></div>
+      <p>以下是 §6 获客策略背后的一手数据，默认折叠以保持报告精简。全部为登录态浏览器实拉，抓取日期 <strong>2026-07-06</strong>、地区 <strong>United States</strong>；只读、未投放、未花费。</p>
+
+      <details class="data"><summary><span class="badge">CPC</span>Google Keyword Planner — 15 词 CPC / 搜量实测<span class="chev">›</span></summary>
+        <div class="data-body">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>关键词</th><th>月搜量(US)</th><th>竞争</th><th>CPC 低 US$</th><th>CPC 高 US$</th></tr></thead>
+            <tbody>
+              <tr><td>custom stickers</td><td class="num">10k–100k</td><td class="no">High</td><td class="num">$1.59</td><td class="num">$8.21</td></tr>
+              <tr><td>custom bottle labels</td><td class="num">1k–10k</td><td class="no">High</td><td class="num">$1.53</td><td class="num">$6.57</td></tr>
+              <tr><td>custom labels</td><td class="num">1k–10k</td><td class="no">High</td><td class="num">$2.04</td><td class="num">$14.48</td></tr>
+              <tr><td>label printing</td><td class="num">1k–10k</td><td class="no">High</td><td class="num">$1.92</td><td class="num">$15.05</td></tr>
+              <tr><td>custom beer labels</td><td class="num">100–1k</td><td class="no">High</td><td class="num">$1.66</td><td class="num">$7.85</td></tr>
+              <tr><td>custom food labels</td><td class="num">100–1k</td><td class="no">High</td><td class="num">$1.39</td><td class="num">$11.32</td></tr>
+              <tr><td>custom jar labels</td><td class="num">100–1k</td><td class="no">High</td><td class="num">$1.51</td><td class="num">$6.50</td></tr>
+              <tr><td>custom product labels</td><td class="num">100–1k</td><td class="no">High</td><td class="num">$2.75</td><td class="num">$12.28</td></tr>
+              <tr><td>custom roll labels</td><td class="num">100–1k</td><td class="no">High</td><td class="num">$5.92</td><td class="num">$42.45</td></tr>
+              <tr><td>food label printing</td><td class="num">100–1k</td><td class="no">High</td><td class="num">$1.44</td><td class="num">$9.19</td></tr>
+              <tr><td>custom sauce labels</td><td class="num">10–100</td><td class="mid">Medium</td><td class="num">$3.45</td><td class="num">$10.98</td></tr>
+              <tr><td>custom labels no minimum</td><td class="num">10–100</td><td class="no">High</td><td class="num">$2.50</td><td class="num">$9.89</td></tr>
+              <tr><td>waterproof labels custom</td><td class="num">10–100</td><td class="no">High</td><td class="num">$2.59</td><td class="num">$12.74</td></tr>
+              <tr><td>small batch label printing</td><td class="num">10–100</td><td class="no">High</td><td class="num">$3.50</td><td class="num">$12.87</td></tr>
+              <tr><td>short run labels</td><td class="num">10–100</td><td class="no">High</td><td class="num">$5.17</td><td class="num">$27.72</td></tr>
+            </tbody>
+          </table></div>
+          <p class="src">来源：Google Keyword Planner（US，2026-07-06，帐号 324-430-2868）。CPC 为 Google 模型区间（非保证实付），USD 按 ≈32 TWD 换算；搜量为粗分桶。CAC = CPC ÷ 转化率。结论：高意图食品/饮料词量薄（多 100–1k 甚至 10–100），付费搜索单靠自己撑不起量。</p>
+        </div>
+      </details>
+
+      <details class="data"><summary><span class="badge">CPC · 二轮</span>Ubersuggest — 非食品/工具词 CPC 扩容<span class="chev">›</span></summary>
+        <div class="data-body">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>关键词</th><th>月搜</th><th>SD</th><th>CPC</th><th>类别</th></tr></thead>
+            <tbody>
+              <tr><td>candle labels</td><td class="num">2,900</td><td class="num">26</td><td class="num">$3.57</td><td>非食品垂直</td></tr>
+              <tr><td>soap labels</td><td class="num">880</td><td class="num">21</td><td class="num">$2.23</td><td>非食品垂直</td></tr>
+              <tr><td>cosmetic labels</td><td class="num">320</td><td class="num">22</td><td class="num">$7.93</td><td>非食品垂直</td></tr>
+              <tr><td>essential oil labels</td><td class="num">170</td><td class="num">25</td><td class="num">$4.77</td><td>非食品垂直</td></tr>
+              <tr><td>custom bottle labels</td><td class="num">1,300</td><td class="num">27</td><td class="num">$5.51</td><td>饮料外侧标</td></tr>
+              <tr><td>beer labels</td><td class="num">1,300</td><td class="num">26</td><td class="num">$6.51</td><td>饮料外侧标</td></tr>
+              <tr><td>jar labels</td><td class="num">1,000</td><td class="num">34</td><td class="num">$3.93</td><td>跨垂直</td></tr>
+              <tr><td>waterproof labels</td><td class="num">2,400</td><td class="num">31</td><td class="num">$6.48</td><td>能力钩子</td></tr>
+              <tr><td>product labels</td><td class="num">2,900</td><td class="num">41</td><td class="num">$9.07</td><td>广商业</td></tr>
+              <tr><td>roll labels</td><td class="num">590</td><td class="num">27</td><td class="num no">$30.38</td><td>B2B 机贴（CPC 异常高）</td></tr>
+              <tr class="col-em"><td>barcode generator</td><td class="num">368,000</td><td class="num">39</td><td class="num">$4.19</td><td>工具磁铁</td></tr>
+              <tr class="col-em"><td>barcode generator free online</td><td class="num">27,100</td><td class="num yes">13</td><td class="num">$2.27</td><td>工具磁铁</td></tr>
+              <tr><td>custom labels no minimum</td><td class="num">20</td><td class="num">34</td><td class="num no">$10.78</td><td>定位词</td></tr>
+            </tbody>
+          </table></div>
+          <p class="src">来源：Ubersuggest（登录态，US locId 2840，2026-07-06）。candle/soap 这类"低 SD＋低 CPC"是压低 CAC 的最佳入口；roll labels $30.38、no-minimum $10.78 仅做小预算精准 PPC；barcode 工具＋免费引流把混合获客成本压向零。</p>
+        </div>
+      </details>
+
+      <details class="data"><summary><span class="badge">SEO</span>Ubersuggest — 6 家竞品自然流量 / 域名权重<span class="chev">›</span></summary>
+        <div class="data-body">
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>域名</th><th>定位</th><th>自然流量/月</th><th>DA</th><th>自然关键字</th><th>流量引擎</th></tr></thead>
+            <tbody>
+              <tr><td>avery.com</td><td>模板/耗材巨头</td><td class="num">1,800,000</td><td class="num">65</td><td class="num">130,980</td><td>免费模板帝国</td></tr>
+              <tr><td>onlinelabels.com</td><td>空白标签/模板</td><td class="num">297,132</td><td class="num">59</td><td class="num">30,358</td><td>免费工具（营养 48k / 条码 17k）</td></tr>
+              <tr><td>stickermule.com</td><td>通用贴纸领导</td><td class="num">239,270</td><td class="num">77</td><td class="num">31,229</td><td>通用贴纸词 + 对比长文</td></tr>
+              <tr><td>bluelabelpackaging.com</td><td>B2B 精酿/食品</td><td class="num">31,964</td><td class="num">32</td><td class="num">2,822</td><td>精酿内容 + 品牌混淆词</td></tr>
+              <tr class="col-em"><td>noissue.co</td><td>eco 包装（近 ICP）</td><td class="num">21,692</td><td class="num">41</td><td class="num">7,116</td><td>产品线广度 + 品牌</td></tr>
+              <tr><td>sttark.com</td><td>B2B 精品标签</td><td class="num">2,297</td><td class="num">36</td><td class="num">2,373</td><td>盒子长文 + 品牌</td></tr>
+            </tbody>
+          </table></div>
+          <p class="src">来源：Ubersuggest Traffic Analyzer（第三方估算，量级可信）。铁律：没有人靠 SEO 占住"custom 食品/饮料 label"商业词；SEO 最高杠杆资产＝品牌需要的"免费工具"（OnlineLabels 营养标签页单页 48k/月，赢过其商业页）。</p>
+        </div>
+      </details>
+
+      <details class="data"><summary><span class="badge">广告</span>广告库实扫 — Meta（在投）+ Google（全时段创意）<span class="chev">›</span></summary>
+        <div class="data-body">
+          <div class="tbl-wrap"><table>
+            <caption>Meta Ad Library — 在投广告（US，2026-07-06）</caption>
+            <thead><tr><th>品牌</th><th>类型</th><th>在投</th><th>素材角度</th><th>CTA</th></tr></thead>
+            <tbody>
+              <tr><td>Sticker Mule</td><td>贴纸 DTC</td><td class="num">~500</td><td>病毒赠奖 · 产品利益 · "包装革命"定位</td><td>影片/轮播</td></tr>
+              <tr class="col-em"><td>noissue</td><td>eco 包装 DTC</td><td class="num">~87</td><td>垂直定向 + Low minimums + 可持续</td><td>Learn More</td></tr>
+              <tr><td>StickerYou</td><td>贴纸/标签 DTC</td><td class="num">~54</td><td>产品创新 + 5 天速度 + 品类扩张</td><td>Order / Shop Now</td></tr>
+              <tr><td>OnlineLabels</td><td>空白/定制标签</td><td class="num">~20</td><td>creator 合作 + $5 折扣 + DIY</td><td>—</td></tr>
+              <tr><td>Blue Label</td><td>B2B 食品/饮料</td><td class="num">~1</td><td>泛 B2B 认知</td><td>—</td></tr>
+              <tr><td>Sttark</td><td>B2B 精品</td><td class="num no">0</td><td>无在投</td><td>—</td></tr>
+            </tbody>
+          </table></div>
+          <div class="tbl-wrap"><table>
+            <caption>Google Ads Transparency — 全时段创意数（US，2026-07-06）</caption>
+            <thead><tr><th>品牌</th><th>广告数</th><th>格式</th><th>角度 / 钩子</th><th>CTA</th></tr></thead>
+            <tbody>
+              <tr><td>Sticker Mule</td><td class="num">~3,000</td><td>搜索</td><td>4 天交期 · bulk · free proof</td><td>电商直购</td></tr>
+              <tr><td>OnlineLabels</td><td class="num">~3,000</td><td>搜索 + 本地</td><td>空白 cardstock · custom label printer</td><td>电商 / 到店</td></tr>
+              <tr><td>Avery</td><td class="num">~800</td><td>搜索 + 影片</td><td>all labels · 模板导流</td><td>电商直购</td></tr>
+              <tr class="col-em"><td>noissue</td><td class="num">~300</td><td>搜索 + 购物</td><td>Low minimums · 可持续 · 垂直</td><td>电商直购</td></tr>
+              <tr><td>Blue Label</td><td class="num">~30</td><td>搜索（lead-gen）</td><td>Get a Quote 24Hrs · Multi-SKU · craft beer</td><td>询价</td></tr>
+              <tr><td>Sttark</td><td class="num">~23</td><td>搜索 + 展示</td><td>CBD 垂直 · order online</td><td>询价 / 线上</td></tr>
+            </tbody>
+          </table></div>
+          <p class="src">来源：Meta Ad Library（按 advertiser page）+ Google Ads Transparency（按 domain）。三平台"广告数"定义不同、不可横比花费。口径修正：旧"6/6 付费≈0"（来自 Ubersuggest 付费关键字数）被推翻——六家全投 Google，四家还投 Meta；付费搜索是基本盘。</p>
+        </div>
+      </details>
+
+      <details class="data"><summary><span class="badge">TikTok</span>TikTok Creative Center — Top Ads（近 30 天）<span class="chev">›</span></summary>
+        <div class="data-body">
+          <p style="margin:14px 0 0">搜 <code>custom labels</code> / <code>custom stickers</code> → 高效广告榜上<strong>无任何标签/包装/贴纸品牌</strong>，回传的是服饰、女装、AI 商业贴士等泛内容。</p>
+          <p><strong>判读</strong>：本竞品集的标签/贴纸品类不在 TikTok 高效广告池，符合它是"考虑型 B2B/SMB 采购"而非冲动影片电商。<strong>诚实边界</strong>：Top Ads 仅高效榜子集，"不在榜上"≠"零投放"，而是"没有一条标签广告是头部赢家"。</p>
+          <p class="src">结论：TikTok 不作早期重点；以有机内容 + creator/UGC + Spark Ads 低成本试水，以复购率 / 商业买家占比（而非点击）为成败标准。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+
 
 </main>
 
