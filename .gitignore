@@ -1,4 +1,15 @@
+# Whitelist: ignore everything at root, then re-include only the deployable site.
+/*
+!/.gitignore
+!/.nojekyll
+!/README.md
+!/index.html
+!/board/
+!/prototype/
+
+# never track macOS cruft, even inside whitelisted dirs
 .DS_Store
-.claude/
-.playwright-mcp/
-*.bak
+**/.DS_Store
+
+# board screenshots: only the referenced subset is tracked
+board/screenshots/
