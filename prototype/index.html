@@ -509,12 +509,13 @@
 </style>
 </head>
 <body>
+<script>document.body.className=/#product\//.test(location.hash)?'mode-pdp':'mode-landing';</script>
 <a class="skip" href="#order">Skip to content</a>
 
 <!-- ================= NAV (Dylign) ================= -->
 <nav class="top">
   <div class="wrap nav-in">
-    <a class="logo" href="#top" aria-label="Dylign home">
+    <a class="logo" href="#top" onclick="goHome();return false;" aria-label="Dylign home">
       <svg viewBox="0 0 118 30" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
         <text x="0" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="#222222">Dyl</text>
         <text x="41" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="#FF5900">i</text>
@@ -568,6 +569,12 @@
   </div>
 </nav>
 
+<style>
+  /* landing vs product-detail modes */
+  body.mode-pdp .hero, body.mode-pdp .brandstrip, body.mode-pdp #howitworks{display:none}
+  body.mode-landing .crumb, body.mode-landing .pdp, body.mode-landing .reviews{display:none}
+</style>
+
 <span id="top"></span>
 
 <!-- ================= HERO ================= -->
@@ -579,7 +586,7 @@
       Order online, get a free digital proof within 48 hours, and we don&rsquo;t print a single sheet until you approve it.
       From the same team that ships your Dylign packaging.</p>
     <div class="cta-row rise" style="--i:3">
-      <button class="btn btn-solid btn-lg" onclick="jumpTo('order')">Customize my stickers <span class="arrow">&rarr;</span></button>
+      <button class="btn btn-solid btn-lg" onclick="goProduct('die-cut')">Customize my stickers <span class="arrow">&rarr;</span></button>
       <button class="btn btn-line btn-lg" onclick="jumpTo('pricing')">See volume pricing</button>
     </div>
     <div class="hero-facts rise" style="--i:4">
@@ -606,7 +613,7 @@
 </div>
 
 <!-- ================= FLOW STRIP ================= -->
-<section class="band cream" style="padding:56px 0">
+<section class="band cream" id="howitworks" style="padding:56px 0">
   <div class="wrap">
     <h2 class="sec-head" style="font-size:24px">How ordering works</h2>
     <p class="sec-sub" style="margin-bottom:32px">Order and pay online like any Dylign product &mdash; then your free proof arrives, and nothing prints until you approve it.</p>
@@ -625,7 +632,7 @@
 <section class="band" id="order">
   <div class="wrap">
     <nav class="crumb" aria-label="Breadcrumb">
-      <a href="#top">Home</a><span class="sep">&rsaquo;</span>
+      <a href="#top" onclick="goHome();return false;">Home</a><span class="sep">&rsaquo;</span>
       <a href="#order" onclick="jumpTo('order')">Stickers &amp; Labels</a><span class="sep">&rsaquo;</span>
       <span class="cur" id="crumbProduct">Die-Cut Stickers</span>
     </nav>
@@ -774,7 +781,7 @@
 
     <!-- other label types -->
     <div class="more-types">
-      <h3>More sticker &amp; label types</h3>
+      <h3 id="typeGridHead">More sticker &amp; label types</h3>
       <div class="type-grid" id="typeGrid"></div>
     </div>
 
@@ -1213,6 +1220,13 @@ function syncConfigInputs(){
   $('hField') && $('hField').classList.remove('bad');
   if($('applySel')){ $('applySel').value='hand'; $('unwindSel').selectedIndex=3; $('perRoll').value=500; $('diaSel').selectedIndex=1; $('coreSel').selectedIndex=1; }
 }
+function setMode(mode){
+  const pdp = mode==='pdp';
+  document.body.classList.toggle('mode-pdp', pdp);
+  document.body.classList.toggle('mode-landing', !pdp);
+  const h=$('typeGridHead'); if(h) h.textContent = pdp ? 'More sticker & label types' : 'Shop stickers & labels by type';
+}
+function goHome(){ setMode('landing'); try{ history.replaceState(null,'', '#top'); }catch(_){} window.scrollTo({top:0, behavior:'smooth'}); }
 function setProduct(id, scroll){
   const p = productById(id);
   state.product = p.id;
@@ -1221,9 +1235,9 @@ function setProduct(id, scroll){
   buildGallery();
   try{ history.replaceState(null,'', '#product/'+p.id); }catch(_){}
   refresh();
-  if(scroll){ if(document.activeElement) document.activeElement.blur(); smoothScroll($('order')); }
+  if(scroll){ if(document.activeElement) document.activeElement.blur(); window.scrollTo({top:0, behavior:'smooth'}); }
 }
-window.goProduct = id => setProduct(id, true);
+window.goProduct = id => { setMode('pdp'); setProduct(id, true); };
 
 function buildLabelMenu(){
   const m = $('labelMenu');
@@ -1598,7 +1612,9 @@ function refresh(){ refreshControls(); refreshQuote(); }
   buildLabelMenu();
   const m=(location.hash||'').match(/#product\/([\w-]+)/);
   const valid = m && PRODUCTS.some(p=>p.id===m[1]);
-  setProduct(valid ? m[1] : 'die-cut', valid);  // deep-link (#product/<id>) → render the right product AND jump to the PDP
+  setProduct(valid ? m[1] : 'die-cut', false);   // configure product (die-cut is the default so the PDP is ready)
+  setMode(valid ? 'pdp' : 'landing');            // homepage = landing; #product/<id> = product-detail (the product is the hero)
+  if(!valid){ try{ history.replaceState(null,'', location.pathname+location.search); }catch(_){} }  // keep the homepage URL clean (no product hash)
   updateCartBadge();
 })();
 </script>
