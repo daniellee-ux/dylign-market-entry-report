@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Free Barcode &amp; UPC Generator — Dylign</title>
+<meta name="description" content="Free online barcode generator. Make a scannable Code 128 or UPC-A barcode for every SKU, download the crisp SVG, and print them on waterproof roll labels — no signup, no watermark." />
+<meta name="theme-color" content="#FF5900" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Free Barcode & UPC Generator — Dylign" />
+<meta property="og:description" content="Generate a scannable Code 128 or UPC-A barcode for any SKU, download the SVG, and print it on waterproof labels. Free, no signup." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='4' width='24' height='24' rx='7' fill='%23FF5900'/%3E%3Ccircle cx='16' cy='16' r='4.5' fill='%23FBF5EA'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/dylign.css">
+<style>
+  /* ---- Page-local styles: barcode generator only. Reuses Dylign tokens; adds nothing global. ---- */
+  .bc-card{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:26px;box-shadow:var(--shadow)}
+  @media(max-width:560px){.bc-card{padding:18px}}
+  .bc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;align-items:end}
+  @media(max-width:640px){.bc-grid{grid-template-columns:1fr}}
+  .bc-field label{display:block;font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+  .bc-input{width:100%;font-family:var(--mono);font-size:15px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;transition:border-color .2s var(--ease)}
+  .bc-input:focus{outline:none;border-color:var(--orange)}
+  .bc-input.bad{border-color:#AE4130}
+  .bc-hint{font-size:11.5px;color:var(--ink-3);margin:6px 2px 0}
+  .bc-err{font-size:11.5px;color:#AE4130;margin:6px 2px 0;display:none;font-weight:600}
+  .bc-err.show{display:block}
+  .bc-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:18px}
+  /* result box */
+  .bc-result{margin-top:24px;border:1.5px solid var(--line);border-radius:12px;background:#FCFAF4;padding:26px 22px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+  .bc-svg-hold{width:100%;max-width:460px;display:flex;align-items:center;justify-content:center;min-height:120px}
+  .bc-svg-hold svg{width:100%;height:auto;display:block;max-width:100%}
+  .bc-human{font-family:var(--mono);font-size:15px;letter-spacing:.16em;color:var(--ink);font-weight:600;word-break:break-all}
+  .bc-meta{display:flex;gap:8px 18px;flex-wrap:wrap;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+  .bc-meta b{color:var(--orange-deep);font-weight:600}
+  .bc-empty{color:var(--ink-3);font-size:13.5px;padding:22px 0}
+  /* format toggle uses .seg / .seg-btn from dylign.css */
+  .bc-seg-wrap{margin-bottom:20px}
+  .bc-seg-wrap > label{display:block;font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:8px}
+  .bc-scale{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--ink-2)}
+  .bc-scale input[type=range]{accent-color:var(--orange);flex:1;max-width:200px}
+  .bc-scale .bc-scale-val{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);min-width:58px}
+  .bc-copy-ok{font-size:11.5px;font-weight:600;color:var(--ok);opacity:0;transition:opacity .2s var(--ease)}
+  .bc-copy-ok.show{opacity:1}
+</style>
+</head>
+<body>
+<!-- ============================================================= -->
+<!-- SHARED HEADER — paste verbatim right after <body>, keep IDENTICAL on every page -->
+<!-- ============================================================= -->
+<a class="skip" href="#main">Skip to content</a>
+<nav class="top">
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html" aria-label="Dylign home">
+      <svg viewBox="0 0 118 30" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <text x="0" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="#222222">Dyl</text>
+        <text x="41" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="#FF5900">i</text>
+        <text x="49" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="#222222">gn</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="https://shop.dylign.com" tabindex="0">Custom Packaging
+          <svg class="caret" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-menu">
+          <p class="nm-head">Packaging</p>
+          <a href="https://shop.dylign.com">Mailer Box</a>
+          <a href="https://shop.dylign.com">Folding Carton</a>
+          <a href="https://shop.dylign.com">Rigid Box</a>
+          <a href="https://shop.dylign.com">Stand-up Pouch</a>
+          <a href="https://shop.dylign.com">Tissue Paper</a>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="index.html#order" tabindex="0">Stickers &amp; Labels
+          <svg class="caret" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-menu">
+          <p class="nm-head">By use</p>
+          <a href="labels-home-care.html">Home &amp; Personal-Care Labels</a>
+          <a href="labels-food-bev.html">Food &amp; Beverage Labels</a>
+          <p class="nm-head">By format</p>
+          <a href="index.html#product/die-cut">Die-Cut Stickers</a>
+          <a href="index.html#product/kiss-cut">Kiss-Cut Sheets</a>
+          <a href="index.html#product/roll-labels">Roll Labels</a>
+          <a href="index.html#product/jar-bottle">Jar &amp; Bottle Labels</a>
+          <a href="index.html#product/holographic">Holographic Stickers</a>
+          <p class="nm-head">Free tools</p>
+          <a href="barcode-generator.html">Barcode / UPC Generator</a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="index.html#order">Sample</a></div>
+      <div class="nav-item"><a href="index.html#why">About Us</a></div>
+      <div class="nav-item"><a href="index.html#materials">Sustainability</a></div>
+      <div class="nav-item"><a href="index.html#faq">FAQ</a></div>
+      <div class="nav-item"><a href="index.html#support">Contact Us</a></div>
+    </div>
+    <div class="nav-icons">
+      <button aria-label="Search" onclick="location.href='index.html#order'">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-3.6-3.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <button aria-label="Account" onclick="location.href='index.html#order'">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-3.6 3.6-6 8-6s8 2.4 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <button aria-label="Cart" onclick="location.href='index.html#order'">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 12H7L6 8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="1.8"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="band">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">&rsaquo;</span>
+      <a href="index.html#order">Stickers &amp; Labels</a><span class="sep">&rsaquo;</span>
+      <span class="cur">Free tools</span><span class="sep">&rsaquo;</span>
+      <span class="cur">Barcode Generator</span>
+    </nav>
+    <p class="eyebrow rise" style="--i:0">Free tool</p>
+    <h1 class="rise" style="--i:1">Free barcode &amp; <span>UPC generator.</span></h1>
+    <p class="sec-sub rise" style="--i:2">Make a scannable barcode for every SKU &mdash; Code&nbsp;128 for SKUs and batch codes, UPC-A for retail. Generate it here, download a crisp SVG that scales to any size, then print them on waterproof labels. No signup, no watermark, nothing to install.</p>
+
+    <!-- ============ GENERATOR CARD ============ -->
+    <div class="bc-card rise" style="--i:3">
+      <div class="bc-seg-wrap">
+        <label id="fmtLabel">Barcode format</label>
+        <div class="seg" role="group" aria-labelledby="fmtLabel">
+          <button type="button" class="seg-btn sel" id="segCode128" data-fmt="code128" aria-pressed="true">Code 128<small>Letters, numbers &amp; symbols</small></button>
+          <button type="button" class="seg-btn" id="segUpca" data-fmt="upca" aria-pressed="false">UPC-A<small>12-digit retail code</small></button>
+        </div>
+      </div>
+
+      <div class="bc-grid">
+        <div class="bc-field">
+          <label for="bcInput" id="bcInputLabel">Data to encode</label>
+          <input type="text" id="bcInput" class="bc-input" value="DYLIGN-001" autocomplete="off" spellcheck="false" aria-describedby="bcHint bcErr">
+          <p class="bc-hint" id="bcHint">Any letters, numbers or symbols (ASCII 32&ndash;126). Great for SKUs, lot codes or a short URL.</p>
+          <p class="bc-err" id="bcErr" role="alert"></p>
+        </div>
+        <div class="bc-field">
+          <label for="bcScale">Bar width</label>
+          <div class="bc-scale">
+            <input type="range" id="bcScale" min="1" max="4" step="0.5" value="2" aria-label="Bar width in pixels per module">
+            <span class="bc-scale-val" id="bcScaleVal">2 px / module</span>
+          </div>
+          <p class="bc-hint">Wider bars scan more reliably from a distance. The SVG stays crisp at any size.</p>
+        </div>
+      </div>
+
+      <div class="bc-actions">
+        <button type="button" class="btn btn-solid" id="bcGenerate">Generate <span class="arrow">&rarr;</span></button>
+        <button type="button" class="btn btn-line" id="bcDownload">Download SVG</button>
+        <span class="bc-copy-ok" id="bcCopyOk">Copied</span>
+      </div>
+
+      <!-- result -->
+      <div class="bc-result" id="bcResult" aria-live="polite">
+        <div class="bc-empty" id="bcEmpty">Your barcode will appear here.</div>
+        <div class="bc-svg-hold" id="bcSvgHold" hidden></div>
+        <div class="bc-human" id="bcHuman" hidden></div>
+        <div class="bc-meta" id="bcMeta" hidden></div>
+      </div>
+    </div>
+
+    <!-- ============ CONVERSION HOOK ============ -->
+    <div class="support-in rise" style="--i:4; margin-top:34px">
+      <p>Need these printed on waterproof labels?</p>
+      <p class="q">Our roll labels are the right home for barcodes &mdash; BOPP film that survives fridges, freezers and wet hands, priced from 100. We proof every job free before we print.</p>
+      <a class="btn btn-solid" href="index.html#product/roll-labels">Put my barcodes on roll labels <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW BRANDS USE THIS ================= -->
+<section class="band cream">
+  <div class="wrap">
+    <h2 class="sec-head ink">How brands use this</h2>
+    <p class="sec-sub">From a spreadsheet of SKUs to labels on the shelf, in three steps.</p>
+    <div class="flowstrip">
+      <div class="fstep">
+        <span class="k">STEP 1</span>
+        <h4>Encode your code</h4>
+        <p>Paste a SKU, batch number or 12-digit UPC. Pick Code&nbsp;128 for internal codes, UPC-A for anything scanned at retail. The barcode renders live.</p>
+      </div>
+      <div class="fstep">
+        <span class="k">STEP 2</span>
+        <h4>Download the SVG</h4>
+        <p>Grab a clean vector file &mdash; no pixelation, no watermark. Drop it straight into your label artwork in Illustrator, Canva or Figma.</p>
+      </div>
+      <div class="fstep">
+        <span class="k">STEP 3</span>
+        <h4>Print on labels</h4>
+        <p>Bring your artwork to Dylign roll labels. We proof it free, confirm the bars scan clean, and only print once you approve.</p>
+        <span class="ok-flag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 9-9" stroke="#3F7A5C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Nothing prints until you approve</span>
+      </div>
+      <div class="fstep">
+        <span class="k">GOOD TO KNOW</span>
+        <h4>Quiet zones matter</h4>
+        <p>Every barcode here ships with the blank margin scanners need on each side. Keep that clear space on your label and it reads first time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="band">
+  <div class="wrap">
+    <h2 class="sec-head">Barcode generator FAQ</h2>
+    <p class="sec-sub">The questions growing brands ask before they print a barcode on a label.</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>Is this barcode generator really free?</h4>
+        <p>Yes &mdash; free, no account, no watermark and no limit on how many you make. Generate a barcode, download the SVG and use it on your own labels or products however you like.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What&rsquo;s the difference between Code 128 and UPC?</h4>
+        <p>Code&nbsp;128 encodes letters, numbers and symbols, so it&rsquo;s ideal for internal SKUs, lot codes and short URLs. UPC-A is the fixed 12-digit numeric code retailers scan at checkout &mdash; you need a GS1-assigned number to sell in most stores. Use Code&nbsp;128 for your own tracking, UPC-A when a retailer requires it.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Will these barcodes actually scan?</h4>
+        <p>They&rsquo;re built to the Code&nbsp;128 and UPC-A specs, complete with the correct check digit and the quiet-zone margins scanners need. Print them dark on a light background at a sensible size and they read cleanly. We also verify the scan on your free proof before production.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can I print these on my labels?</h4>
+        <p>Absolutely &mdash; that&rsquo;s the whole point. Download the SVG, place it in your label design, and order it on our <a href="index.html#product/roll-labels">roll labels</a> from 100 units. The waterproof BOPP film keeps bars sharp and scannable on bottles, jars and freezer packs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CROSS-SELL ================= -->
+<section class="band cream">
+  <div class="wrap">
+    <h2 class="sec-head ink">Labels that love a barcode</h2>
+    <p class="sec-sub">Once your codes are ready, these formats put them on the shelf.</p>
+    <div class="type-grid">
+      <a class="type-card" href="index.html#product/roll-labels">
+        <img src="assets/mat-bopp.jpg" alt="Roll of waterproof BOPP labels">
+        <div class="tc-body">
+          <p class="tc-name">Roll Labels</p>
+          <p class="tc-desc">Best for barcodes &mdash; waterproof film, applied by hand or machine.</p>
+          <span class="tc-from">from 100</span>
+        </div>
+      </a>
+      <a class="type-card" href="index.html#product/jar-bottle">
+        <img src="assets/mat-clear.jpg" alt="Clear labels on glass bottles">
+        <div class="tc-body">
+          <p class="tc-name">Jar &amp; Bottle Labels</p>
+          <p class="tc-desc">Curved-surface labels with room for a code on the back panel.</p>
+          <span class="tc-from">from 100</span>
+        </div>
+      </a>
+      <a class="type-card" href="index.html#product/kiss-cut">
+        <img src="assets/mat-vinyl.jpg" alt="Kiss-cut label sheets">
+        <div class="tc-body">
+          <p class="tc-name">Kiss-Cut Sheets</p>
+          <p class="tc-desc">Peel-and-stick sheets for small runs and mixed SKUs.</p>
+          <span class="tc-from">from 100</span>
+        </div>
+      </a>
+      <a class="type-card" href="index.html#product/die-cut">
+        <img src="assets/mat-kraft.jpg" alt="Die-cut kraft stickers">
+        <div class="tc-body">
+          <p class="tc-name">Die-Cut Stickers</p>
+          <p class="tc-desc">Any shape, waterproof &mdash; add a barcode to seals and tags.</p>
+          <span class="tc-from">from 100</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================= -->
+<!-- SHARED FOOTER — paste verbatim just before </body>, keep IDENTICAL on every page -->
+<!-- ============================================================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg viewBox="0 0 118 30" xmlns="http://www.w3.org/2000/svg" aria-label="Dylign"><text x="0" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#222222">Dyl</text><text x="38" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#FF5900">i</text><text x="45" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#222222">gn</text></svg>
+        </div>
+        <p class="foot-addr">Custom packaging &amp; labels from 100 units, proofed free before we print.<br><br>Harvard Innovation Labs, Batten Hall<br>125 Western Ave, Allston, MA 02134<br>hello@dylign.com</p>
+      </div>
+      <div class="foot-col">
+        <b class="h">Stickers &amp; Labels</b>
+        <a href="labels-home-care.html">Home &amp; Personal-Care</a>
+        <a href="labels-food-bev.html">Food &amp; Beverage</a>
+        <a href="index.html#product/roll-labels">Roll Labels</a>
+        <a href="index.html#product/jar-bottle">Jar &amp; Bottle Labels</a>
+        <a href="barcode-generator.html">Barcode Generator</a>
+      </div>
+      <div class="foot-col">
+        <b class="h">About Us</b>
+        <a href="index.html#why">Our story</a>
+        <a href="index.html#why">Blog</a>
+        <a href="index.html#materials">Sustainability</a>
+        <a href="index.html#order">Request a sample</a>
+      </div>
+      <div class="foot-col">
+        <b class="h">Support</b>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#materials">Material guide</a>
+        <a href="index.html#pricing">Volume pricing</a>
+        <a href="mailto:hello@dylign.com">Contact us</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>&copy; 2026 Dylign</span>
+      <div class="pay-icons"><span>VISA</span><span>MC</span><span>AMEX</span><span>PayPal</span><span>Shop Pay</span><span>G Pay</span></div>
+      <nav class="foot-legal-links" aria-label="Legal"><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   Dylign barcode generator — pure vanilla JS, zero dependencies.
+   Two symbologies, both self-encoded and rendered as inline SVG <rect> bars.
+
+   AUDIT NOTES (verified against the encoders below):
+   (a) Code 128 checksum for the default "DYLIGN-001" = 9.
+       Symbol stream: Start-B(104), D,Y,L,I,G,N,-,0,0,1  ->  36,57,44,41,39,46,13,16,16,17,
+       checksum 9, Stop(106). Weighted sum = 104 + (36*1+57*2+44*3+41*4+39*5+46*6+13*7+16*8+16*9+17*10)
+       = 1554; 1554 mod 103 = 9. Total 145 modules.
+   (b) UPC-A canonical example: 03600029145 (11 digits) -> check digit 2 -> full "036000291452".
+       This is the well-known UPC-A textbook example. Total 95 modules.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   CODE 128 width-pattern table.
+   107 entries, indexed by symbol value 0..106.
+   Each string is 6 module-width digits (bar,space,bar,space,bar,space)
+   summing to 11 modules — EXCEPT value 106 (Stop) which is 7 digits
+   ("2331112") summing to 13 modules, because Stop carries the final 2-wide bar.
+   Key values: 0 = "212222", Start-B = 104 = "211214", Stop = 106 = "2331112".
+   --------------------------------------------------------------------- */
+var CODE128 = [
+  "212222","222122","222221","121223","121322","131222","122213","122312","132212","221213",
+  "221312","231212","112232","122132","122231","113222","123122","123221","223211","221132",
+  "221231","213212","223112","312131","311222","321122","321221","312212","322112","322211",
+  "212123","212321","232121","111323","131123","131321","112313","132113","132311","211313",
+  "231113","231311","112133","112331","132131","113123","113321","133121","313121","211331",
+  "231131","213113","213311","213131","311123","311321","331121","312113","312311","332111",
+  "314111","221411","431111","111224","111422","121124","121421","141122","141221","112214",
+  "112412","122114","122411","142112","142211","241211","221114","413111","241112","134111",
+  "111242","121142","121241","114212","124112","124211","411212","421112","421211","212141",
+  "214121","412121","111143","111341","131141","114113","114311","411113","411311","113141",
+  "114131","311141","411131","211412","211214","211232","2331112"
+];
+var CODE128_START_B = 104;
+var CODE128_STOP    = 106;
+
+/* Encode ASCII 32..126 as Code 128 subset B.
+   Returns { modules: "10110..." bit string, symbols: [..], checksum: n }.
+   - Start-B, then each data char = charCode - 32,
+   - checksum = (104 + sum(value_i * i)) mod 103, i starting at 1 for first data char,
+   - Stop.
+   Each symbol's width pattern is laid down alternating bar/space, starting with a bar. */
+function encodeCode128(text){
+  var symbols = [CODE128_START_B];
+  for (var i = 0; i < text.length; i++){
+    symbols.push(text.charCodeAt(i) - 32);
+  }
+  // checksum: Start-B has weight 0 (it's the running-sum seed); first data char weight 1.
+  var sum = CODE128_START_B;
+  for (var j = 1; j < symbols.length; j++){
+    sum += symbols[j] * j;
+  }
+  var checksum = sum % 103;
+  symbols.push(checksum);
+  symbols.push(CODE128_STOP);
+
+  var modules = "";
+  for (var k = 0; k < symbols.length; k++){
+    var pattern = CODE128[symbols[k]];
+    var isBar = true;                       // each symbol starts with a bar
+    for (var m = 0; m < pattern.length; m++){
+      var width = parseInt(pattern.charAt(m), 10);
+      modules += (isBar ? "1" : "0").repeat(width);
+      isBar = !isBar;
+    }
+  }
+  return { modules: modules, symbols: symbols, checksum: checksum };
+}
+
+/* Validate a Code 128-B input: printable ASCII 32..126 only, non-empty. */
+function validateCode128(text){
+  if (text.length === 0) return "Enter something to encode.";
+  for (var i = 0; i < text.length; i++){
+    var c = text.charCodeAt(i);
+    if (c < 32 || c > 126){
+      return "Code 128 supports standard ASCII only (letters, numbers, symbols). Remove any special or accented characters.";
+    }
+  }
+  if (text.length > 48) return "Keep it under 48 characters so the barcode stays scannable.";
+  return null;
+}
+
+/* ---------------------------------------------------------------------
+   UPC-A. 12 numeric digits.
+   L = left digits (odd parity), R = right digits.
+   Structure: left guard 101 | 6 L-digits | center guard 01010 | 6 R-digits | right guard 101.
+   95 modules total.
+   --------------------------------------------------------------------- */
+var UPC_L = ["0001101","0011001","0010011","0111101","0100011","0110001","0101111","0111011","0110111","0001011"];
+var UPC_R = ["1110010","1100110","1101100","1000010","1011100","1001110","1010000","1000100","1001000","1110100"];
+
+/* UPC-A check digit from the first 11 digits.
+   check = (10 - ((3*(sum of odd positions) + (sum of even positions)) mod 10)) mod 10,
+   positions counted 1-based from the left (position 1 is odd). */
+function upcCheckDigit(d11){
+  var odd = 0, even = 0;
+  for (var i = 0; i < 11; i++){
+    var n = parseInt(d11.charAt(i), 10);
+    if (i % 2 === 0) odd += n;   // 0-based index 0,2,4.. = 1-based positions 1,3,5.. (odd)
+    else even += n;
+  }
+  return (10 - ((3 * odd + even) % 10)) % 10;
+}
+
+/* Encode a full 12-digit UPC-A string to a module bit string. */
+function encodeUPCA(d12){
+  var modules = "101";                     // left guard
+  for (var i = 0; i < 6; i++) modules += UPC_L[parseInt(d12.charAt(i), 10)];
+  modules += "01010";                      // center guard
+  for (var j = 6; j < 12; j++) modules += UPC_R[parseInt(d12.charAt(j), 10)];
+  modules += "101";                        // right guard
+  return modules;
+}
+
+/* Validate + normalize a UPC-A input.
+   Accepts 11 digits (we compute the 12th) or 12 digits (we validate the check digit).
+   Returns { value: "12 digits" } or { error: "..." }. */
+function prepareUPCA(raw){
+  var digits = raw.replace(/[\s-]/g, "");
+  if (!/^[0-9]+$/.test(digits)) return { error: "UPC-A is numbers only — remove letters, spaces and symbols." };
+  if (digits.length === 11){
+    return { value: digits + upcCheckDigit(digits), computed: true };
+  }
+  if (digits.length === 12){
+    var expected = upcCheckDigit(digits.slice(0, 11));
+    if (expected !== parseInt(digits.charAt(11), 10)){
+      return { error: "That check digit is wrong — the 12th digit should be " + expected + ". Enter 11 digits and we’ll compute it for you." };
+    }
+    return { value: digits, computed: false };
+  }
+  return { error: "UPC-A needs 11 or 12 digits (" + digits.length + " entered)." };
+}
+
+/* ---------------------------------------------------------------------
+   SVG rendering.
+   Two builders: buildBarsSVG for Code 128 (uniform-height bars),
+   buildUPCA_SVG for UPC-A (guard bars drop below + classic number line).
+   Both turn a module bit string into crisp <rect> bars, with a white
+   quiet-zone margin of `quiet` modules on each side (spec minimums:
+   10 for Code 128, 9 for UPC-A).
+   --------------------------------------------------------------------- */
+function buildBarsSVG(opts){
+  var modules = opts.modules;
+  var unit = opts.unit;                     // px per module (bar width slider)
+  var quiet = opts.quiet;
+  var barsHeight = opts.barsHeight;
+  var width = (modules.length + quiet * 2) * unit;
+  var height = barsHeight;
+
+  var rects = "";
+  var x = quiet * unit;
+  var i = 0;
+  while (i < modules.length){
+    if (modules.charAt(i) === "1"){
+      var run = 1;
+      while (i + run < modules.length && modules.charAt(i + run) === "1") run++;
+      var w = run * unit;
+      rects += '<rect x="' + fmt(x) + '" y="0" width="' + fmt(w) + '" height="' + fmt(barsHeight) + '"/>';
+      x += w;
+      i += run;
+    } else {
+      x += unit;
+      i += 1;
+    }
+  }
+
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + fmt(width) + ' ' + fmt(height) + '" ' +
+    'width="' + fmt(width) + '" height="' + fmt(height) + '" role="img" aria-label="' + escapeAttr(opts.aria) + '" shape-rendering="crispEdges">' +
+    '<rect x="0" y="0" width="' + fmt(width) + '" height="' + fmt(height) + '" fill="#ffffff"/>' +
+    '<g fill="#111111">' + rects + '</g></svg>';
+}
+
+/* UPC-A number line: single lead digit, two groups of five, single trailing digit,
+   sitting in the gap left by the guard bars that drop below the main bar band. */
+function buildUPCTextSVG(d12, unit, quiet, barsHeight, guardDrop){
+  var y = barsHeight + guardDrop - 1;       // baseline just below the extended guard bars
+  var fontPx = Math.max(7, unit * 5.2);
+  function t(cx, str){
+    return '<text x="' + fmt(cx) + '" y="' + fmt(y) + '" font-family="' +
+      "ui-monospace,'SF Mono',Menlo,Consolas,monospace" + '" font-size="' + fmt(fontPx) +
+      '" fill="#111111" text-anchor="middle">' + str + '</text>';
+  }
+  // Module x-centres (each module = unit wide), offset by quiet zone:
+  var mx = function(moduleIndex){ return (quiet + moduleIndex) * unit; };
+  var out = "";
+  // Lead digit: sits in the left quiet zone, left of the left guard (guard at modules 0..2).
+  out += t((quiet - 4) * unit + (unit * 0.5), d12.charAt(0));
+  // Left group digits 2..6 occupy modules 3..44 (7 modules each). Centre each 7-module block.
+  for (var i = 0; i < 5; i++){
+    var start = 3 + i * 7;
+    out += t(mx(start + 3.5), d12.charAt(1 + i));
+  }
+  // Right group digits 7..11 occupy modules 50..91 (after center guard 45..49).
+  for (var j = 0; j < 5; j++){
+    var startR = 50 + j * 7;
+    out += t(mx(startR + 3.5), d12.charAt(6 + j));
+  }
+  // Trailing check digit: right of the right guard (guard at modules 92..94), into right quiet zone.
+  out += t((quiet + 95 + 4) * unit - (unit * 0.5), d12.charAt(11));
+  return out;
+}
+
+/* Guard ranges (module index start/length pairs) for UPC-A so guard bars extend below. */
+function upcGuardRanges(){
+  return [ [0,3], [45,5], [92,3] ];         // left guard, center guard, right guard
+}
+function isInGuard(moduleIndex, ranges){
+  for (var i = 0; i < ranges.length; i++){
+    if (moduleIndex >= ranges[i][0] && moduleIndex < ranges[i][0] + ranges[i][1]) return true;
+  }
+  return false;
+}
+
+function fmt(n){ return (Math.round(n * 1000) / 1000); }
+function escapeAttr(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+/* ---------------------------------------------------------------------
+   UI wiring
+   --------------------------------------------------------------------- */
+var state = {
+  format: "code128",
+  lastSVG: "",
+  lastName: "barcode"
+};
+// Remembered defaults per format (UPC-A default 03600029145 -> check digit 2).
+var DEFAULTS = { code128: "DYLIGN-001", upca: "03600029145" };
+var lastEntered = { code128: "DYLIGN-001", upca: "03600029145" };
+
+var el = {
+  segCode128: document.getElementById("segCode128"),
+  segUpca:    document.getElementById("segUpca"),
+  input:      document.getElementById("bcInput"),
+  inputLabel: document.getElementById("bcInputLabel"),
+  hint:       document.getElementById("bcHint"),
+  err:        document.getElementById("bcErr"),
+  scale:      document.getElementById("bcScale"),
+  scaleVal:   document.getElementById("bcScaleVal"),
+  generate:   document.getElementById("bcGenerate"),
+  download:   document.getElementById("bcDownload"),
+  copyOk:     document.getElementById("bcCopyOk"),
+  empty:      document.getElementById("bcEmpty"),
+  svgHold:    document.getElementById("bcSvgHold"),
+  human:      document.getElementById("bcHuman"),
+  meta:       document.getElementById("bcMeta")
+};
+
+function setFormat(fmt){
+  if (state.format === fmt) return;
+  lastEntered[state.format] = el.input.value;   // remember what was typed for the old format
+  state.format = fmt;
+  var isC128 = fmt === "code128";
+  el.segCode128.classList.toggle("sel", isC128);
+  el.segUpca.classList.toggle("sel", !isC128);
+  el.segCode128.setAttribute("aria-pressed", String(isC128));
+  el.segUpca.setAttribute("aria-pressed", String(!isC128));
+  if (isC128){
+    el.inputLabel.textContent = "Data to encode";
+    el.hint.innerHTML = "Any letters, numbers or symbols (ASCII 32&ndash;126). Great for SKUs, lot codes or a short URL.";
+    el.input.setAttribute("inputmode", "text");
+  } else {
+    el.inputLabel.textContent = "UPC number (11 or 12 digits)";
+    el.hint.innerHTML = "Enter 11 digits and we&rsquo;ll add the check digit, or paste a full 12-digit code to validate it.";
+    el.input.setAttribute("inputmode", "numeric");
+  }
+  el.input.value = lastEntered[fmt] || DEFAULTS[fmt];
+  clearError();
+  render();
+}
+
+function showError(msg){
+  el.err.textContent = msg;
+  el.err.classList.add("show");
+  el.input.classList.add("bad");
+}
+function clearError(){
+  el.err.textContent = "";
+  el.err.classList.remove("show");
+  el.input.classList.remove("bad");
+}
+
+function showEmpty(){
+  el.empty.hidden = false;
+  el.svgHold.hidden = true;
+  el.human.hidden = true;
+  el.meta.hidden = true;
+  el.svgHold.innerHTML = "";
+  state.lastSVG = "";
+}
+
+function render(){
+  var raw = el.input.value;
+  var unit = parseFloat(el.scale.value);
+
+  if (state.format === "code128"){
+    var trimmed = raw;
+    var verr = validateCode128(trimmed);
+    if (verr){ showError(verr); showEmpty(); return; }
+    clearError();
+    var enc = encodeCode128(trimmed);
+    var svg = buildBarsSVG({
+      modules: enc.modules,
+      unit: unit,
+      quiet: 10,
+      barsHeight: 90,
+      textRows: 0,
+      aria: "Code 128 barcode encoding " + trimmed
+    });
+    paint(svg, trimmed, [
+      ["Format", "Code 128 B"],
+      ["Checksum", String(enc.checksum)],
+      ["Modules", String(enc.modules.length)]
+    ]);
+    state.lastName = sanitizeName(trimmed) + "_code128";
+  } else {
+    var prep = prepareUPCA(raw);
+    if (prep.error){ showError(prep.error); showEmpty(); return; }
+    clearError();
+    var d12 = prep.value;
+    var modules = encodeUPCA(d12);
+    var svgU = buildUPCA_SVG(modules, d12, unit);
+    var humanText = d12.charAt(0) + " " + d12.slice(1,6) + " " + d12.slice(6,11) + " " + d12.charAt(11);
+    paint(svgU, humanText, [
+      ["Format", "UPC-A"],
+      ["Check digit", d12.charAt(11) + (prep.computed ? " (added)" : " (ok)")],
+      ["Modules", String(modules.length)]
+    ]);
+    state.lastName = "upc_" + d12;
+  }
+}
+
+/* Dedicated UPC-A SVG builder (bars + guard drop + number line) so the human
+   digits land in the classic split layout under the guards. */
+function buildUPCA_SVG(modules, d12, unit){
+  var quiet = 9;
+  var barsHeight = 90;
+  var guardDrop = 8;
+  var textPad = Math.max(11, unit * 6);
+  var totalModules = modules.length + quiet * 2;
+  var width = totalModules * unit;
+  var height = barsHeight + guardDrop + textPad;
+  var ranges = upcGuardRanges();
+
+  var rects = "";
+  var x = quiet * unit;
+  var i = 0;
+  while (i < modules.length){
+    if (modules.charAt(i) === "1"){
+      var run = 1;
+      while (i + run < modules.length && modules.charAt(i + run) === "1") run++;
+      var w = run * unit;
+      var barH = barsHeight + (isInGuard(i, ranges) ? guardDrop : 0);
+      rects += '<rect x="' + fmt(x) + '" y="0" width="' + fmt(w) + '" height="' + fmt(barH) + '"/>';
+      x += w; i += run;
+    } else { x += unit; i += 1; }
+  }
+  var text = buildUPCTextSVG(d12, unit, quiet, barsHeight, guardDrop + textPad - 2);
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + fmt(width) + ' ' + fmt(height) + '" ' +
+    'width="' + fmt(width) + '" height="' + fmt(height) + '" role="img" aria-label="UPC-A barcode encoding ' + escapeAttr(d12) + '" shape-rendering="crispEdges">' +
+    '<rect x="0" y="0" width="' + fmt(width) + '" height="' + fmt(height) + '" fill="#ffffff"/>' +
+    '<g fill="#111111">' + rects + '</g>' + text + '</svg>';
+}
+
+function paint(svg, humanText, metaPairs){
+  el.empty.hidden = true;
+  el.svgHold.hidden = false;
+  el.svgHold.innerHTML = svg;
+  el.human.hidden = false;
+  el.human.textContent = humanText;
+  el.meta.hidden = false;
+  el.meta.innerHTML = metaPairs.map(function(p){
+    return '<span>' + p[0] + ' <b>' + escapeAttr(p[1]) + '</b></span>';
+  }).join("");
+  state.lastSVG = svg;
+}
+
+function sanitizeName(s){
+  return s.replace(/[^A-Za-z0-9._-]+/g, "_").replace(/^_+|_+$/g, "").slice(0, 40) || "barcode";
+}
+
+function downloadSVG(){
+  if (!state.lastSVG){ return; }
+  var blob = new Blob([state.lastSVG], { type: "image/svg+xml" });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  a.href = url;
+  a.download = state.lastName + ".svg";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+}
+
+/* events */
+el.segCode128.addEventListener("click", function(){ setFormat("code128"); });
+el.segUpca.addEventListener("click", function(){ setFormat("upca"); });
+el.generate.addEventListener("click", render);
+el.download.addEventListener("click", downloadSVG);
+el.input.addEventListener("input", function(){ render(); });
+el.input.addEventListener("keydown", function(e){ if (e.key === "Enter"){ e.preventDefault(); render(); } });
+el.scale.addEventListener("input", function(){
+  el.scaleVal.textContent = el.scale.value + " px / module";
+  render();
+});
+
+/* Click the human-readable value to copy it. */
+el.human.addEventListener("click", function(){
+  var txt = el.human.textContent.replace(/\s+/g, function(m){ return state.format === "upca" ? "" : m; });
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){
+      el.copyOk.classList.add("show");
+      setTimeout(function(){ el.copyOk.classList.remove("show"); }, 1200);
+    }).catch(function(){});
+  }
+});
+
+/* Preload the working Code 128 example (DYLIGN-001) on load. */
+render();
+</script>
+</body>
+</html>

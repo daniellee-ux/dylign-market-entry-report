@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Custom Stickers &amp; Labels — Dylign</title>
+<meta name="description" content="Custom stickers and labels from 100 units. Priced live, ordered online, then proofed free within 48 hours — we don't print until you approve. From the team behind your Dylign packaging." />
+<meta name="theme-color" content="#FF5900" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Custom Stickers &amp; Labels — Dylign" />
+<meta property="og:description" content="Die-cut stickers, kiss-cut sheets, roll labels, jar &amp; bottle labels and holographic stickers from 100 units. Order online, free 48-hour proof, nothing prints until you approve." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='4' width='24' height='24' rx='7' fill='%23FF5900'/%3E%3Ccircle cx='16' cy='16' r='4.5' fill='%23FBF5EA'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#FF5900;--orange-deep:#E14F00;--orange-soft:#FFF0E6;
+    --ink:#222222;--ink-2:#4A4A4A;--ink-3:#8A857C;
+    --cream:#FBF5EA;--cream-2:#F4EBDA;--line:#E7E0D4;--line-warm:#EADFC9;
+    --sage:#8FA05E;--amber:#F2B335;--ok:#3F7A5C;--blue:#4C86E0;--blue-deep:#3C6FC0;
+    --mono:ui-monospace,"SF Mono","Cascadia Code",Menlo,Consolas,monospace;
+    --ease:cubic-bezier(0.16,1,0.3,1);--shadow:0 6px 16px rgba(90,68,38,.10);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{margin:0;padding:0}
+  .skip{position:fixed;left:12px;top:-48px;z-index:100;background:var(--ink);color:#fff;text-decoration:none;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;transition:top .2s var(--ease)}
+  .skip:focus{top:12px;outline:2px solid var(--orange);outline-offset:2px}
+  body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  ::selection{background:var(--orange-soft)}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font-family:inherit;font-weight:600;font-size:14px;border-radius:999px;padding:12px 26px;transition:background .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease),transform .12s var(--ease)}
+  .btn:active{transform:scale(.98)}
+  .btn:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+  .btn-solid{background:var(--orange);color:#fff}
+  .btn-solid:hover{background:var(--orange-deep)}
+  .btn-line{background:#fff;color:var(--orange);border:1.5px solid var(--orange)}
+  .btn-line:hover{background:var(--orange-soft)}
+  .btn-ghost{background:transparent;color:var(--ink-2);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink-3);color:var(--ink)}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-dark:hover{background:#000}
+  .btn-lg{padding:15px 32px;font-size:15px}
+  .btn-block{width:100%}
+  .arrow{transition:transform .25s var(--ease)}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  /* nav */
+  nav.top{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;gap:22px;height:70px}
+  .logo{font-weight:700;font-size:26px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;flex:none}
+  .logo svg{height:26px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:22px;font-size:14.5px;font-weight:500;color:var(--ink);margin-left:6px}
+  .nav-item{position:relative;display:inline-flex;align-items:center}
+  .nav-item > a{text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;padding:24px 0;color:var(--ink)}
+  .nav-item > a:hover{color:var(--orange)}
+  .nav-item .caret{width:9px;height:9px;opacity:.7;transition:transform .2s var(--ease)}
+  .nav-item.has-menu:hover .caret,.nav-item.has-menu:focus-within .caret{transform:rotate(180deg)}
+  .nav-menu{position:absolute;top:100%;left:-14px;min-width:236px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 44px -14px rgba(90,68,38,.28);padding:10px;display:none;z-index:70}
+  .nav-menu::before{content:"";position:absolute;top:-12px;left:0;right:0;height:12px}
+  .nav-item.has-menu:hover .nav-menu,.nav-item.has-menu:focus-within .nav-menu{display:block;animation:menuin .16s var(--ease)}
+  @keyframes menuin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .nav-menu a{display:block;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap}
+  .nav-menu a:hover{background:var(--orange-soft);color:var(--orange-deep)}
+  .nav-menu a small{display:block;font-size:11.5px;color:var(--ink-3);font-weight:400;margin-top:1px}
+  .nav-menu a:hover small{color:var(--orange-deep);opacity:.8}
+  .nav-menu .nm-head{font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);padding:6px 12px 8px}
+  .nav-icons{display:flex;align-items:center;gap:16px;margin-left:auto;flex:none}
+  .nav-icons button{background:none;border:0;padding:4px;cursor:pointer;color:var(--ink);display:inline-flex;border-radius:8px;position:relative}
+  .nav-icons button:hover{color:var(--orange)}
+  .nav-icons button:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+  .nav-icons svg{width:22px;height:22px}
+  .cart-badge{position:absolute;top:-3px;right:-4px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:var(--orange);color:#fff;font-size:10.5px;font-weight:700;line-height:17px;text-align:center;display:none}
+  .cart-badge.show{display:block}
+  @media(max-width:1080px){.nav-links{display:none}}
+  @media(max-width:560px){.wrap{padding:0 18px}.nav-in{gap:14px;height:62px}.logo svg{height:23px}}
+
+  /* hero */
+  .hero{padding:64px 0 52px;display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:center}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 16px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:0;border-top:2px dashed var(--orange)}
+  h1{font-size:47px;line-height:1.14;font-weight:600;letter-spacing:-.015em;margin:0 0 20px;color:var(--orange);text-wrap:balance}
+  h1 span{color:var(--ink)}
+  .hero .sub{font-size:16.5px;color:var(--ink-2);max-width:34em;margin:0 0 30px;text-wrap:pretty}
+  .cta-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .hero-facts{display:flex;gap:0;margin-top:40px;flex-wrap:wrap}
+  .hero-facts div{padding:2px 26px 0 0;margin-right:26px;border-right:1px dashed var(--line-warm)}
+  .hero-facts div:last-child{border-right:0;margin-right:0;padding-right:0}
+  .hero-facts b{display:block;font-size:21px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .hero-facts small{font-size:12.5px;color:var(--ink-3);font-weight:500}
+  .hero-art{position:relative}
+  .hero-art img{width:100%;height:auto;display:block;border-radius:18px;box-shadow:0 18px 44px -20px rgba(94,68,32,.4)}
+  .hero-note{position:absolute;bottom:-8px;left:8%;right:8%;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:10px 16px;font-size:12.5px;color:var(--ink-2);display:flex;gap:9px;align-items:center}
+  .hero-note svg{width:15px;height:15px;flex:none}
+  @media(max-width:960px){.hero{grid-template-columns:1fr;gap:40px;padding:44px 0 32px}h1{font-size:34px}}
+  @media(max-width:560px){.hero{padding:32px 0 24px}h1{font-size:29px}.hero .sub{font-size:15.5px}.hero-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}.hero-facts div{border-right:0;padding:0;margin:0}.hero-facts b{font-size:17px}.hero-facts small{font-size:11px}}
+
+  .rise{opacity:0;transform:translateY(14px);animation:rise .7s var(--ease) forwards;animation-delay:calc(var(--i,0)*90ms)}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}html{scroll-behavior:auto}.toast.show{animation:none}.btn,.chip,.path,.checkrow,.price,.seg-btn,.nav-menu{transition:none;animation:none}}
+
+  /* brand strip */
+  .brandstrip{background:var(--orange-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .brandstrip .wrap{display:flex;align-items:center;justify-content:center;gap:12px 44px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
+  .brandstrip .bl{font-weight:700;font-size:19px;color:var(--orange);opacity:.72;letter-spacing:-.01em;white-space:nowrap}
+  .brandstrip .bl.script{font-style:italic;font-weight:600}
+  @media(max-width:560px){.brandstrip .bl{font-size:16px}.brandstrip .wrap{gap:10px 26px}}
+
+  section.band{padding:72px 0}
+  section.band.cream{background-color:var(--cream);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E")}
+  .sec-head{margin:0 0 8px;font-size:30px;font-weight:600;letter-spacing:-.01em;color:var(--orange);text-wrap:balance}
+  .sec-head.ink{color:var(--ink)}
+  .sec-sub{color:var(--ink-2);font-size:15.5px;max-width:46em;margin:0 0 36px;text-wrap:pretty}
+  @media(max-width:680px){section.band{padding:52px 0}.sec-head{font-size:24px}.sec-sub{font-size:14.5px;margin-bottom:28px}}
+
+  /* flow strip */
+  .flowstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:8px}
+  .fstep{position:relative;padding:0 28px 0 0}
+  .fstep + .fstep{padding-left:28px;border-left:1px dashed var(--line-warm)}
+  .fstep .k{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--orange);letter-spacing:.08em;margin-bottom:8px;display:block}
+  .fstep h4{margin:0 0 6px;font-size:15.5px;font-weight:600}
+  .fstep p{margin:0;font-size:13px;color:var(--ink-2)}
+  .fstep .pay-flag{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11.5px;font-weight:600;color:var(--orange-deep);background:var(--orange-soft);border-radius:999px;padding:4px 11px}
+  .fstep .ok-flag{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:11.5px;font-weight:600;color:var(--ok);background:#EDF4EF;border-radius:999px;padding:4px 11px}
+  @media(max-width:900px){.flowstrip{grid-template-columns:1fr 1fr;row-gap:26px}.fstep:nth-child(3){border-left:0;padding-left:0}}
+  @media(max-width:560px){.flowstrip{grid-template-columns:1fr}.fstep + .fstep{border-left:0;padding-left:0;border-top:1px dashed var(--line-warm);padding-top:22px}.fstep{padding-right:0}}
+
+  /* breadcrumb */
+  .crumb{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-3);margin:0 0 24px;flex-wrap:wrap}
+  .crumb a{text-decoration:none;color:var(--ink-3)}
+  .crumb a:hover{color:var(--orange)}
+  .crumb .sep{opacity:.6}
+  .crumb .cur{color:var(--ink);font-weight:600}
+
+  /* PDP */
+  .pdp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start}
+  @media(max-width:900px){.pdp{grid-template-columns:1fr;gap:28px}}
+  .gallery{position:sticky;top:88px}
+  @media(max-width:900px){.gallery{position:static}}
+  .gallery-main{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#FBF7EF;aspect-ratio:1/1}
+  .gallery-main img{width:100%;height:100%;object-fit:cover;display:block}
+  .gallery-tag{position:absolute;top:14px;left:14px;background:var(--ink);color:#fff;font-size:11px;font-weight:600;letter-spacing:.04em;border-radius:999px;padding:6px 13px}
+  .gallery-thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
+  .thumb{border:1.5px solid var(--line);border-radius:11px;overflow:hidden;background:#FBF7EF;cursor:pointer;padding:0;aspect-ratio:1/1;transition:border-color .18s var(--ease)}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb:hover{border-color:var(--ink-3)}
+  .thumb.sel{border-color:var(--orange)}
+  .thumb:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+  .gallery-note{display:flex;gap:9px;align-items:flex-start;margin-top:16px;font-size:12.5px;color:var(--ink-2);background:var(--cream);border-radius:10px;padding:12px 14px}
+  .gallery-note svg{width:16px;height:16px;flex:none;margin-top:1px}
+
+  .config .prod-title{margin:0 0 3px;font-size:30px;font-weight:600;letter-spacing:-.01em}
+  .config .prod-lede{margin:0 0 6px;font-size:14px;color:var(--ink-2)}
+  .config .prod-rating{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-3);margin:0 0 4px}
+  .config .prod-rating .stars{color:var(--amber);letter-spacing:2px}
+
+  .opt-row{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start;padding:18px 0;border-top:1px solid var(--line)}
+  .opt-label{font-size:13.5px;font-weight:600;color:var(--ink);padding-top:9px}
+  .opt-label .sub{display:block;font-weight:500;font-size:11.5px;color:var(--ink-3);margin-top:2px}
+  .opt-control{min-width:0}
+  .opt-help{font-size:12px;color:var(--ink-3);margin:-2px 0 10px}
+  @media(max-width:560px){.opt-row{grid-template-columns:1fr;gap:9px}.opt-label{padding-top:0}}
+
+  .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:10px}
+  .seg.wrap2{grid-auto-flow:row;grid-template-columns:1fr 1fr}
+  .seg.wrap3{grid-auto-flow:row;grid-template-columns:repeat(3,1fr)}
+  .seg-btn{font-family:inherit;font-size:13.5px;font-weight:600;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:12px 10px;cursor:pointer;text-align:center;line-height:1.3;transition:border-color .16s var(--ease),background .16s var(--ease),transform .12s var(--ease)}
+  .seg-btn small{display:block;font-weight:500;font-size:11px;color:var(--ink-3);margin-top:2px}
+  .seg-btn:hover{border-color:var(--ink-3)}
+  .seg-btn:active{transform:scale(.98)}
+  .seg-btn:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+  .seg-btn.sel{border-color:var(--orange);background:var(--orange-soft)}
+  .seg-btn.sel small{color:var(--orange-deep)}
+
+  .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  @media(max-width:520px){.chips{grid-template-columns:repeat(2,1fr)}}
+  .chip{font-family:inherit;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:8px;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--ink);transition:border-color .16s var(--ease),background .16s var(--ease),transform .12s var(--ease)}
+  .chip small{display:block;font-weight:500;font-size:11px;color:var(--ink-3);margin-top:1px;line-height:1.4}
+  .chip:hover{border-color:var(--ink-3)}
+  .chip:active{transform:scale(.98)}
+  .chip:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+  .chip.sel{border-color:var(--orange);background:var(--orange-soft)}
+  .chip .chip-txt{display:block;padding:2px 4px 4px}
+  .chip .price-hint{display:block;font-family:var(--mono);font-size:10.5px;font-weight:500;color:var(--ink-3);margin-top:2px}
+  .chip.sel .price-hint{color:var(--orange-deep)}
+  .chip-img{display:block;width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:7px;margin-bottom:6px;background:#F2ECE0}
+  .chips.mini{grid-template-columns:repeat(3,1fr)}
+  .chip.mini{padding:11px 8px;text-align:center}
+  .chip.mini .n{font-family:var(--mono);font-size:14px;display:block}
+
+  .hint-box{background:#FBF3E4;border:0;border-radius:10px;padding:12px 14px;font-size:12.5px;color:var(--ink-2);display:flex;gap:10px;align-items:flex-start}
+  .hint-box svg{width:16px;height:16px;flex:none;margin-top:2px}
+  .hint-box b{color:var(--ink)}
+
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field label{font-size:12px;font-weight:600;color:var(--ink-2)}
+  .field-row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+  .field input[type=number]{font-family:var(--mono);font-size:14px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:9px 12px;width:104px;transition:border-color .2s}
+  select.sel-input{font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;width:100%;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%238A857C' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;transition:border-color .2s}
+  .field input:focus,select.sel-input:focus{outline:none;border-color:var(--orange)}
+  .field .err{font-size:11.5px;color:#AE4130;display:none}
+  .field.bad input{border-color:#AE4130}
+  .field.bad .err{display:block}
+  .x-sep{font-size:13px;color:var(--ink-3);padding-bottom:12px}
+
+  .check-list{display:flex;flex-direction:column;gap:8px}
+  .checkrow{display:flex;align-items:flex-start;gap:12px;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color .16s var(--ease),background .16s var(--ease)}
+  .checkrow:hover{border-color:var(--ink-3)}
+  .checkrow.sel{border-color:var(--orange);background:var(--orange-soft)}
+  .checkrow input{margin-top:3px;accent-color:var(--orange)}
+  .vd-item{display:flex;flex-direction:column}
+  .vd-field{margin:8px 0 2px 38px;display:flex;flex-direction:column;gap:6px;animation:fadein .25s var(--ease)}
+  .vd-field label{font-size:11.5px;font-weight:600;color:var(--ink-2)}
+  .vd-field input,.vd-field select{font-family:var(--mono);font-size:13px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:9px 12px;width:100%;max-width:340px;transition:border-color .2s}
+  .vd-field select{font-family:inherit}
+  .vd-field input:focus,.vd-field select:focus{outline:none;border-color:var(--orange)}
+  .vd-field input::placeholder{color:#B8B2A6}
+  .checkrow .t{font-size:13.5px;font-weight:600}
+  .checkrow .d{font-size:12px;color:var(--ink-3);font-weight:400}
+  .checkrow .fee{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--ink-2);white-space:nowrap;padding-top:2px}
+  @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .art-block{margin-top:8px}
+  .art-block h5{margin:0 0 8px;font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .art-block h5 .dn{font-family:var(--mono);font-size:10px;color:var(--orange);background:var(--orange-soft);border-radius:999px;padding:3px 9px}
+  .art-drop{display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;border:1.5px dashed var(--line-warm);border-radius:11px;padding:18px 16px;background:#FCFAF4}
+  .art-drop svg{width:24px;height:24px}
+  .art-drop > span{font-size:13px;color:var(--ink-2)}
+  .art-choose{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--orange);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+  .art-choose:hover{color:var(--orange-deep)}
+  .art-hint{font-size:11.5px;color:var(--ink-3)}
+  .art-file{display:flex;align-items:center;gap:10px;background:#EDF4EF;border-radius:10px;padding:11px 14px;font-size:13px}
+  .art-file svg{width:17px;height:17px;flex:none}
+  .art-file .af-name{font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .art-file .af-size{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);flex:none}
+  .art-file .af-remove{margin-left:auto;flex:none;background:none;border:0;font-size:20px;line-height:1;color:var(--ink-3);cursor:pointer;padding:0 2px}
+  .art-file .af-remove:hover{color:#AE4130}
+  .art-brief{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+  .art-brief label{font-size:11.5px;font-weight:600;color:var(--ink-2)}
+  .art-brief textarea{width:100%;font-family:inherit;font-size:13.5px;border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;min-height:64px;resize:vertical;color:var(--ink)}
+  .art-brief textarea:focus{outline:none;border-color:var(--orange)}
+  .art-design{display:flex;gap:11px;align-items:flex-start;background:#EEF4FC;border:1px solid #D5E3F6;border-radius:10px;padding:12px 14px;font-size:12.5px;color:#2E4E7E;margin-top:8px}
+  .art-design svg{width:17px;height:17px;flex:none;margin-top:1px}
+  .art-design b{color:#20437A}
+
+  .buybox{margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
+  .price-line{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .price{font-family:var(--mono);font-size:38px;font-weight:700;letter-spacing:-.02em;line-height:1;transition:color .3s}
+  .price.bump{color:var(--orange)}
+  .price-per{font-size:14px;color:var(--ink-2)}
+  .price-per b{font-family:var(--mono);font-weight:600}
+  .save-pill{font-size:11.5px;font-weight:600;color:var(--ok);background:#EDF4EF;border-radius:999px;padding:4px 11px}
+  .shoppay{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12.5px;color:var(--ink-3)}
+  .shoppay .sp-badge{font-weight:700;color:#5A31F4;background:#EDE7FE;border-radius:6px;padding:2px 8px;font-size:11px}
+  .buy-ctas{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+  .btn-design{background:var(--blue);color:#fff}
+  .btn-design:hover{background:var(--blue-deep)}
+  .buy-reassure{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:12.5px;color:var(--ink-2)}
+  .buy-reassure svg{width:17px;height:17px;flex:none;margin-top:1px}
+  .buy-reassure b{color:var(--ink)}
+  details.order-det{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
+  details.order-det summary{cursor:pointer;list-style:none;font-size:13px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:8px}
+  details.order-det summary::-webkit-details-marker{display:none}
+  details.order-det summary .chev{width:12px;height:12px;transition:transform .2s var(--ease);color:var(--ink-3)}
+  details.order-det[open] summary .chev{transform:rotate(180deg)}
+  .q-rows{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+  .q-row{display:flex;justify-content:space-between;gap:14px;font-size:13px;color:var(--ink-2)}
+  .q-row b{color:var(--ink);font-weight:600;text-align:right}
+  .q-row b.num{font-family:var(--mono)}
+  .q-row .ok{color:var(--ok)}
+  .timeline{margin-top:14px;border-top:1px dashed var(--line-warm);padding-top:14px}
+  .timeline .tl-title{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+  .tl-row{display:flex;gap:12px;font-size:12.5px;color:var(--ink-2);padding:0 0 12px 0;position:relative}
+  .tl-row:last-child{padding-bottom:0}
+  .tl-dot{width:9px;height:9px;border-radius:50%;background:var(--orange);flex:none;margin-top:5px;position:relative}
+  .tl-row:not(:last-child) .tl-dot::after{content:"";position:absolute;left:4px;top:11px;bottom:-14px;border-left:1px dashed var(--line-warm)}
+  .tl-row b{color:var(--ink);font-weight:600}
+  .tl-row .dur{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap;padding-top:1px}
+
+  /* other label types cross-sell */
+  .more-types{margin-top:56px;border-top:1px solid var(--line);padding-top:36px}
+  .more-types h3{margin:0 0 18px;font-size:19px;font-weight:600}
+  .type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:820px){.type-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:460px){.type-grid{grid-template-columns:1fr}}
+  .type-card{text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;padding:0;font-family:inherit;transition:border-color .16s var(--ease),transform .16s var(--ease),box-shadow .16s var(--ease)}
+  .type-card:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 12px 26px -16px rgba(94,68,32,.4)}
+  .type-card:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+  .type-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#F2ECE0}
+  .type-card .tc-body{padding:12px 14px 14px}
+  .type-card .tc-name{font-size:14px;font-weight:600;margin:0 0 2px}
+  .type-card .tc-desc{font-size:11.5px;color:var(--ink-3);line-height:1.5;margin:0 0 6px}
+  .type-card .tc-from{font-family:var(--mono);font-size:11.5px;color:var(--orange-deep);font-weight:600}
+  .type-card.cur{border-color:var(--orange);background:var(--orange-soft)}
+  .type-card.cur .tc-cur{font-size:10px;font-weight:700;color:var(--orange-deep);letter-spacing:.04em}
+
+  /* cart drawer */
+  .drawer-overlay{position:fixed;inset:0;z-index:80;background:rgba(40,30,15,.42);opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s var(--ease)}
+  .drawer-overlay.open{opacity:1;visibility:visible}
+  .drawer{position:fixed;top:0;right:0;bottom:0;z-index:81;width:min(420px,92vw);background:#fff;box-shadow:-10px 0 40px rgba(40,30,15,.2);transform:translateX(100%);transition:transform .32s var(--ease);display:flex;flex-direction:column}
+  .drawer.open{transform:none}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:1px solid var(--line)}
+  .drawer-head h3{margin:0;font-size:20px;font-weight:700}
+  .drawer-close{background:none;border:0;cursor:pointer;font-size:24px;line-height:1;color:var(--ink-3);padding:2px 6px}
+  .drawer-close:hover{color:var(--ink)}
+  .drawer-body{flex:1;overflow-y:auto;padding:20px 24px}
+  .cart-empty{color:var(--ink-3);font-size:14px;text-align:center;padding:40px 0}
+  .cart-line{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .cart-line:first-child{padding-top:0}
+  .cart-thumb{width:74px;height:74px;border-radius:10px;object-fit:cover;flex:none;background:#F2ECE0;border:1px solid var(--line)}
+  .cart-info{flex:1;min-width:0}
+  .cart-info .ci-name{font-size:14.5px;font-weight:600;margin:0 0 3px}
+  .cart-info .ci-spec{font-size:12px;color:var(--ink-3);line-height:1.5;margin:0 0 8px}
+  .cart-info .ci-foot{display:flex;align-items:center;gap:12px}
+  .qty-step{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:8px;overflow:hidden}
+  .qty-step button{background:#FAF6EC;border:0;width:28px;height:28px;cursor:pointer;font-size:15px;color:var(--ink-2);line-height:1}
+  .qty-step button:hover{background:#F2E9D6}
+  .qty-step span{min-width:30px;text-align:center;font-family:var(--mono);font-size:13px}
+  .ci-remove{background:none;border:0;font-size:12px;color:var(--ink-3);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+  .ci-remove:hover{color:#AE4130}
+  .cart-price{font-family:var(--mono);font-weight:600;font-size:14px;flex:none}
+  .drawer-foot{border-top:1px solid var(--line);padding:20px 24px;background:#FFFDF9}
+  .drawer-note{display:flex;gap:9px;align-items:flex-start;font-size:12px;color:var(--ink-2);background:var(--cream);border-radius:9px;padding:11px 13px;margin-bottom:14px}
+  .drawer-note svg{width:15px;height:15px;flex:none;margin-top:1px}
+  .cart-subtotal{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+  .cart-subtotal .cs-l{font-size:14px;font-weight:600}
+  .cart-subtotal .cs-v{font-family:var(--mono);font-size:20px;font-weight:700}
+  .cart-ship{font-size:12px;color:var(--ink-3);margin-bottom:16px}
+
+  /* full-screen overlays (checkout + confirm) */
+  .sheet{position:fixed;inset:0;z-index:90;background:var(--cream);overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .28s var(--ease),visibility .28s var(--ease)}
+  .sheet.open{opacity:1;visibility:visible}
+  .co-bar{background:#fff;border-bottom:1px solid var(--line)}
+  .co-bar-in{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:1080px;margin:0 auto;padding:0 28px}
+  .co-back{background:none;border:0;cursor:pointer;color:var(--ink-2);font:inherit;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:7px}
+  .co-back:hover{color:var(--orange)}
+  .co-bar-in .logo svg{height:24px}
+  .co-grid{max-width:1080px;margin:0 auto;padding:34px 28px 60px;display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:start}
+  @media(max-width:820px){.co-grid{grid-template-columns:1fr;gap:32px}}
+  .co-form h3{margin:0 0 14px;font-size:17px;font-weight:700}
+  .co-express-lbl{text-align:center;font-size:12px;color:var(--ink-3);margin-bottom:12px}
+  .co-express-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .xpay{border:0;border-radius:8px;height:44px;cursor:pointer;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;color:#fff}
+  .xpay.shop{background:#5A31F4}
+  .xpay.pp{background:#FFC439;color:#003087}
+  .xpay.gp{background:#000}
+  .co-or{display:flex;align-items:center;gap:14px;margin:22px 0;color:var(--ink-3);font-size:12px}
+  .co-or::before,.co-or::after{content:"";flex:1;border-top:1px solid var(--line)}
+  .co-field{margin-bottom:12px}
+  .co-field label{display:block;font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+  .co-field input,.co-field select{width:100%;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:12px 13px;transition:border-color .2s}
+  .co-field input:focus,.co-field select:focus{outline:none;border-color:var(--orange)}
+  .co-field .err{font-size:11.5px;color:#AE4130;display:none;margin-top:5px}
+  .co-field.bad input{border-color:#AE4130}
+  .co-field.bad .err{display:block}
+  .co-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .co-three{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px}
+  @media(max-width:480px){.co-three{grid-template-columns:1fr}}
+  .co-sectlbl{font-size:15px;font-weight:700;margin:24px 0 12px}
+  .co-pay-note{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--ink-3);margin:2px 0 14px}
+  .co-pay-note svg{width:15px;height:15px;flex:none;margin-top:1px}
+  .co-summary{background:#FFFDF9;border:1px solid var(--line-warm);border-radius:14px;padding:24px;position:sticky;top:22px}
+  .co-line{display:flex;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:16px}
+  .co-line img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:none;border:1px solid var(--line)}
+  .co-line .cl-name{font-size:14px;font-weight:600;margin:0 0 2px}
+  .co-line .cl-spec{font-size:11.5px;color:var(--ink-3);line-height:1.5}
+  .co-line .cl-price{margin-left:auto;font-family:var(--mono);font-weight:600;font-size:14px}
+  .co-sum-row{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2);margin-bottom:9px}
+  .co-sum-row b{color:var(--ink)}
+  .co-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);margin-top:6px;padding-top:14px}
+  .co-total .ct-l{font-size:15px;font-weight:700}
+  .co-total .ct-v{font-family:var(--mono);font-size:22px;font-weight:700}
+  .co-proofnote{display:flex;gap:9px;align-items:flex-start;background:var(--orange-soft);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--ink-2);margin-top:16px}
+  .co-proofnote svg{width:16px;height:16px;flex:none;margin-top:1px}
+  .co-proofnote b{color:var(--ink)}
+
+  /* confirm overlay content */
+  .confirm-in{max-width:760px;margin:0 auto;padding:44px 28px 90px}
+  .order-done{display:flex;align-items:center;gap:16px}
+  .od-check{width:48px;height:48px;flex:none;border-radius:50%;background:var(--ok);display:flex;align-items:center;justify-content:center;animation:pop .4s var(--ease)}
+  .od-check svg{width:26px;height:26px}
+  @keyframes pop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+  @media(prefers-reduced-motion:reduce){.od-check{animation:none}}
+  .od-title{margin:0 0 3px;font-size:24px;font-weight:700;letter-spacing:-.01em}
+  .od-sub{margin:0;font-size:14px;color:var(--ink-2)}
+  .od-sub b{font-family:var(--mono);color:var(--ink)}
+  .placed-note{margin:22px 0 0;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:12px;font-size:14px;color:var(--ink-2);line-height:1.65}
+  .placed-note b{color:var(--ink)}
+  .how-check{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:12.5px;color:var(--ink-3)}
+  .how-check svg{width:16px;height:16px;flex:none;margin-top:1px}
+  .how-check b{color:var(--ink-2)}
+  hr.soft{border:0;border-top:1px solid var(--line);margin:24px 0}
+  .status-head{display:flex;align-items:center;gap:12px;margin:22px 0 6px;flex-wrap:wrap}
+  .status-pill{display:inline-flex;align-items:center;gap:7px;font:600 11.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:6px 12px;border-radius:999px}
+  .status-pill.prep{background:#F6ECD9;color:#B9791A}
+  .status-pill.ready{background:#EDF4EF;color:var(--ok)}
+  .status-pill.prod{background:var(--orange-soft);color:var(--orange-deep)}
+  .status-pill .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+  .status-pill.prep .dot{animation:pulse 1.4s var(--ease) infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  @media(prefers-reduced-motion:reduce){.status-pill.prep .dot{animation:none}}
+  .status-sub{font-size:13.5px;color:var(--ink-2);margin:0 0 16px}
+  .status-sub b{font-family:var(--mono);color:var(--ink)}
+  .prep-live{display:flex;align-items:center;gap:11px;margin-top:14px;font-size:12.5px;color:var(--ink-3)}
+  .prep-bar{position:relative;width:130px;height:4px;border-radius:999px;background:var(--line);overflow:hidden;flex:none}
+  .prep-bar > span{position:absolute;top:0;height:100%;width:42%;border-radius:999px;background:var(--orange);animation:prepslide 1.5s var(--ease) infinite}
+  @keyframes prepslide{0%{left:-42%}100%{left:100%}}
+  @media(prefers-reduced-motion:reduce){.prep-bar > span{animation:none;left:0;width:100%}}
+  .proof-banner{display:flex;gap:10px;align-items:flex-start;background:#EDF4EF;border-left:3px solid var(--ok);border-radius:0 8px 8px 0;padding:13px 15px;font-size:12.5px;color:#2E5A44;margin:8px 0 16px}
+  .proof-banner svg{width:16px;height:16px;flex:none;margin-top:1px}
+  .proof-count{margin:0 0 16px;font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+  .proof-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+  @media(max-width:680px){.proof-wrap{grid-template-columns:1fr}}
+  .proof-visual{background:var(--cream);border-radius:12px;padding:22px;display:flex;align-items:center;justify-content:center}
+  .proof-visual svg{width:100%;max-width:280px;height:auto}
+  .proof-meta{display:flex;flex-direction:column;gap:0;margin:0}
+  .proof-meta .m-row{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:9px 0;border-bottom:1px dashed var(--line-warm)}
+  .proof-meta .m-row:last-child{border-bottom:0}
+  .proof-meta dt{color:var(--ink-3)}
+  .proof-meta dd{margin:0;font-weight:600;text-align:right}
+  .proof-meta dd.num{font-family:var(--mono);font-weight:500}
+  .changes-box{display:none;margin-top:16px}
+  .changes-box.show{display:block;animation:fadein .35s var(--ease)}
+  .changes-box textarea{width:100%;font-family:inherit;font-size:13.5px;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;min-height:84px;resize:vertical;color:var(--ink)}
+  .changes-box textarea:focus{outline:none;border-color:var(--orange)}
+  .prod-track{margin-top:6px}
+  .prod-track .tl-row .tl-dot{background:var(--line)}
+  .prod-track .tl-row.on .tl-dot{background:var(--orange)}
+  .reorder-note{margin-top:0;font-size:12.5px;color:var(--ink-2);display:flex;gap:10px;align-items:flex-start}
+  .reorder-note svg{width:16px;height:16px;flex:none;margin-top:1px}
+  .pay-h{margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .paygrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+  @media(max-width:680px){.paygrid{grid-template-columns:1fr}}
+
+  /* zig-zag */
+  .zig{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:44px 0;border-top:1px dashed var(--line-warm)}
+  .zig:first-of-type{border-top:0;padding-top:8px}
+  .zig.rev .z-copy{order:2}
+  .zig.rev .z-art{order:1}
+  .zig h3{margin:0 0 10px;font-size:21px;font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+  .zig p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:36em;text-wrap:pretty}
+  .bench{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+  .bench .b-dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+  .z-art{background:var(--cream);border:1px solid var(--line-warm);border-radius:14px;padding:26px;min-height:150px;display:flex;align-items:center;justify-content:center}
+  .z-art svg{width:100%;max-width:330px;height:auto}
+  .z-art.photo{padding:0;overflow:hidden;min-height:0}
+  .z-art.photo img{width:100%;height:100%;max-height:300px;object-fit:cover;display:block}
+  @media(max-width:820px){.zig{grid-template-columns:1fr;gap:24px;padding:34px 0}.zig.rev .z-copy{order:1}.zig.rev .z-art{order:2}}
+
+  /* tables */
+  .tbl{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .tbl-scroll{overflow-x:auto;border-radius:12px}
+  .tbl th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding:13px 16px;border-bottom:1.5px solid var(--ink);background:#fff;white-space:nowrap}
+  .tbl td{padding:13px 16px;border-bottom:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+  .tbl tr:last-child td{border-bottom:0}
+  .tbl td:first-child{color:var(--ink);font-weight:600}
+  .tbl .num{font-family:var(--mono);font-size:12.5px}
+  .tbl .rec{color:var(--ok);font-weight:600}
+  .tbl .note-cell{font-size:12.5px}
+
+  /* faq */
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+  @media(max-width:680px){.faq-grid{grid-template-columns:1fr}}
+  .faq-item{padding:22px 0;border-top:1px solid var(--line)}
+  .faq-item h4{margin:0 0 8px;font-size:14.5px;font-weight:600;color:var(--orange);text-wrap:balance}
+  .faq-item p{margin:0;font-size:13.5px;color:var(--ink-2);text-wrap:pretty}
+
+  /* support */
+  .support{padding:56px 0}
+  .support-in{border-top:2px dashed var(--orange);border-bottom:2px dashed var(--orange);padding:34px 4px}
+  .support-in p{margin:0 0 6px;font-size:15px}
+  .support-in p.q{color:var(--ink-2)}
+  .support-in b{font-weight:700}
+  .support-in .btn{margin-top:16px}
+
+  /* footer */
+  footer{background:var(--cream-2);padding:56px 0 40px;font-size:13px;color:var(--ink-2)}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}
+  @media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.foot-grid{grid-template-columns:1fr}}
+  .foot-brand{font-weight:700;font-size:22px;color:var(--ink);display:inline-flex;align-items:center}
+  .foot-brand svg{height:24px;width:auto}
+  .foot-addr{margin-top:12px;max-width:26em;line-height:1.7}
+  .foot-col b.h{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
+  .foot-col a{display:block;text-decoration:none;color:var(--ink-2);transition:color .18s var(--ease);margin-bottom:9px;cursor:pointer}
+  .foot-col a:hover{color:var(--orange)}
+  .foot-legal{margin-top:34px;padding-top:20px;border-top:1px dashed #D9CDB4;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px 20px;font-size:12.5px;color:var(--ink-3)}
+  .foot-legal-links{display:flex;gap:20px}
+  .foot-legal-links a{text-decoration:none;color:var(--ink-3)}
+  .foot-legal-links a:hover{color:var(--orange)}
+  .pay-icons{display:flex;gap:8px;align-items:center}
+  .pay-icons span{font-size:10px;font-weight:700;color:var(--ink-3);background:#fff;border:1px solid var(--line);border-radius:5px;padding:3px 7px;letter-spacing:.03em}
+
+  .toast{display:none;margin-top:14px;background:#FBF3E4;border-left:3px solid #B9791A;border-radius:0 8px 8px 0;padding:12px 15px;font-size:12.5px;color:var(--ink-2);gap:9px;align-items:flex-start}
+  .toast.show{display:flex;animation:fadein .35s var(--ease)}
+  .toast svg{width:15px;height:15px;flex:none;margin-top:1px}
+
+  .mbar{display:none}
+  @media(max-width:900px){
+    .mbar.inview{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:55;align-items:center;justify-content:space-between;gap:14px;padding:12px 20px;background:var(--ink);color:#fff;box-shadow:0 -4px 18px rgba(0,0,0,.16)}
+    .mbar .mb-total{font-family:var(--mono);font-size:19px;font-weight:700}
+    .mbar .mb-unit{font-size:11.5px;color:#C7C2B4;margin-left:8px}
+    .mbar .mb-cta{font-size:13px;font-weight:600;white-space:nowrap;background:var(--orange);color:#fff;border:0;border-radius:999px;padding:9px 18px;font-family:inherit;cursor:pointer}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#order">Skip to content</a>
+
+<!-- ================= NAV (Dylign) ================= -->
+<nav class="top">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Dylign home">
+      <svg viewBox="0 0 118 30" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <text x="0" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="#222222">Dyl</text>
+        <text x="41" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="#FF5900">i</text>
+        <text x="49" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="#222222">gn</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <div class="nav-item has-menu">
+        <a href="https://shop.dylign.com" tabindex="0">Custom Packaging
+          <svg class="caret" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-menu">
+          <p class="nm-head">Packaging</p>
+          <a href="https://shop.dylign.com">Mailer Box</a>
+          <a href="https://shop.dylign.com">Folding Carton</a>
+          <a href="https://shop.dylign.com">Rigid Box</a>
+          <a href="https://shop.dylign.com">Stand-up Pouch</a>
+          <a href="https://shop.dylign.com">Flat Bottom Pouch</a>
+          <a href="https://shop.dylign.com">Tissue Paper</a>
+          <a href="https://shop.dylign.com">Stick &amp; Sachet</a>
+          <a href="https://shop.dylign.com">Shopping Bag</a>
+        </div>
+      </div>
+      <div class="nav-item has-menu">
+        <a href="#order" tabindex="0">Stickers &amp; Labels
+          <svg class="caret" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-menu" id="labelMenu"><p class="nm-head">Stickers &amp; Labels</p></div>
+      </div>
+      <div class="nav-item"><a href="#order">Sample</a></div>
+      <div class="nav-item"><a href="#why">About Us
+        <svg class="caret" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="nav-item"><a href="#materials">Sustainability
+        <svg class="caret" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="nav-item"><a href="#faq">FAQ</a></div>
+      <div class="nav-item"><a href="#why">Blog</a></div>
+      <div class="nav-item"><a href="#support">Contact Us</a></div>
+    </div>
+    <div class="nav-icons">
+      <button aria-label="Search" onclick="jumpTo('order')">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-3.6-3.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <button aria-label="Account" onclick="jumpTo('order')">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-3.6 3.6-6 8-6s8 2.4 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <button aria-label="Cart" onclick="openCart()">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 12H7L6 8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8a3 3 0 0 1 6 0" stroke="currentColor" stroke-width="1.8"/></svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<!-- ================= HERO ================= -->
+<header class="wrap hero">
+  <div>
+    <p class="eyebrow rise" style="--i:0">New in Custom Packaging · Now from Dylign</p>
+    <h1 class="rise" style="--i:1">Custom stickers &amp; labels, <span>starting at 100 units.</span></h1>
+    <p class="sub rise" style="--i:2">Die-cut stickers, kiss-cut sheets, roll labels, jar &amp; bottle and holographic labels — priced live as you build.
+      Order online, get a free digital proof within 48 hours, and we don&rsquo;t print a single sheet until you approve it.
+      From the same team that ships your Dylign packaging.</p>
+    <div class="cta-row rise" style="--i:3">
+      <button class="btn btn-solid btn-lg" onclick="jumpTo('order')">Customize my stickers <span class="arrow">&rarr;</span></button>
+      <button class="btn btn-line btn-lg" onclick="jumpTo('pricing')">See volume pricing</button>
+    </div>
+    <div class="hero-facts rise" style="--i:4">
+      <div><b>100</b><small>minimum per design</small></div>
+      <div><b>48 h</b><small>to your free proof</small></div>
+      <div><b>0 sheets</b><small>printed before you approve</small></div>
+    </div>
+  </div>
+  <div class="hero-art rise" style="--i:2">
+    <img src="assets/hero.jpg" width="1500" height="1125" alt="Custom Dylign stickers and labels applied to a kraft mailer box, a frosted glass jar, a coffee pouch, plus a stack of die-cut stickers and a roll of labels">
+    <div class="hero-note">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M9 12.5l2 2 4.5-4.5" stroke="#3F7A5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#3F7A5C" stroke-width="1.75"/></svg>
+      Free digital proof on every order &mdash; we only print once you approve it.
+    </div>
+  </div>
+</header>
+
+<!-- ================= BRAND STRIP ================= -->
+<div class="brandstrip">
+  <div class="wrap">
+    <span class="bl">KOOK</span><span class="bl">nur</span><span class="bl">JOON</span><span class="bl">DRAY</span>
+    <span class="bl">BIG LITTLE PIES</span><span class="bl">MODERN PAWZ</span><span class="bl script">Baund</span>
+  </div>
+</div>
+
+<!-- ================= FLOW STRIP ================= -->
+<section class="band cream" style="padding:56px 0">
+  <div class="wrap">
+    <h2 class="sec-head" style="font-size:24px">How ordering works</h2>
+    <p class="sec-sub" style="margin-bottom:32px">Order and pay online like any Dylign product &mdash; then your free proof arrives, and nothing prints until you approve it.</p>
+    <div class="flowstrip">
+      <div class="fstep"><span class="k">STEP 1</span><h4>Pick a label type &amp; price it</h4><p>Choose the product, then material, size and quantity. The price updates live, with no quote emails.</p></div>
+      <div class="fstep"><span class="k">STEP 2</span><h4>Add artwork &mdash; any state</h4><p>Upload a print-ready file, a rough sketch, or hit &ldquo;Design Now&rdquo; and brief our team. Attach it right on the product.</p></div>
+      <div class="fstep"><span class="k">STEP 3</span><h4>Check out &amp; pay online</h4><p>Add to cart and pay securely &mdash; card, PayPal, Shop&nbsp;Pay or Google&nbsp;Pay, just like your packaging orders.</p>
+        <span class="pay-flag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 9-9" stroke="#E14F00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Payment happens here</span></div>
+      <div class="fstep"><span class="k">STEP 4</span><h4>Free proof &rarr; you approve</h4><p>Within 48 hours we email a digital proof. Request free changes or approve &mdash; we only start production after you approve.</p>
+        <span class="ok-flag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 9-9" stroke="#3F7A5C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Nothing prints until you approve</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ORDER / PDP ================= -->
+<section class="band" id="order">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="#top">Home</a><span class="sep">&rsaquo;</span>
+      <a href="#order" onclick="jumpTo('order')">Stickers &amp; Labels</a><span class="sep">&rsaquo;</span>
+      <span class="cur" id="crumbProduct">Die-Cut Stickers</span>
+    </nav>
+
+    <div class="pdp">
+      <!-- gallery -->
+      <div class="gallery">
+        <div class="gallery-main">
+          <span class="gallery-tag">MOQ 100</span>
+          <img id="galleryMain" src="assets/hero.jpg" alt="Custom Dylign stickers and labels on packaging">
+        </div>
+        <div class="gallery-thumbs" id="galleryThumbs"></div>
+        <div class="gallery-note">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 16l5-5 4 4 3-3 4 4" stroke="#8A857C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="4" width="18" height="16" rx="2.5" stroke="#8A857C" stroke-width="1.7"/></svg>
+          <span>These are our house mockups. Your own artwork gets rendered on the exact material in your free proof &mdash; before we print.</span>
+        </div>
+      </div>
+
+      <!-- config -->
+      <div class="config">
+        <h2 class="prod-title" id="prodTitle">Die-Cut Stickers</h2>
+        <p class="prod-lede" id="prodLede">Cut to any custom shape — peeled and handed out one by one.</p>
+        <p class="prod-rating"><span class="stars">★★★★★</span> 4.9 · from the makers of your Dylign boxes &amp; pouches</p>
+        <div class="hint-box" id="prodHint" style="margin:14px 0 4px"></div>
+
+        <div class="opt-row" id="rowFormat">
+          <div class="opt-label">Format</div>
+          <div class="opt-control"><div class="seg wrap3" id="formatSeg"></div></div>
+        </div>
+
+        <div class="opt-row">
+          <div class="opt-label">Shape<span class="sub">no die fee</span></div>
+          <div class="opt-control"><div class="seg wrap3" id="shapeSeg"></div></div>
+        </div>
+
+        <div class="opt-row" id="rollGrp" style="display:none">
+          <div class="opt-label">Roll setup</div>
+          <div class="opt-control">
+            <p class="opt-help">Running a labeling machine? Set it here instead of a back-and-forth email thread.</p>
+            <div class="field-row">
+              <div class="field"><label for="applySel">Application</label>
+                <select class="sel-input" id="applySel" style="min-width:150px"><option value="hand">By hand</option><option value="machine">Labeling machine</option></select></div>
+              <div class="field"><label for="unwindSel">Unwind direction</label>
+                <select class="sel-input" id="unwindSel" style="min-width:170px"><option>#1 top off first</option><option>#2 bottom off first</option><option>#3 left off first</option><option selected>#4 right off first</option></select></div>
+              <div class="field"><label for="perRoll">Labels per roll</label><input type="number" id="perRoll" value="500" min="100" step="100"></div>
+            </div>
+            <div class="field-row" id="rollMachineFields" style="display:none;margin-top:12px">
+              <div class="field"><label for="diaSel">Max roll diameter</label>
+                <select class="sel-input" id="diaSel" style="min-width:120px"><option>6&Prime;</option><option selected>8&Prime;</option><option>10&Prime;</option><option>12&Prime;</option></select></div>
+              <div class="field"><label for="coreSel">Core size</label>
+                <select class="sel-input" id="coreSel" style="min-width:100px"><option>1&Prime;</option><option selected>3&Prime;</option></select></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="opt-row" id="rowMaterial">
+          <div class="opt-label">Material</div>
+          <div class="opt-control"><div class="chips" id="matChips"></div></div>
+        </div>
+
+        <div class="opt-row">
+          <div class="opt-label">Finish</div>
+          <div class="opt-control"><div class="seg wrap3" id="finSeg"></div></div>
+        </div>
+
+        <div class="opt-row">
+          <div class="opt-label">Size</div>
+          <div class="opt-control">
+            <div class="seg" id="sizeTypeSeg" style="grid-template-columns:1fr 1fr;margin-bottom:10px"></div>
+            <div id="sizeStandard"><select class="sel-input" id="sizeSel"></select></div>
+            <div id="sizeCustom" style="display:none">
+              <div class="field-row">
+                <div class="field" id="wField"><label for="wIn">Width (in)</label><input type="number" id="wIn" value="3" min="0.5" max="12" step="0.25"><span class="err">0.5&ndash;12 in</span></div>
+                <span class="x-sep">&times;</span>
+                <div class="field" id="hField"><label for="hIn">Height (in)</label><input type="number" id="hIn" value="3" min="0.5" max="12" step="0.25"><span class="err">0.5&ndash;12 in</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="opt-row">
+          <div class="opt-label">Quantity<span class="sub">per design</span></div>
+          <div class="opt-control">
+            <div class="chips mini" id="qtyChips"></div>
+            <div class="field-row" style="margin-top:10px">
+              <div class="field" id="qField"><label for="qtyIn">Or type any quantity (min 100)</label><input type="number" id="qtyIn" placeholder="e.g. 260" min="100" step="10"><span class="err">Minimum is 100 per design</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="opt-row">
+          <div class="opt-label">Designs<span class="sub">SKUs in this order</span></div>
+          <div class="opt-control">
+            <p class="opt-help">Each design has its own 100-unit minimum. No per-design or plate fee &mdash; small runs across many SKUs is the point.</p>
+            <div class="chips mini" id="designChips"></div>
+          </div>
+        </div>
+
+        <div class="opt-row">
+          <div class="opt-label">Variable data<span class="sub">optional</span></div>
+          <div class="opt-control">
+            <p class="opt-help">Lot codes, dates and QR &mdash; printed per label, set up here instead of a custom-quote queue.</p>
+            <div class="check-list" id="vdataList"></div>
+          </div>
+        </div>
+
+        <div class="opt-row">
+          <div class="opt-label">Your artwork<span class="sub">or design with us</span></div>
+          <div class="opt-control">
+            <div id="designArt"></div>
+            <div class="hint-box" style="margin-top:10px">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M13 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9z" stroke="#B9791A" stroke-width="1.75" stroke-linejoin="round"/><path d="M13 3v6h6" stroke="#B9791A" stroke-width="1.75" stroke-linejoin="round"/></svg>
+              <span>Print-ready means .AI, .CDR or a 300&nbsp;DPI CMYK PDF, fonts outlined &mdash; but &ldquo;a photo of a napkin sketch&rdquo; is genuinely fine. That&rsquo;s what the free proof is for.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUY BOX -->
+        <div class="buybox">
+          <div class="price-line"><span class="price" id="totalPrice">$0</span><span class="save-pill" id="savePill" style="display:none"></span></div>
+          <p class="price-per" id="unitLine"></p>
+          <div class="shoppay"><span class="sp-badge">Shop Pay</span> Pay in 4 interest-free installments on orders over $35</div>
+          <div class="buy-ctas">
+            <button class="btn btn-solid btn-lg btn-block" id="addCartBtn" onclick="addToCart()">Add to cart &mdash; <span id="addCartTotal">$0</span></button>
+            <button class="btn btn-design btn-lg btn-block" onclick="designNow()">No dieline or unsure? Design Now</button>
+          </div>
+          <div class="buy-reassure">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" stroke="#3F7A5C" stroke-width="1.75" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#3F7A5C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><b>You pay at checkout, then we send a free digital proof within 48&nbsp;hours.</b> We only print once you approve it &mdash; unlimited free revisions, and a full refund if we can&rsquo;t get it right.</span>
+          </div>
+          <details class="order-det">
+            <summary>Order details &amp; timeline
+              <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="q-rows" id="qRows"></div>
+            <div class="timeline">
+              <p class="tl-title">Timeline</p>
+              <div class="tl-row"><span class="tl-dot"></span><span><b>Free digital proof</b> after checkout</span><span class="dur">&le; 48 h</span></div>
+              <div class="tl-row"><span class="tl-dot"></span><span><b>Production</b> after your approval</span><span class="dur">7&ndash;10 biz days</span></div>
+              <div class="tl-row"><span class="tl-dot"></span><span><b>Tracked air freight</b></span><span class="dur">5&ndash;8 days</span></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <!-- other label types -->
+    <div class="more-types">
+      <h3>More sticker &amp; label types</h3>
+      <div class="type-grid" id="typeGrid"></div>
+    </div>
+
+    <!-- reviews -->
+    <div class="reviews">
+      <style>
+        .reviews{margin-top:52px;border-top:1px dashed var(--line-warm);padding-top:38px}
+        .reviews-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px;margin-bottom:22px}
+        .reviews-head h3{font-size:21px;font-weight:600;margin:0}
+        .reviews-score{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:15px}
+        .reviews-score .stars{color:var(--amber);letter-spacing:2px;margin-right:7px}
+        .reviews-score small{font-family:'Poppins',sans-serif;font-weight:400;color:var(--ink-3);margin-left:7px}
+        .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+        @media(max-width:820px){.review-grid{grid-template-columns:1fr}}
+        .review-card{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column}
+        .review-card .rc-stars{color:var(--amber);letter-spacing:2px;font-size:13px}
+        .review-card p{font-size:13.5px;color:var(--ink-2);line-height:1.6;margin:9px 0 15px;flex:1}
+        .review-card .rc-who{display:flex;align-items:center;gap:9px}
+        .review-card .rc-av{width:30px;height:30px;border-radius:50%;background:var(--orange-soft);color:var(--orange-deep);font-weight:700;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none}
+        .review-card .rc-name{font-size:12.5px;font-weight:600;color:var(--ink)}
+        .review-card .rc-brand{font-size:11.5px;color:var(--ink-3)}
+        .review-card .rc-verified{margin-left:auto;font-size:10.5px;font-weight:600;color:var(--ok);white-space:nowrap}
+      </style>
+      <div class="reviews-head">
+        <h3>What small brands say</h3>
+        <span class="reviews-score"><span class="stars">★★★★★</span>4.9<small>· 214 verified orders</small></span>
+      </div>
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="rc-stars">★★★★★</div>
+          <p>&ldquo;Ordered 150 each of three scents &mdash; nobody else would run batches that small without a plate fee. Free proof came back next morning, and reordering was one click.&rdquo;</p>
+          <div class="rc-who"><span class="rc-av">MR</span><span><span class="rc-name">Maya R.</span><br><span class="rc-brand">Ember &amp; Oak Candles</span></span><span class="rc-verified">&check; Verified</span></div>
+        </div>
+        <div class="review-card">
+          <div class="rc-stars">★★★★★</div>
+          <p>&ldquo;Our soap labels used to curl in the bathroom. These BOPP ones shrug off steam and water, and the clear &lsquo;no-label&rsquo; look is exactly what we wanted on the jars.&rdquo;</p>
+          <div class="rc-who"><span class="rc-av">DT</span><span><span class="rc-name">Devin T.</span><br><span class="rc-brand">Marsh + Moss</span></span><span class="rc-verified">&check; Verified</span></div>
+        </div>
+        <div class="review-card">
+          <div class="rc-stars">★★★★<span style="color:var(--line)">★</span></div>
+          <p>&ldquo;Hot-sauce bottles live in the fridge, so condensation killed our old labels. Dylign&rsquo;s waterproof stock holds, and printing a fresh batch code each run is built right in.&rdquo;</p>
+          <div class="rc-who"><span class="rc-av">CM</span><span><span class="rc-name">Carlos M.</span><br><span class="rc-brand">Brava Sauce Co.</span></span><span class="rc-verified">&check; Verified</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY / ZIG-ZAG ================= -->
+<section class="band cream" id="why">
+  <div class="wrap">
+    <h2 class="sec-head">What we fixed about buying stickers</h2>
+    <p class="sec-sub">Ordering custom labels is usually clunky, opaque, and stacked against small runs. We rebuilt the four moments that trip up growing brands the most.</p>
+
+    <div class="zig">
+      <div class="z-copy">
+        <h3>A free proof with every order. Nothing prints till you approve.</h3>
+        <p>You pay online like any Dylign product &mdash; then a free digital proof comes back within 48 hours. Revise it as many times as you like; production only starts once you approve. If we can&rsquo;t get it right, you get a full refund.</p>
+        <span class="bench"><span class="b-dot"></span>Free unlimited revisions before we print</span>
+      </div>
+      <div class="z-art">
+        <svg viewBox="0 0 330 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pay, then free proof, then approve, then print">
+          <rect x="6" y="52" width="66" height="46" rx="11" fill="#FF5900"/><text x="39" y="80" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="700" font-size="13" fill="#fff">Pay</text>
+          <path d="M78 75 h24" stroke="#FF5900" stroke-width="2.5" stroke-dasharray="6 6"/><path d="M98 68 l9 7 -9 7" fill="none" stroke="#FF5900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="110" y="52" width="72" height="46" rx="11" fill="#fff" stroke="#222222" stroke-width="2"/><text x="146" y="73" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="600" font-size="11" fill="#222222">Proof</text><text x="146" y="88" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="8.5" fill="#8A857C">48 h, free</text>
+          <path d="M188 75 h24" stroke="#FF5900" stroke-width="2.5" stroke-dasharray="6 6"/><path d="M208 68 l9 7 -9 7" fill="none" stroke="#FF5900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="220" y="52" width="76" height="46" rx="11" fill="#EDF4EF" stroke="#3F7A5C" stroke-width="2"/><text x="258" y="73" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="600" font-size="11" fill="#2E5A44">Approve</text><text x="258" y="88" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="8.5" fill="#3F7A5C">we print</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="zig rev">
+      <div class="z-copy">
+        <h3>Materials chosen by where the label lives.</h3>
+        <p>&ldquo;BOPP vs vinyl vs synthetic&rdquo; is printer jargon. Tell us where the label lives &mdash; a cold-brew bottle in the fridge, a squeeze pouch in the freezer, a kraft mailer &mdash; and the right waterproof, oil- or freezer-resistant material is picked for you.</p>
+        <span class="bench"><span class="b-dot"></span>Right material for the job &mdash; no printer jargon</span>
+      </div>
+      <div class="z-art">
+        <svg viewBox="0 0 330 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scenario mapped to the right material and finish">
+          <path d="M60 24 h44 v14 q12 6 12 20 v60 q0 12 -12 12 h-44 q-12 0 -12 -12 v-60 q0 -14 12 -20 z" fill="#fff" stroke="#222222" stroke-width="2"/>
+          <rect x="58" y="70" width="48" height="34" rx="6" fill="#F2B335"/>
+          <path d="M126 88 h44" stroke="#FF5900" stroke-width="2.5" stroke-dasharray="6 6"/><path d="M165 81 l10 7 -10 7" fill="none" stroke="#FF5900" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="184" y="34" width="120" height="42" rx="10" fill="#fff" stroke="#222222" stroke-width="2"/><text x="244" y="52" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="600" font-size="11" fill="#222222">Waterproof BOPP</text><text x="244" y="67" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="8" fill="#8A857C">waterproof film</text>
+          <rect x="184" y="86" width="120" height="42" rx="10" fill="#FBF5EA" stroke="#FF5900" stroke-width="1.75" stroke-dasharray="5 5"/><text x="244" y="104" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="600" font-size="11" fill="#E14F00">+ gloss or matte</text><text x="244" y="119" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="8.5" fill="#8A857C">laminate included</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="zig">
+      <div class="z-copy">
+        <h3>Machine-ready rolls and lot codes, self-serve.</h3>
+        <p>If you run a labeling machine or print expiry dates, most sites route you to a sales inbox. Unwind direction, labels per roll, lot and batch codes, QR serials: all of it is a dropdown here, priced instantly like everything else.</p>
+        <span class="bench"><span class="b-dot"></span>Unwind, core, lot codes &mdash; all self-serve</span>
+      </div>
+      <div class="z-art">
+        <svg viewBox="0 0 330 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Roll specs and variable data as form fields">
+          <rect x="16" y="22" width="182" height="30" rx="8" fill="#fff" stroke="#222222" stroke-width="2"/><text x="30" y="41" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#4A4A4A">unwind: #4 right-first</text>
+          <rect x="16" y="60" width="182" height="30" rx="8" fill="#fff" stroke="#222222" stroke-width="2"/><text x="30" y="79" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#4A4A4A">per roll: 500</text>
+          <rect x="16" y="98" width="182" height="30" rx="8" fill="#FF5900"/><text x="30" y="117" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#fff">lot code: BB-{{MMYY}}</text>
+          <circle cx="262" cy="75" r="44" fill="#fff" stroke="#222222" stroke-width="2"/><circle cx="262" cy="75" r="14" fill="#F4EBDA" stroke="#222222" stroke-width="2"/><path d="M262 119 h52" stroke="#222222" stroke-width="2"/><circle cx="262" cy="75" r="30" fill="none" stroke="#E0D8C6" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="zig rev">
+      <div class="z-copy">
+        <h3>Five SKUs of 100, not one SKU of 5,000.</h3>
+        <p>Growing food and beverage brands don&rsquo;t need five thousand of one label. They need a few hundred each of the strawberry, the original, and the seasonal flavor. Every design in an order prices independently from 100 units, with zero per-design or plate fees, and reorders take one click.</p>
+        <span class="bench"><span class="b-dot"></span>Every design priced from 100, no plate fee</span>
+      </div>
+      <div class="z-art photo"><img src="assets/zig-multisku.jpg" width="1100" height="780" loading="lazy" alt="Three different flavor variants of the same Dylign pouch, a small-batch multi-SKU lineup"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MATERIALS ================= -->
+<section class="band" id="materials">
+  <div class="wrap">
+    <h2 class="sec-head">Material guide, by where it goes</h2>
+    <p class="sec-sub">The same rule as our packaging line: pick by where it goes, and the right film comes with it.</p>
+    <div class="tbl-scroll">
+      <table class="tbl">
+        <tr><th>Your label ends up&hellip;</th><th>We recommend</th><th class="note-cell">Why</th></tr>
+        <tr><td>On candles, soap &amp; cosmetics</td><td class="rec">White vinyl or clear BOPP</td><td class="note-cell">Handles oils, wax residue and bathroom humidity; clear film gives premium jars and bottles the no-label look.</td></tr>
+        <tr><td>On cold or hot drink cups</td><td class="rec">Waterproof BOPP</td><td class="note-cell">Shrugs off condensation, ice buckets and 90&deg;C fills without smudging or lifting.</td></tr>
+        <tr><td>On jars &amp; bottles</td><td class="rec">Clear BOPP</td><td class="note-cell">The &ldquo;no-label&rdquo; look; waterproof, and we can reverse-print for inside-glass application.</td></tr>
+        <tr><td>On boxes &amp; mailers</td><td class="rec">Recycled paper (PCW)</td><td class="note-cell">High post-consumer-waste stock, matches kraft packaging, curbside-recyclable with the box.</td></tr>
+        <tr><td>On pouches &amp; sachets</td><td class="rec">Matte white vinyl</td><td class="note-cell">Flexes with the film, resists oil and freezer temperatures.</td></tr>
+        <tr><td>On a limited drop</td><td class="rec">Holographic film</td><td class="note-cell">Shelf standout with an anti-counterfeit feel. Costs more per unit; worth it for small collectible runs.</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section class="band cream" id="pricing">
+  <div class="wrap">
+    <h2 class="sec-head">Volume pricing, every tier upfront</h2>
+    <p class="sec-sub">Per-sticker price for a 3&Prime; die-cut on waterproof BOPP. The 100 &rarr; 500 jump is where sizing up pays for itself.</p>
+    <div class="tbl-scroll">
+      <table class="tbl">
+        <tr><th>Quantity</th><th class="num">100</th><th class="num">200</th><th class="num">300</th><th class="num">500</th><th class="num">1,000</th><th class="num">2,000</th></tr>
+        <tr><td>Per sticker</td><td class="num">$0.55</td><td class="num">$0.38</td><td class="num">$0.31</td><td class="num">$0.24</td><td class="num">$0.18</td><td class="num">$0.145</td></tr>
+        <tr><td>vs. 100 units</td><td class="num">&mdash;</td><td class="num rec">&minus;31%</td><td class="num rec">&minus;44%</td><td class="num rec">&minus;56%</td><td class="num rec">&minus;67%</td><td class="num rec">&minus;74%</td></tr>
+      </table>
+    </div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:14px">Fair small-batch pricing that scales: no plate fees, no setup fees, and a free proof on every order. Volume breaks kick in fast, so a test run and a real run both make sense.</p>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="band cream" id="faq" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="sec-head ink">Frequently asked questions</h2>
+    <p class="sec-sub">Quick answers to what growing brands ask us most often.</p>
+    <div class="faq-grid">
+      <div class="faq-item"><h4>What is the minimum order?</h4><p>100 units per design, same as every Dylign product. Order five designs of 100 each if that matches your shelf; there is no per-design fee.</p></div>
+      <div class="faq-item"><h4>When am I charged, and when do you print?</h4><p>You pay at checkout, like any Dylign order. Right after, our prepress team builds your free digital proof and emails it &mdash; usually within 48 hours. We don&rsquo;t print until you approve. If the proof isn&rsquo;t right and we can&rsquo;t fix it, you get a full refund.</p></div>
+      <div class="faq-item"><h4>How long until stickers are on my shelf?</h4><p>Your free proof lands within 48 hours of checkout. After approval: 7&ndash;10 business days of production, then 5&ndash;8 days of tracked air freight. Plan for 3&ndash;4 weeks door-to-door; we&rsquo;d rather quote that than promise a week.</p></div>
+      <div class="faq-item"><h4>What artwork do you need?</h4><p>Best case: .AI, .CDR or 300 DPI PDF, CMYK, fonts outlined, under 10 MB. Real case: whatever you have &mdash; or hit &ldquo;Design Now&rdquo; and brief us. Our prepress team redraws blurry files free for simple marks, and quotes any design fee on the proof, before we print.</p></div>
+      <div class="faq-item"><h4>Are the materials durable and sustainable?</h4><p>The BOPP films are waterproof and oil-resistant, so they hold up on bottles, jars and freezer pouches. The recycled paper stock is high post-consumer waste, and liners go back into our Dylign Terraveil&trade; program. Need documentation for a specific use &mdash; outdoor, freezer or otherwise? Ask us before you commit and we&rsquo;ll tell you exactly what we can provide.</p></div>
+      <div class="faq-item"><h4>Can you match my packaging colors?</h4><p>If we printed your boxes or pouches, your color profile is already on file. Otherwise mail us a sample; on-screen color lies, ink doesn&rsquo;t. We&rsquo;ll confirm the match on your free proof before anything prints.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SUPPORT NOTE ================= -->
+<section class="support" id="support">
+  <div class="wrap support-in">
+    <p>Growing brands are full of surprises.</p>
+    <p class="q">&mdash; Suddenly need <b>100 stickers</b> for a farmers-market table this weekend?</p>
+    <p class="q">&mdash; Your co-packer wants the lot code moved <b>before Thursday</b>?</p>
+    <p>That&rsquo;s why we&rsquo;re here. We&rsquo;ll do everything we can to keep you moving.</p>
+    <button class="btn btn-solid" onclick="window.location.href='mailto:hello@dylign.com'">Contact us</button>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg viewBox="0 0 118 30" xmlns="http://www.w3.org/2000/svg" aria-label="Dylign"><text x="0" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#222222">Dyl</text><text x="38" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#FF5900">i</text><text x="45" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#222222">gn</text></svg>
+        </div>
+        <p class="foot-addr">Custom packaging &amp; labels from 100 units, proofed free before we print.<br><br>Harvard Innovation Labs, Batten Hall<br>125 Western Ave, Allston, MA 02134<br>hello@dylign.com</p>
+      </div>
+      <div class="foot-col">
+        <b class="h">Stickers &amp; Labels</b>
+        <a onclick="goProduct('die-cut')">Die-Cut Stickers</a>
+        <a onclick="goProduct('kiss-cut')">Kiss-Cut Sheets</a>
+        <a onclick="goProduct('roll-labels')">Roll Labels</a>
+        <a onclick="goProduct('jar-bottle')">Jar &amp; Bottle Labels</a>
+        <a onclick="goProduct('holographic')">Holographic Stickers</a>
+      </div>
+      <div class="foot-col">
+        <b class="h">About Us</b>
+        <a href="#why">Our story</a>
+        <a href="#why">Blog</a>
+        <a href="#materials">Sustainability</a>
+        <a href="#order">Request a sample</a>
+      </div>
+      <div class="foot-col">
+        <b class="h">Support</b>
+        <a href="#faq">FAQ</a>
+        <a href="#materials">Material guide</a>
+        <a href="#pricing">Volume pricing</a>
+        <a href="mailto:hello@dylign.com">Contact us</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>&copy; 2026 Dylign</span>
+      <div class="pay-icons"><span>VISA</span><span>MC</span><span>AMEX</span><span>PayPal</span><span>Shop Pay</span><span>G Pay</span></div>
+      <nav class="foot-legal-links" aria-label="Legal"><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a></nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= CART DRAWER ================= -->
+<div class="drawer-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="drawer-head"><h3>Shopping Cart</h3><button class="drawer-close" aria-label="Close cart" onclick="closeCart()">&times;</button></div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot" id="cartFoot" style="display:none">
+    <div class="drawer-note">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" stroke="#3F7A5C" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#3F7A5C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>A free digital proof follows checkout within 48&nbsp;h. We only print once you approve it.</span>
+    </div>
+    <div class="cart-subtotal"><span class="cs-l">Subtotal</span><span class="cs-v" id="cartSubtotal">$0</span></div>
+    <p class="cart-ship" id="cartShip"></p>
+    <button class="btn btn-dark btn-lg btn-block" onclick="goCheckout()">Check out</button>
+    <button class="btn btn-ghost btn-block" style="margin-top:10px" onclick="closeCart()">Keep customizing</button>
+  </div>
+</aside>
+
+<!-- ================= CHECKOUT OVERLAY ================= -->
+<div class="sheet" id="checkout" aria-hidden="true">
+  <div class="co-bar"><div class="co-bar-in">
+    <button class="co-back" onclick="closeCheckout()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Back to cart</button>
+    <span class="logo" aria-hidden="true"><svg viewBox="0 0 118 30" xmlns="http://www.w3.org/2000/svg"><text x="0" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#222222">Dyl</text><text x="38" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#FF5900">i</text><text x="45" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#222222">gn</text></svg></span>
+    <span style="width:96px"></span>
+  </div></div>
+  <div class="co-grid">
+    <div class="co-form">
+      <div class="co-express">
+        <p class="co-express-lbl">Express checkout</p>
+        <div class="co-express-btns">
+          <button class="xpay shop" onclick="payNow(event)">shop<span style="opacity:.7">Pay</span></button>
+          <button class="xpay pp" onclick="payNow(event)">PayPal</button>
+          <button class="xpay gp" onclick="payNow(event)">G&nbsp;Pay</button>
+        </div>
+      </div>
+      <div class="co-or">OR</div>
+      <h3>Contact</h3>
+      <div class="co-field" id="coEmailField">
+        <label for="coEmail">Email — where your free proof will be sent</label>
+        <input type="email" id="coEmail" placeholder="you@yourbrand.com">
+        <span class="err">Enter a valid email so we can send your proof</span>
+      </div>
+      <div class="co-sectlbl">Delivery</div>
+      <div class="co-field"><label for="coCountry">Country / Region</label>
+        <select id="coCountry"><option>United States</option><option>Canada</option><option>United Kingdom</option><option>Australia</option></select></div>
+      <div class="co-two" style="margin-bottom:12px">
+        <div class="co-field" style="margin-bottom:0"><label for="coFirst">First name</label><input id="coFirst" placeholder="First name"></div>
+        <div class="co-field" style="margin-bottom:0"><label for="coLast">Last name</label><input id="coLast" placeholder="Last name"></div>
+      </div>
+      <div class="co-field"><label for="coAddr">Address</label><input id="coAddr" placeholder="Street address"></div>
+      <div class="co-three">
+        <div class="co-field"><label for="coCity">City</label><input id="coCity" placeholder="City"></div>
+        <div class="co-field"><label for="coState">State</label><input id="coState" placeholder="State"></div>
+        <div class="co-field"><label for="coZip">ZIP</label><input id="coZip" placeholder="ZIP"></div>
+      </div>
+      <div class="co-sectlbl">Payment</div>
+      <p class="co-pay-note"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2.5" stroke="#8A857C" stroke-width="1.6"/><path d="M3 10h18" stroke="#8A857C" stroke-width="1.6"/></svg> All transactions are secure and encrypted. This prototype simulates the Shopify-hosted payment step.</p>
+      <button class="btn btn-solid btn-lg btn-block" onclick="payNow(event)">Pay now &mdash; <span id="coPayTotal">$0</span></button>
+      <p class="co-pay-note" style="margin-top:14px"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12.5l2 2 4.5-4.5" stroke="#3F7A5C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#3F7A5C" stroke-width="1.5"/></svg> After payment we email your free proof within 48&nbsp;h. Production starts only when you approve it.</p>
+    </div>
+    <aside class="co-summary" id="coSummary"></aside>
+  </div>
+</div>
+
+<!-- ================= ORDER CONFIRMATION OVERLAY ================= -->
+<div class="sheet" id="confirm" aria-hidden="true">
+  <div class="co-bar"><div class="co-bar-in">
+    <span style="width:150px"></span>
+    <span class="logo" aria-hidden="true"><svg viewBox="0 0 118 30" xmlns="http://www.w3.org/2000/svg"><text x="0" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#222222">Dyl</text><text x="38" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#FF5900">i</text><text x="45" y="23" font-family="Poppins,sans-serif" font-weight="700" font-size="24" letter-spacing="-0.5" fill="#222222">gn</text></svg></span>
+    <button class="co-back" onclick="closeConfirm()">Continue shopping <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div></div>
+  <div class="confirm-in" id="confirmStatus"></div>
+</div>
+
+<!-- ================= MOBILE PRICE BAR ================= -->
+<div class="mbar" id="mbar"><div><span class="mb-total" id="mbTotal">$0</span><span class="mb-unit" id="mbUnit"></span></div><button class="mb-cta" onclick="addToCart()">Add to cart &rarr;</button></div>
+
+<script>
+/* ================= reference data ================= */
+const FORMATS = [
+  {id:'diecut', t:'Die-cut singles', d:'cut to your shape', f:1.0},
+  {id:'sheet',  t:'Kiss-cut sheets', d:'several per sheet',  f:0.85},
+  {id:'roll',   t:'Roll labels',     d:'hand or machine',    f:0.70}
+];
+const SHAPES = [
+  {id:'contour', t:'Die-cut contour', d:'cut around art', rx:26},
+  {id:'rounded', t:'Rounded corners', d:'soft edges',     rx:20},
+  {id:'square',  t:'Square',          d:'90° corners',    rx:3},
+  {id:'circle',  t:'Circle / oval',   d:'fully round',    rx:80},
+  {id:'reuse',   t:'Reuse my die',    d:'from past order', rx:26}
+];
+const MATERIALS = [
+  {id:'bopp',  t:'Waterproof BOPP', d:'waterproof · oil-resistant', m:1.0,  img:'assets/mat-bopp.jpg'},
+  {id:'vinyl', t:'White vinyl',     d:'durable · 2–5 yr outdoor',  m:1.05, img:'assets/mat-vinyl.jpg'},
+  {id:'clear', t:'Clear BOPP',      d:'no-label look',             m:1.1,  img:'assets/mat-clear.jpg'},
+  {id:'kraft', t:'Kraft',           d:'natural fiber look',        m:0.95, img:'assets/mat-kraft.jpg'},
+  {id:'pcw',   t:'Recycled PCW',    d:'high post-consumer',        m:1.0,  img:'assets/mat-pcw.jpg'},
+  {id:'holo',  t:'Holographic',     d:'premium · anti-copy',       m:1.3,  img:'assets/mat-holo.jpg'}
+];
+const FINISHES = [
+  {id:'matte', t:'Matte laminate', d:'no glare · included', m:1.0},
+  {id:'gloss', t:'Gloss laminate', d:'vivid pop · included', m:1.0},
+  {id:'soft',  t:'Soft-touch',     d:'velvet feel · premium', m:1.12}
+];
+const SIZES = [
+  {w:2,h:2,l:'2″ × 2″'},{w:3,h:3,l:'3″ × 3″'},{w:4,h:4,l:'4″ × 4″'},
+  {w:2,h:4,l:'2″ × 4″'},{w:3,h:5,l:'3″ × 5″'}
+];
+const QTYS = [100,200,300,500,1000,2000];
+const BASE = {100:0.55,200:0.38,300:0.31,500:0.24,1000:0.18,2000:0.145};
+const VDATA = [
+  {id:'lot',    t:'Lot / batch code',     d:'required by most co-packers', fee:0.012, field:{type:'text', label:'Code or format to print', ph:'e.g. LOT-{MMYY} or BB-0726'}},
+  {id:'expiry', t:'Expiry / best-by date',d:'printed per batch', fee:0.012, field:{type:'select', label:'Date format', opts:['Best by MMM YYYY','Use by DD MMM YYYY','MM/YYYY','DD/MM/YYYY']}},
+  {id:'qr',     t:'Unique QR / serials',  d:'one code per label', fee:0.02, field:{type:'text', label:'QR destination or serial pattern', ph:'e.g. https://dyl.co/{sku} or SN-000001+'}}
+];
+const VD_SHORT = {lot:'Lot code', expiry:'Expiry', qr:'QR / serial'};
+
+/* ================= product catalog — each = its own detail page ================= */
+const PRODUCTS = [
+  { id:'die-cut', name:'Die-Cut Stickers', menu:'cut to any shape',
+    lede:'Cut to any custom shape — peeled and handed out one by one.',
+    lock:{format:'diecut'}, def:{material:'vinyl', shape:'contour'},
+    hint:'The everyday custom sticker: cut around your artwork on durable <b>white vinyl</b> that shrugs off hands, water and 2&ndash;5 years outdoors.',
+    gallery:['assets/scene-merch.jpg','assets/hero.jpg','assets/mat-vinyl.jpg','assets/scene-drop.jpg','assets/scene-ship.jpg'] },
+  { id:'kiss-cut', name:'Kiss-Cut Sheets', menu:'many per peel sheet',
+    lede:'Several designs on one peel-friendly backing sheet.',
+    lock:{format:'sheet'}, def:{material:'vinyl', shape:'rounded'},
+    hint:'Kiss-cut leaves the backing intact, so a whole set peels cleanly from <b>one sheet</b> — great for sticker packs and multi-mark drops.',
+    gallery:['assets/scene-merch.jpg','assets/mat-vinyl.jpg','assets/hero.jpg','assets/scene-drop.jpg','assets/scene-food.jpg'] },
+  { id:'roll-labels', name:'Roll Labels', menu:'hand or machine apply',
+    lede:'Wound on a roll for hand or machine application — cheapest per unit.',
+    lock:{format:'roll'}, def:{material:'bopp', shape:'circle'},
+    hint:'For production lines and high volume. Set unwind direction, core size and labels-per-roll below — no sales email needed. Cheapest per unit.',
+    gallery:['assets/hero.jpg','assets/mat-bopp.jpg','assets/scene-food.jpg','assets/scene-drink.jpg','assets/scene-ship.jpg'] },
+  { id:'jar-bottle', name:'Jar & Bottle Labels', menu:'clear no-label look',
+    lede:'The clear “no-label” look for glass jars and PET bottles.',
+    lock:{material:'clear'}, def:{format:'diecut', shape:'rounded'},
+    hint:'<b>Clear BOPP</b> gives the premium “no-label” look, is fully waterproof, and can be reverse-printed for inside-the-glass application.',
+    gallery:['assets/scene-drink.jpg','assets/scene-food.jpg','assets/mat-clear.jpg','assets/hero.jpg','assets/mat-bopp.jpg'] },
+  { id:'pouch-sachet', name:'Pouch & Sachet Labels', menu:'flexes with the film',
+    lede:'Bends with flexible film and resists oil and freezer temps.',
+    lock:{material:'vinyl'}, def:{format:'diecut', shape:'rounded'},
+    hint:'Pouches flex and get greasy. <b>Matte white vinyl</b> bends with the film, wipes clean, and holds through freezer temperatures.',
+    gallery:['assets/scene-pouch.jpg','assets/mat-vinyl.jpg','assets/hero.jpg','assets/scene-food.jpg','assets/scene-ship.jpg'] },
+  { id:'holographic', name:'Holographic Stickers', menu:'rainbow shimmer',
+    lede:'Rainbow shimmer with an anti-counterfeit feel — for limited drops.',
+    lock:{material:'holo'}, def:{format:'diecut', shape:'contour'},
+    hint:'<b>Holographic film</b> reads premium and is hard to counterfeit. Costs more per unit, so it&rsquo;s best kept for small collectible runs.',
+    gallery:['assets/scene-drop.jpg','assets/mat-holo.jpg','assets/scene-merch.jpg','assets/hero.jpg','assets/scene-drink.jpg'] }
+];
+
+const state = {
+  product:'die-cut',
+  format:'diecut', shape:'contour', mat:'vinyl', fin:'matte',
+  sizeType:'standard', w:3, h:3, sizePreset:'3″ × 3″',
+  qty:200, designs:1,
+  vdata:{lot:false, expiry:false, qr:false},
+  vdataVal:{lot:'', expiry:'Best by MMM YYYY', qr:''},
+  roll:{apply:'hand', unwind:'#4 right off first', perRoll:500, dia:'8″', core:'3″'},
+  art:[], cart:null, lastEmail:''
+};
+
+/* ================= helpers ================= */
+const $ = id => document.getElementById(id);
+const REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const smoothScroll = el => el && el.scrollIntoView({behavior: REDUCE ? 'auto' : 'smooth', block:'start'});
+window.jumpTo = id => smoothScroll($(id));
+const fmtMoney = n => n >= 1000 ? '$' + Math.round(n).toLocaleString('en-US') : '$' + (Math.round(n*100)/100).toFixed(2).replace(/\.00$/,'');
+const fmtUnit = u => '$' + (Math.round(u*1000)%10 === 0 ? u.toFixed(2) : u.toFixed(3));
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const productById = id => PRODUCTS.find(p=>p.id===id) || PRODUCTS[0];
+const currentProduct = () => productById(state.product);
+
+function unitBase(q){
+  const t = QTYS;
+  if(q <= t[0]) return BASE[t[0]];
+  if(q >= t[t.length-1]) return BASE[t[t.length-1]];
+  for(let i=0;i<t.length-1;i++){ const a=t[i], b=t[i+1]; if(q>=a && q<=b){ const r=(q-a)/(b-a); return BASE[a]+(BASE[b]-BASE[a])*r; } }
+  return BASE[500];
+}
+function multipliers(){
+  const f = FORMATS.find(x=>x.id===state.format).f;
+  const m = MATERIALS.find(x=>x.id===state.mat).m;
+  const fin = FINISHES.find(x=>x.id===state.fin).m;
+  const area = (state.w*state.h)/9;
+  const sizeF = Math.max(.55, Math.min(3.4, Math.pow(area,.82)));
+  return f*m*fin*sizeF;
+}
+function vdataPerUnit(){ return VDATA.reduce((s,v)=> s + (state.vdata[v.id] ? v.fee : 0), 0); }
+function shipFor(total){ return total>=75 ? 0 : 9; }
+function calc(){
+  const rawUnit = unitBase(state.qty)*multipliers() + vdataPerUnit();
+  const perDesign = Math.round(rawUnit*state.qty*100)/100;
+  const total = Math.round(perDesign*state.designs*100)/100;
+  const unit = perDesign/state.qty;
+  const unit100 = unitBase(100)*multipliers() + vdataPerUnit();
+  const save = Math.round((1 - rawUnit/unit100)*100);
+  return {unit, perDesign, total, save};
+}
+
+/* ================= product navigation (standalone pages) ================= */
+function applyProductDefaults(p){
+  state.format = p.lock.format || p.def.format || 'diecut';
+  state.mat    = p.lock.material || p.def.material || 'bopp';
+  state.shape  = p.def.shape || 'contour';
+  state.fin='matte';
+  state.sizeType='standard'; state.w=3; state.h=3; state.sizePreset='3″ × 3″';
+  state.qty=200; state.designs=1;
+  state.vdata={lot:false, expiry:false, qr:false};
+  state.vdataVal={lot:'', expiry:'Best by MMM YYYY', qr:''};
+  state.roll={apply:'hand', unwind:'#4 right off first', perRoll:500, dia:'8″', core:'3″'};
+  state.art=[];
+}
+function syncConfigInputs(){
+  if($('wIn')){ $('wIn').value=3; $('hIn').value=3; }
+  if($('qtyIn')){ $('qtyIn').value=''; }
+  $('qField') && $('qField').classList.remove('bad');
+  $('wField') && $('wField').classList.remove('bad');
+  $('hField') && $('hField').classList.remove('bad');
+  if($('applySel')){ $('applySel').value='hand'; $('unwindSel').selectedIndex=3; $('perRoll').value=500; $('diaSel').selectedIndex=1; $('coreSel').selectedIndex=1; }
+}
+function setProduct(id, scroll){
+  const p = productById(id);
+  state.product = p.id;
+  applyProductDefaults(p);
+  syncConfigInputs();
+  buildGallery();
+  try{ history.replaceState(null,'', '#product/'+p.id); }catch(_){}
+  refresh();
+  if(scroll){ if(document.activeElement) document.activeElement.blur(); smoothScroll($('order')); }
+}
+window.goProduct = id => setProduct(id, true);
+
+function buildLabelMenu(){
+  const m = $('labelMenu');
+  m.innerHTML =
+    '<p class="nm-head">By use</p>'
+    + '<a href="labels-home-care.html">Home &amp; Personal-Care Labels<small>candles · soap · beauty</small></a>'
+    + '<a href="labels-food-bev.html">Food &amp; Beverage Labels<small>bottles · jars · cans</small></a>'
+    + '<p class="nm-head">By format</p>'
+    + PRODUCTS.map(p=>
+      `<a href="#product/${p.id}" onclick="goProduct('${p.id}');return false;">${esc(p.name)}<small>${esc(p.menu)}</small></a>`).join('')
+    + '<p class="nm-head">Free tools</p>'
+    + '<a href="barcode-generator.html">Barcode / UPC Generator<small>make a scannable code</small></a>';
+}
+function buildTypeGrid(){
+  const g = $('typeGrid');
+  g.innerHTML = PRODUCTS.map(p=>{
+    const cur = p.id===state.product;
+    return `<button class="type-card${cur?' cur':''}" onclick="goProduct('${p.id}')">
+      <img src="${p.gallery[0]}" alt="" loading="lazy">
+      <div class="tc-body">
+        <p class="tc-name">${esc(p.name)}</p>
+        <p class="tc-desc">${esc(p.menu)}</p>
+        ${cur ? '<span class="tc-cur">● You’re viewing this</span>' : '<span class="tc-from">from $0.145/ea</span>'}
+      </div></button>`;
+  }).join('');
+}
+
+/* ================= render: option controls ================= */
+function segGroup(elId, items, selId, onPick, render){
+  const el = $(elId); el.innerHTML='';
+  items.forEach(it=>{ const b=document.createElement('button'); b.type='button';
+    b.className='seg-btn'+(it.id===selId||it.l===selId?' sel':''); b.innerHTML=render(it);
+    b.addEventListener('click', ()=>{ onPick(it); refresh(); }); el.appendChild(b); });
+}
+function chipGroup(elId, items, selId, onPick, render){
+  const el = $(elId); el.innerHTML='';
+  items.forEach(it=>{ const b=document.createElement('button'); b.type='button';
+    b.className='chip'+(it.id===selId||it.l===selId?' sel':''); b.innerHTML=render(it);
+    b.addEventListener('click', ()=>{ onPick(it); refresh(); }); el.appendChild(b); });
+}
+function refreshControls(){
+  const p = currentProduct();
+  $('prodTitle').textContent = p.name;
+  $('prodLede').textContent = p.lede;
+  $('crumbProduct').textContent = p.name;
+  $('prodHint').innerHTML =
+    '<svg viewBox="0 0 24 24" fill="none"><path d="M12 3a6.5 6.5 0 0 0-3.6 11.9c.7.5 1.1 1.2 1.1 2V18h5v-1.1c0-.8.4-1.5 1.1-2A6.5 6.5 0 0 0 12 3z" stroke="#B9791A" stroke-width="1.75" stroke-linejoin="round"/><path d="M10 21h4" stroke="#B9791A" stroke-width="1.75" stroke-linecap="round"/></svg><span>'+p.hint+'</span>';
+
+  const fmtLocked = !!p.lock.format;
+  $('rowFormat').style.display = fmtLocked ? 'none' : 'grid';
+  if(!fmtLocked) segGroup('formatSeg', FORMATS, state.format, it=>{state.format=it.id;}, it=>`${esc(it.t)}<small>${esc(it.d)}</small>`);
+  $('rollGrp').style.display = state.format==='roll' ? 'grid' : 'none';
+  $('rollMachineFields').style.display = (state.format==='roll' && state.roll.apply==='machine') ? 'flex' : 'none';
+
+  segGroup('shapeSeg', SHAPES, state.shape, it=>{state.shape=it.id;}, it=>`${esc(it.t)}<small>${esc(it.d)}</small>`);
+
+  const matLocked = !!p.lock.material;
+  $('rowMaterial').style.display = matLocked ? 'none' : 'grid';
+  if(!matLocked) chipGroup('matChips', MATERIALS, state.mat, it=>{state.mat=it.id;},
+    it=>`<img class="chip-img" src="${it.img}" alt="" loading="lazy"><span class="chip-txt">${esc(it.t)}<small>${esc(it.d)}</small></span>`);
+
+  segGroup('finSeg', FINISHES, state.fin, it=>{state.fin=it.id;}, it=>`${esc(it.t.replace(' laminate',''))}<small>${esc(it.d)}</small>`);
+
+  segGroup('sizeTypeSeg', [{id:'standard',t:'Standard size'},{id:'custom',t:'Custom size'}], state.sizeType,
+    it=>{ state.sizeType=it.id; if(it.id==='custom') setTimeout(()=>$('wIn').focus(),0); }, it=>`${esc(it.t)}`);
+  $('sizeStandard').style.display = state.sizeType==='standard' ? 'block' : 'none';
+  $('sizeCustom').style.display   = state.sizeType==='custom' ? 'block' : 'none';
+  const ssel=$('sizeSel');
+  if(ssel.dataset.built!=='1'){
+    ssel.innerHTML = SIZES.map(s=>`<option value="${s.l}">${s.l}</option>`).join(''); ssel.dataset.built='1';
+    ssel.addEventListener('change', e=>{ const s=SIZES.find(x=>x.l===e.target.value); if(s){ state.sizePreset=s.l; state.w=s.w; state.h=s.h; $('wIn').value=s.w; $('hIn').value=s.h; refresh(); } });
+  }
+  ssel.value = SIZES.some(s=>s.l===state.sizePreset) ? state.sizePreset : SIZES[1].l;
+
+  chipGroup('qtyChips', QTYS.map(q=>({id:q, q})), state.qty,
+    it=>{ state.qty=it.q; $('qtyIn').value=''; $('qField').classList.remove('bad'); },
+    it=>{ const u=unitBase(it.q)*multipliers()+vdataPerUnit(); return `<span class="n">${it.q.toLocaleString('en-US')}</span><span class="price-hint">${fmtUnit(u)}/ea</span>`; });
+
+  chipGroup('designChips', [1,2,3,4,5].map(n=>({id:n, n})), state.designs,
+    it=>{ state.designs=it.n; }, it=>`<span class="n">${it.n}</span><span class="price-hint">${it.n===1?'design':'designs'}</span>`);
+
+  const vl=$('vdataList'); vl.innerHTML='';
+  VDATA.forEach(v=>{
+    const on=state.vdata[v.id]; const item=document.createElement('div'); item.className='vd-item';
+    const f=v.field; let fieldHtml='';
+    if(on){
+      if(f.type==='select'){ const opts=f.opts.map(o=>`<option ${state.vdataVal[v.id]===o?'selected':''}>${esc(o)}</option>`).join('');
+        fieldHtml=`<div class="vd-field"><label>${esc(f.label)}</label><select data-vk="${v.id}">${opts}</select></div>`; }
+      else { fieldHtml=`<div class="vd-field"><label>${esc(f.label)}</label><input type="text" data-vk="${v.id}" value="${esc(state.vdataVal[v.id])}" placeholder="${esc(f.ph)}"></div>`; }
+    }
+    item.innerHTML=`<label class="checkrow${on?' sel':''}"><input type="checkbox" ${on?'checked':''}><span><span class="t">${esc(v.t)}</span><br><span class="d">${esc(v.d)}</span></span><span class="fee">+$${v.fee.toFixed(3)}/ea</span></label>${fieldHtml}`;
+    item.querySelector('.checkrow input').addEventListener('change', e=>{ state.vdata[v.id]=e.target.checked; refresh(); });
+    const fld=item.querySelector('[data-vk]'); if(fld){ const ev=fld.tagName==='SELECT'?'change':'input'; fld.addEventListener(ev, e=>{ state.vdataVal[v.id]=e.target.value; }); }
+    vl.appendChild(item);
+  });
+
+  renderArt();
+  buildTypeGrid();
+}
+
+/* ================= gallery ================= */
+function buildGallery(){
+  const p = currentProduct();
+  $('galleryMain').src = p.gallery[0];
+  $('galleryMain').alt = p.name + ' — Dylign house mockup';
+  const host=$('galleryThumbs'); host.innerHTML='';
+  p.gallery.forEach((img,i)=>{
+    const b=document.createElement('button'); b.type='button'; b.className='thumb'+(i===0?' sel':'');
+    b.innerHTML=`<img src="${img}" alt="${esc(p.name)} view ${i+1}" loading="lazy">`;
+    b.addEventListener('click', ()=>{ $('galleryMain').src=img; host.querySelectorAll('.thumb').forEach(t=>t.classList.remove('sel')); b.classList.add('sel'); });
+    host.appendChild(b);
+  });
+}
+
+/* ================= artwork ================= */
+const PATH_OPTS = [{id:'ready', t:'Print-ready file'},{id:'rough', t:'Something rough'},{id:'design', t:'Design with us'}];
+const fmtBytes = b => b < 1024 ? b+' B' : b < 1048576 ? (b/1024).toFixed(0)+' KB' : (b/1048576).toFixed(1)+' MB';
+function syncArt(){ if(state.art.length!==state.designs) state.art=Array.from({length:state.designs},(_,i)=>state.art[i]||{mode:'ready',file:null,brief:''}); }
+function renderArt(){
+  syncArt();
+  const host=$('designArt'); host.innerHTML='';
+  for(let i=0;i<state.designs;i++){
+    const blk=document.createElement('div'); blk.className='art-block';
+    const label = state.designs>1 ? `<h5><span class="dn">DESIGN ${i+1} / ${state.designs}</span> ${state.qty.toLocaleString('en-US')} units</h5>` : '';
+    blk.innerHTML = label + `<div class="seg wrap3" data-seg="${i}"></div><div class="art-slot" data-slot="${i}"></div>`;
+    const seg=blk.querySelector('[data-seg]');
+    PATH_OPTS.forEach(pp=>{ const b=document.createElement('button'); b.type='button'; b.className='seg-btn'+(state.art[i].mode===pp.id?' sel':''); b.textContent=pp.t;
+      b.addEventListener('click', ()=>{ state.art[i].mode=pp.id; renderArt(); }); seg.appendChild(b); });
+    renderArtSlot(blk.querySelector('.art-slot'), i);
+    host.appendChild(blk);
+  }
+}
+function renderArtSlot(slot, i){
+  const a=state.art[i];
+  if(a.mode==='design'){
+    slot.innerHTML=`<div class="art-design"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z" stroke="#4C86E0" stroke-width="1.75" stroke-linejoin="round"/><path d="M14 7l3 3" stroke="#4C86E0" stroke-width="1.75"/></svg><span><b>Our team designs it with you.</b> Add a brief now; any flat design fee is quoted on your free proof, before we print.</span></div>
+      <div class="art-brief"><label for="brief${i}">Tell us what you&rsquo;re picturing</label><textarea id="brief${i}" placeholder="Sizes, vibe, colors, any reference links.">${esc(a.brief)}</textarea></div>`;
+    slot.querySelector('textarea').addEventListener('input', e=>{ a.brief=e.target.value; });
+    return;
+  }
+  if(a.file){
+    slot.innerHTML=`<div class="art-file"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 9-9" stroke="#3F7A5C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="af-name">${esc(a.file.name)}</span><span class="af-size">${esc(a.file.size)}</span><button type="button" class="af-remove" aria-label="Remove file">&times;</button></div>`;
+    slot.querySelector('.af-remove').addEventListener('click', ()=>{ a.file=null; renderArtSlot(slot,i); });
+  } else {
+    const roughHint = a.mode==='rough' ? 'A photo, a low-res logo, a sketch — we clean it up free.' : '.AI .CDR .PDF .PNG up to 10 MB · we human-check dielines & bleed';
+    slot.innerHTML=`<div class="art-drop"><input type="file" accept=".ai,.pdf,.cdr,.eps,.svg,.png,.jpg,.jpeg" hidden><svg viewBox="0 0 24 24" fill="none"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5" stroke="#8A857C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3" stroke="#8A857C" stroke-width="1.75" stroke-linecap="round"/></svg><span>Drag a file here, or <button type="button" class="art-choose">choose a file</button></span><span class="art-hint">${roughHint}</span></div>`;
+    const input=slot.querySelector('input');
+    slot.querySelector('.art-choose').addEventListener('click', ()=>input.click());
+    input.addEventListener('change', e=>{ const f=e.target.files&&e.target.files[0]; if(f){ a.file={name:f.name,size:fmtBytes(f.size)}; renderArtSlot(slot,i); } });
+  }
+}
+function designNow(){ syncArt(); state.art.forEach(a=>a.mode='design'); renderArt(); smoothScroll($('order')); const t=document.querySelector('#designArt textarea'); if(t) setTimeout(()=>t.focus(),350); }
+
+/* ================= price / quote ================= */
+let lastTotal=null;
+function refreshQuote(){
+  const c=calc(); const priceEl=$('totalPrice');
+  priceEl.textContent=fmtMoney(c.total);
+  if(lastTotal!==null && Math.abs(lastTotal-c.total)>0.005){ priceEl.classList.remove('bump'); void priceEl.offsetWidth; priceEl.classList.add('bump'); setTimeout(()=>priceEl.classList.remove('bump'),420); }
+  lastTotal=c.total;
+  $('savePill').style.display = c.save>0 ? '' : 'none';
+  $('savePill').textContent = 'saving ' + c.save + '% vs 100s';
+  $('unitLine').innerHTML = `<b>${fmtUnit(c.unit)}</b> per sticker · <b>${state.qty.toLocaleString('en-US')}</b> per design${state.designs>1 ? ` · <b>${state.designs}</b> designs` : ''}`;
+  $('addCartTotal').textContent = fmtMoney(c.total);
+
+  const mat=MATERIALS.find(x=>x.id===state.mat), fin=FINISHES.find(x=>x.id===state.fin), fmtT=FORMATS.find(x=>x.id===state.format), shp=SHAPES.find(x=>x.id===state.shape), vOn=VDATA.filter(v=>state.vdata[v.id]);
+  let rows=`<div class="q-row"><span>Spec</span><b>${esc(fmtT.t)} · ${esc(mat.t)}</b></div>
+    <div class="q-row"><span>Shape &amp; size</span><b>${esc(shp.t)} · <span class="num">${state.w}″ × ${state.h}″</span></b></div>
+    <div class="q-row"><span>Finish</span><b>${esc(fin.t.replace(' laminate',''))}</b></div>`;
+  if(state.designs>1) rows+=`<div class="q-row"><span>Per design</span><b class="num">${fmtMoney(c.perDesign)} × ${state.designs}</b></div>`;
+  if(vOn.length) rows+=`<div class="q-row"><span>Variable data</span><b>${vOn.map(v=>esc(v.t.split(' /')[0])).join(', ')}</b></div>`;  if(state.format==='roll'){ let r=`${state.roll.apply==='machine'?'Machine':'Hand'} · ${esc(state.roll.unwind.split(' ')[0])} · <span class="num">${state.roll.perRoll}/roll</span>`;
+    if(state.roll.apply==='machine') r+=` · <span class="num">${esc(state.roll.dia)}⌀, ${esc(state.roll.core)} core</span>`;
+    rows+=`<div class="q-row"><span>Roll setup</span><b>${r}</b></div>`; }
+  rows+=`<div class="q-row"><span>Plate, die &amp; setup fees</span><b class="ok">$0</b></div>
+    <div class="q-row"><span>Free digital proof</span><b class="ok">Included</b></div>
+    <div class="q-row"><span>Shipping (tracked air)</span><b class="${c.total>=75?'ok':''}">${c.total>=75?'Free':'$9, free over $75'}</b></div>`;
+  $('qRows').innerHTML=rows;
+
+  $('mbTotal').textContent=fmtMoney(c.total);
+  $('mbUnit').innerHTML=` · ${fmtUnit(c.unit)}/ea × ${state.qty.toLocaleString('en-US')}`;
+}
+
+/* ================= inputs ================= */
+function validateQty(){ const typed=$('qtyIn').value.trim(); if(typed!==''){ const q=parseInt(typed,10); if(isNaN(q)||q<100){ $('qField').classList.add('bad'); return false; } } return true; }
+function bindSizeInput(id, key, fieldId){
+  $(id).addEventListener('input', e=>{ const v=parseFloat(e.target.value); const f=$(fieldId);
+    if(isNaN(v)||v<0.5||v>12){ f.classList.add('bad'); return; }
+    f.classList.remove('bad'); state[key]=v; state.sizePreset='Custom';
+    const preset=SIZES.find(s=>s.w===state.w&&s.h===state.h); if(preset) state.sizePreset=preset.l; refresh(); });
+}
+bindSizeInput('wIn','w','wField'); bindSizeInput('hIn','h','hField');
+$('qtyIn').addEventListener('input', e=>{ const v=parseInt(e.target.value,10);
+  if(e.target.value.trim()===''){ $('qField').classList.remove('bad'); return; }
+  if(isNaN(v)||v<100){ $('qField').classList.add('bad'); return; }
+  $('qField').classList.remove('bad'); state.qty=v; refresh(); });
+$('applySel').addEventListener('change', e=>{ state.roll.apply=e.target.value; refresh(); });
+$('unwindSel').addEventListener('change', e=>{ state.roll.unwind=e.target.value; refresh(); });
+$('perRoll').addEventListener('input', e=>{ const v=parseInt(e.target.value,10); if(!isNaN(v)&&v>=100){ state.roll.perRoll=v; refresh(); } });
+$('diaSel').addEventListener('change', e=>{ state.roll.dia=e.target.value; refresh(); });
+$('coreSel').addEventListener('change', e=>{ state.roll.core=e.target.value; refresh(); });
+
+/* ================= cart ================= */
+function buildCartLine(){
+  const c=calc(); const ship=shipFor(c.total);
+  const mat=MATERIALS.find(x=>x.id===state.mat), fmtT=FORMATS.find(x=>x.id===state.format), shp=SHAPES.find(x=>x.id===state.shape), fin=FINISHES.find(x=>x.id===state.fin);
+  const vOn=VDATA.filter(v=>state.vdata[v.id]).map(v=>v.t.split(' /')[0]);
+  const artModes=[...new Set(state.art.slice(0,state.designs).map(a=>a.mode))];
+  const artFiles=state.art.slice(0,state.designs).filter(a=>a.file).map(a=>a.file.name);
+  return { productName: currentProduct().name, qtyUnits:1, unitTotal:c.total, ship,
+    spec:{ format:fmtT.t, shape:shp.t, material:mat.t, finish:fin.t, size:`${state.w}″ × ${state.h}″`, qty:state.qty, designs:state.designs, vdata:vOn, art:artModes, artFiles },
+    thumb: currentProduct().gallery[0], perDesign:c.perDesign };
+}
+function addToCart(){ if(!validateQty()){ smoothScroll($('order')); return; } state.cart=buildCartLine(); updateCartBadge(); openCart(); }
+function updateCartBadge(){ const b=$('cartBadge'); if(state.cart){ b.textContent=state.cart.qtyUnits; b.classList.add('show'); } else b.classList.remove('show'); }
+function lineTotal(){ return state.cart ? Math.round(state.cart.unitTotal*state.cart.qtyUnits*100)/100 : 0; }
+function openCart(){ renderCart(); $('cartOverlay').classList.add('open'); const d=$('cartDrawer'); d.classList.add('open'); d.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+function closeCart(){ $('cartOverlay').classList.remove('open'); const d=$('cartDrawer'); d.classList.remove('open'); d.setAttribute('aria-hidden','true'); if(!$('checkout').classList.contains('open') && !$('confirm').classList.contains('open')) document.body.style.overflow=''; }
+function renderCart(){
+  const body=$('cartBody'), foot=$('cartFoot');
+  if(!state.cart){ body.innerHTML=`<p class="cart-empty">Your cart is empty.<br>Configure your stickers and add them to cart.</p>`; foot.style.display='none'; return; }
+  const s=state.cart.spec;
+  const specLines=[`${s.format} · ${s.shape}`,`${s.material} · ${s.finish.replace(' laminate','')}`,`${s.size} · ${s.qty.toLocaleString('en-US')} × ${s.designs} design${s.designs>1?'s':''}`,
+    s.vdata.length ? 'Variable data: '+s.vdata.join(', ') : null,    s.artFiles.length ? 'Artwork: '+s.artFiles.join(', ') : (s.art.includes('design') ? 'Artwork: design with our team' : 'Artwork: added on proof')
+  ].filter(Boolean).map(l=>esc(l)).join('<br>');
+  body.innerHTML=`<div class="cart-line"><img class="cart-thumb" src="${state.cart.thumb}" alt="">
+    <div class="cart-info"><p class="ci-name">${esc(state.cart.productName)}</p><p class="ci-spec">${specLines}</p>
+      <div class="ci-foot"><div class="qty-step"><button aria-label="Decrease" onclick="cartQty(-1)">−</button><span>${state.cart.qtyUnits}</span><button aria-label="Increase" onclick="cartQty(1)">+</button></div><button class="ci-remove" onclick="removeCart()">Remove</button></div>
+    </div><span class="cart-price">${fmtMoney(lineTotal())}</span></div>`;
+  const sub=lineTotal(); const ship=shipFor(sub);
+  $('cartSubtotal').textContent=fmtMoney(sub);
+  $('cartShip').textContent = ship===0 ? 'Free tracked air shipping · taxes at checkout' : 'Shipping $9 (free over $75) · taxes at checkout';
+  foot.style.display='block';
+}
+function cartQty(d){ if(!state.cart) return; state.cart.qtyUnits=Math.max(1,Math.min(20,state.cart.qtyUnits+d)); updateCartBadge(); renderCart(); }
+function removeCart(){ state.cart=null; updateCartBadge(); renderCart(); }
+
+/* ================= checkout ================= */
+function goCheckout(){ if(!state.cart) return; renderCheckout(); closeCart(); const co=$('checkout'); co.classList.add('open'); co.setAttribute('aria-hidden','false'); co.scrollTop=0; document.body.style.overflow='hidden'; $('coEmail').value=state.lastEmail||''; }
+function closeCheckout(){ const co=$('checkout'); co.classList.remove('open'); co.setAttribute('aria-hidden','true'); document.body.style.overflow=''; openCart(); }
+function renderCheckout(){
+  const sub=lineTotal(); const ship=shipFor(sub); const total=Math.round((sub+ship)*100)/100; const s=state.cart.spec;
+  const specLines=[`${s.format} · ${s.material}`,`${s.size} · ${s.qty.toLocaleString('en-US')} × ${s.designs}`].map(esc).join('<br>');
+  $('coSummary').innerHTML=`<div class="co-line"><img src="${state.cart.thumb}" alt="">
+      <div><p class="cl-name">${esc(state.cart.productName)} ${state.cart.qtyUnits>1?'× '+state.cart.qtyUnits:''}</p><p class="cl-spec">${specLines}</p></div><span class="cl-price">${fmtMoney(sub)}</span></div>
+    <div class="co-sum-row"><span>Subtotal · ${state.cart.qtyUnits} item${state.cart.qtyUnits>1?'s':''}</span><b>${fmtMoney(sub)}</b></div>
+    <div class="co-sum-row"><span>Shipping (tracked air)</span><b>${ship===0?'Free':'$9'}</b></div>
+    <div class="co-sum-row"><span>Free digital proof</span><b>Included</b></div>
+    <div class="co-total"><span class="ct-l">Total</span><span class="ct-v">${fmtMoney(total)}</span></div>
+    <div class="co-proofnote"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12.5l2 2 4.5-4.5" stroke="#E14F00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#E14F00" stroke-width="1.4"/></svg><span><b>What happens after you pay:</b> we email your free digital proof within 48&nbsp;h. Request free changes or approve — we only print once you approve.</span></div>`;
+  $('coPayTotal').textContent=fmtMoney(total);
+}
+
+/* ---- email-keyed order records in localStorage (no login) ---- */
+const DB='dylign_orders_v3';
+const normEmail = e => (e||'').trim().toLowerCase();
+function allOrders(){ try{ return JSON.parse(localStorage.getItem(DB)) || {}; }catch(_){ return {}; } }
+function getOrder(email){ return allOrders()[normEmail(email)] || null; }
+function saveOrder(rec){ const db=allOrders(); db[normEmail(rec.email)]=rec; try{ localStorage.setItem(DB, JSON.stringify(db)); }catch(_){} }
+function orderNoFor(total){ return 'DYL-' + (26000 + state.qty + state.designs*37 + Math.round(total)); }
+function computeProofSnapshot(total){
+  const mat=MATERIALS.find(x=>x.id===state.mat), fin=FINISHES.find(x=>x.id===state.fin), fmtT=FORMATS.find(x=>x.id===state.format), shp=SHAPES.find(x=>x.id===state.shape);
+  let meta=`<div class="m-row"><dt>Product</dt><dd>${esc(currentProduct().name)}</dd></div>
+    <div class="m-row"><dt>Format</dt><dd>${esc(fmtT.t)}</dd></div>
+    <div class="m-row"><dt>Shape</dt><dd>${esc(shp.t)}</dd></div>
+    <div class="m-row"><dt>Material</dt><dd>${esc(mat.t)}</dd></div>
+    <div class="m-row"><dt>Finish</dt><dd>${esc(fin.t)}</dd></div>
+    <div class="m-row"><dt>Size</dt><dd class="num">${state.w}″ × ${state.h}″</dd></div>
+    <div class="m-row"><dt>Quantity</dt><dd class="num">${state.qty.toLocaleString('en-US')} × ${state.designs} design${state.designs>1?'s':''}</dd></div>`;
+  VDATA.filter(v=>state.vdata[v.id]).forEach(v=>{ let val=state.vdataVal[v.id]; if(!val) val=v.field.type==='select'?v.field.opts[0]:'set on proof'; meta+=`<div class="m-row"><dt>${VD_SHORT[v.id]}</dt><dd>${esc(val)}</dd></div>`; });  meta+=`<div class="m-row"><dt>Paid</dt><dd class="num" style="font-weight:700">${fmtMoney(total)}</dd></div>`;
+  const countText = state.designs>1 ? `Showing proof 1 of ${state.designs} · approving accepts all ${state.designs}` : 'PROOF v1';
+  return { productName:currentProduct().name, metaHtml:meta, shapeRx:shp.rx, shapeFill: state.mat==='holo' ? '#BFA8D8' : '#FF5900', countText };
+}
+
+/* PAY -> create order (paid), proof now being prepared -> confirmation */
+function payNow(ev){
+  if(ev) ev.preventDefault();
+  const email=normEmail($('coEmail').value); const f=$('coEmailField');
+  if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ f.classList.add('bad'); $('coEmail').focus(); return; }
+  f.classList.remove('bad');
+  const sub=lineTotal(); const total=Math.round((sub+shipFor(sub))*100)/100;
+  const rec={ email, orderNo:orderNoFor(total), total, paid:true, status:'preparing', revised:false, proof:computeProofSnapshot(total) };
+  saveOrder(rec);
+  state.lastEmail=email; state.cart=null; updateCartBadge();
+  openConfirm(rec);
+}
+
+/* ================= order confirmation + proof/approve (post-payment) ================= */
+let prepTimer=null;
+function openConfirm(rec){
+  $('checkout').classList.remove('open'); $('checkout').setAttribute('aria-hidden','true');
+  const c=$('confirm'); c.classList.add('open'); c.setAttribute('aria-hidden','false'); c.scrollTop=0; document.body.style.overflow='hidden';
+  renderConfirm(rec.email);
+}
+function closeConfirm(){ const c=$('confirm'); c.classList.remove('open'); c.setAttribute('aria-hidden','true'); document.body.style.overflow=''; resetSim(); window.scrollTo(0,0); }
+function renderConfirm(email){
+  const rec=getOrder(email); if(!rec) return;
+  if(rec.status==='production') return renderConfirmProduction(email, rec);
+  if(rec.status==='ready')      return renderConfirmReady(email, rec);
+  return renderConfirmPreparing(email, rec);
+}
+function confHead(rec){
+  return `<div class="order-done"><div class="od-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 8" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div><h3 class="od-title">Payment received</h3><p class="od-sub">Order <b>${esc(rec.orderNo)}</b> · <b>${fmtMoney(rec.total)}</b> paid · ${esc(rec.proof.productName)}</p></div></div>`;
+}
+function renderConfirmPreparing(email, rec){
+  const eta = rec.revised ? 'A revised proof is on its way, usually within <b>24 hours</b>' : 'We&rsquo;ll email it to <b>'+esc(email)+'</b>, usually within <b>48 hours</b>';
+  $('confirmStatus').innerHTML = confHead(rec) +
+    `<div class="placed-note">Thanks! Our prepress team is now building your <b>free digital proof</b> — your exact artwork on the exact material, dielines &amp; bleed checked. ${eta}. <b>We only start production once you approve it</b>, and if we can&rsquo;t get it right you get a full refund.</div>
+     <div class="how-check"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#8A857C" stroke-width="1.7"/><path d="M20 20l-3.6-3.6" stroke="#8A857C" stroke-width="1.7" stroke-linecap="round"/></svg><span>In real life this arrives by email — shown here so you can see the approve step. Watching your proof arrive now&hellip;</span></div>
+     <div class="prep-live"><span class="prep-bar"><span></span></span> Preparing your proof&hellip;</div>`;
+  if(prepTimer) clearTimeout(prepTimer);
+  prepTimer=setTimeout(()=>{ const fresh=getOrder(email); if(fresh && fresh.status==='preparing' && $('confirm').classList.contains('open')){ fresh.status='ready'; fresh.revised=false; saveOrder(fresh); renderConfirm(email); } }, 2800);
+}
+function renderConfirmReady(email, rec){
+  const p=rec.proof;
+  $('confirmStatus').innerHTML = confHead(rec) +
+    `<div class="status-head"><span class="status-pill ready"><span class="dot"></span>Proof ready</span></div>
+     <div class="proof-banner"><svg viewBox="0 0 24 24" fill="none"><path d="M4 13l4 4L20 5" stroke="#2E5A44" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Your free proof is ready.</b> We emailed it to ${esc(email)}. Review it, request free changes, or approve — approving releases it to production. You&rsquo;ve already paid; approving doesn&rsquo;t charge you again.</span></div>
+     <p class="proof-count">${p.countText}</p>
+     <div class="proof-wrap">
+       <div class="proof-visual"><svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Digital proof">
+         <rect x="10" y="10" width="280" height="240" rx="10" fill="#fff" stroke="#E0E0E0"/>
+         <text x="24" y="36" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#8A857C">${esc(rec.orderNo)}</text>
+         <rect x="70" y="56" width="160" height="160" rx="${p.shapeRx}" fill="${p.shapeFill}"/>
+         <rect x="62" y="48" width="176" height="176" rx="32" fill="none" stroke="#FF5900" stroke-width="1.75" stroke-dasharray="6 6" opacity=".55"/>
+         <circle cx="118" cy="118" r="20" fill="#FBF5EA"/><rect x="150" y="106" width="58" height="8" rx="4" fill="#FBF5EA"/>
+         <rect x="150" y="122" width="40" height="8" rx="4" fill="#FBF5EA" opacity=".7"/><rect x="94" y="168" width="112" height="7" rx="3.5" fill="#FBF5EA" opacity=".85"/>
+         <text x="24" y="238" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#8A857C">dashed = dieline · bleed checked · color CMYK</text>
+       </svg></div>
+       <div><dl class="proof-meta">${p.metaHtml}</dl></div>
+     </div>
+     <div class="changes-box" id="changesBox"><textarea placeholder="e.g. Nudge the logo a little left, and can we try the kraft material instead?"></textarea>
+       <div class="cta-row" style="margin-top:10px"><button class="btn btn-line" onclick="sendChanges()">Send to my proof artist</button></div></div>
+     <hr class="soft">
+     <div class="cta-row"><button class="btn btn-solid btn-lg" onclick="approveProof()">Approve &amp; start production <span class="arrow">&rarr;</span></button><button class="btn btn-line" onclick="toggleChanges()">Request free changes</button></div>`;
+}
+function renderConfirmProduction(email, rec){
+  $('confirmStatus').innerHTML =
+    `<div class="order-done"><div class="od-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 8" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div><h3 class="od-title">Approved — in production</h3><p class="od-sub">Order <b>${esc(rec.orderNo)}</b> · <b>${fmtMoney(rec.total)}</b> paid · printing now.</p></div></div>
+    <div class="paygrid" style="margin-top:24px">
+      <div><p class="pay-h">What happens next</p><div class="prod-track">
+        <div class="tl-row on"><span class="tl-dot"></span><span><b>Payment confirmed</b><br>Receipt &amp; order number emailed.</span><span class="dur">done</span></div>
+        <div class="tl-row on"><span class="tl-dot"></span><span><b>Proof approved</b><br>Released to the floor.</span><span class="dur">today</span></div>
+        <div class="tl-row"><span class="tl-dot"></span><span><b>Production</b><br>Printed, laminated &amp; die-cut to your proof.</span><span class="dur">7–10 biz days</span></div>
+        <div class="tl-row"><span class="tl-dot"></span><span><b>Tracked air freight</b><br>Door-to-door with tracking.</span><span class="dur">5–8 days</span></div></div></div>
+      <div><p class="pay-h">Saved to your brand library</p>
+        <div class="reorder-note"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1 0 2.3-5.6" stroke="#FF5900" stroke-width="1.75" stroke-linecap="round"/><path d="M4 4v4h4" stroke="#FF5900" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Reorders skip all of this.</b> Your dielines and approved artwork are on file — reorder any SKU in one click, straight to production.</span></div></div>
+    </div>
+    <hr class="soft"><div class="cta-row"><button class="btn btn-solid" onclick="closeConfirm()">Continue shopping</button></div>`;
+}
+function approveProof(){ const e=state.lastEmail; const r=getOrder(e); if(r){ r.status='production'; saveOrder(r); renderConfirm(e); document.querySelector('#confirm').scrollTop=0; } }
+function toggleChanges(){ const cb=$('changesBox'); if(cb) cb.classList.toggle('show'); }
+function sendChanges(){ const e=state.lastEmail; const r=getOrder(e); if(r){ r.status='preparing'; r.revised=true; saveOrder(r); renderConfirm(e); document.querySelector('#confirm').scrollTop=0; } }
+
+/* ================= reset ================= */
+function resetSim(){
+  const p=productById('die-cut'); state.product='die-cut'; applyProductDefaults(p); state.cart=null;
+  syncConfigInputs(); buildGallery(); updateCartBadge();
+  try{ history.replaceState(null,'', '#product/die-cut'); }catch(_){}
+  refresh();
+}
+
+/* ================= mobile price bar ================= */
+if('IntersectionObserver' in window){
+  new IntersectionObserver(entries=>{ entries.forEach(en=> $('mbar').classList.toggle('inview', en.isIntersecting)); }, {rootMargin:'-64px 0px -45% 0px'}).observe($('order'));
+}
+
+/* ================= boot ================= */
+function refresh(){ refreshControls(); refreshQuote(); }
+(function boot(){
+  buildLabelMenu();
+  const m=(location.hash||'').match(/#product\/([\w-]+)/);
+  const id = m && PRODUCTS.some(p=>p.id===m[1]) ? m[1] : 'die-cut';
+  state.product=id; applyProductDefaults(productById(id));
+  buildGallery(); refresh(); updateCartBadge();
+})();
+</script>
+</body>
+</html>

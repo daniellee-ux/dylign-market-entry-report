@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dylign 定制贴纸/标签产品线 · 美国市场进入策略建议</title>
+<meta name="description" content="Dylign 定制贴纸/标签产品线美国市场进入策略建议 — 2026年7月" />
+<style>
+  :root{
+    --paper:#FBF5EA;
+    --paper-raised:#FFFFFF;
+    --paper-sunk:#F4EEE0;
+    --ink:#20211C;
+    --ink-soft:#575A4F;
+    --ink-faint:#8C8E80;
+    --line:#E7E0D0;
+    --line-strong:#D3CAB4;
+    --orange:#FF5900;
+    --orange-deep:#D94B00;
+    --orange-soft:#FFEBDD;
+    --orange-tint:#FFF4EC;
+    --teal:#0A7EA6;
+    --teal-soft:#E3F0F4;
+    --good:#3F7A5C;
+    --good-soft:#E5EFE8;
+    --warn:#B9791A;
+    --warn-soft:#F7EDD9;
+    --bad:#AE4130;
+    --bad-soft:#F6E4DF;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+    --serif:"Songti SC","Noto Serif SC",Georgia,"Times New Roman",serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Code",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);line-height:1.75;font-size:16px;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  img{max-width:100%;display:block;}
+
+  /* ---------- reading progress ---------- */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--orange);z-index:120;transition:width .1s linear;}
+
+  /* ---------- top bar ---------- */
+  header.topbar{
+    position:sticky;top:0;z-index:100;background:rgba(251,245,234,.88);
+    backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{max-width:1080px;margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:16px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.01em;font-size:16px;flex-shrink:0;}
+  .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px var(--orange-soft);}
+  .brand .sub{font:600 11px/1 var(--mono);color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em;}
+  nav.secnav{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;}
+  nav.secnav::-webkit-scrollbar{display:none;}
+  nav.secnav a{
+    font:600 12.5px/1 var(--sans);color:var(--ink-soft);text-decoration:none;
+    padding:7px 11px;border-radius:7px;white-space:nowrap;transition:.15s;
+  }
+  nav.secnav a:hover{background:var(--orange-tint);color:var(--orange-deep);}
+  nav.secnav a.active{background:var(--orange);color:#fff;}
+  @media (max-width:860px){ nav.secnav{display:none;} }
+
+  /* ---------- layout ---------- */
+  main{max-width:1080px;margin:0 auto;padding:0 24px 120px;}
+  .wrap{max-width:820px;margin:0 auto;}
+  section{scroll-margin-top:72px;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:88px 0 60px;border-bottom:2px solid var(--ink);position:relative;}
+  .hero .eyebrow{font:700 12px/1 var(--mono);letter-spacing:.14em;color:var(--orange-deep);text-transform:uppercase;margin-bottom:22px;}
+  .hero h1{font-size:clamp(30px,5vw,52px);line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:0 0 22px;text-wrap:balance;}
+  .hero h1 .accent{color:var(--orange);}
+  .hero .lede{font-size:clamp(16px,2vw,19px);color:var(--ink-soft);max-width:62ch;margin:0 0 30px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 28px;font:600 12.5px/1.4 var(--mono);color:var(--ink-faint);padding-top:22px;border-top:1px solid var(--line);}
+  .hero-meta b{color:var(--ink);}
+  .hero-note{margin-top:26px;padding:16px 20px;background:var(--paper-sunk);border:1px solid var(--line);border-radius:10px;font-size:13px;color:var(--ink-soft);line-height:1.65;}
+
+  /* ---------- section header ---------- */
+  .sec-head{display:flex;align-items:flex-start;gap:16px;margin:76px 0 8px;padding-bottom:18px;border-bottom:2px solid var(--ink);}
+  .sec-num{font:800 14px/1 var(--mono);color:#fff;background:var(--ink);border-radius:8px;padding:9px 11px;flex-shrink:0;margin-top:4px;}
+  .sec-head.pillar .sec-num{background:var(--orange);}
+  .sec-head h2{font-size:clamp(23px,3vw,31px);font-weight:800;letter-spacing:-.015em;margin:0;line-height:1.2;}
+  .sec-head .sec-tag{display:block;font:600 12px/1 var(--mono);color:var(--orange-deep);text-transform:uppercase;letter-spacing:.06em;margin-top:9px;}
+  h3{font-size:19px;font-weight:750;letter-spacing:-.01em;margin:44px 0 4px;}
+  h4{font-size:16px;font-weight:700;margin:28px 0 4px;color:var(--ink);}
+  p{margin:14px 0;}
+  .wrap p,.wrap li{color:#33352d;}
+  strong{font-weight:700;color:var(--ink);}
+  a.inline{color:var(--orange-deep);text-decoration:underline;text-underline-offset:2px;}
+
+  ul,ol{padding-left:1.3em;}
+  li{margin:8px 0;}
+  li::marker{color:var(--orange);}
+
+  /* ---------- callouts ---------- */
+  .callout{margin:22px 0;padding:18px 22px;background:var(--paper-raised);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:0 10px 10px 0;font-size:15px;color:var(--ink-soft);}
+  .callout .tag{display:block;font:700 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--orange-deep);margin-bottom:8px;}
+  .callout b,.callout strong{color:var(--ink);}
+  .callout.big{font-size:17px;line-height:1.6;color:var(--ink);}
+  .callout.warn{border-left-color:var(--warn);}
+  .callout.warn .tag{color:var(--warn);}
+  .callout.good{border-left-color:var(--good);}
+  .callout.good .tag{color:var(--good);}
+  .callout.teal{border-left-color:var(--teal);}
+  .callout.teal .tag{color:var(--teal);}
+
+  .pullquote{margin:30px 0;padding:8px 0 8px 26px;border-left:5px solid var(--orange);font-family:var(--serif);font-size:clamp(19px,2.4vw,25px);line-height:1.45;font-weight:600;color:var(--ink);letter-spacing:.01em;}
+
+  /* ---------- cards ---------- */
+  .cards{display:grid;gap:16px;margin:24px 0;}
+  .cards.c2{grid-template-columns:repeat(2,1fr);}
+  .cards.c3{grid-template-columns:repeat(3,1fr);}
+  @media (max-width:720px){ .cards.c2,.cards.c3{grid-template-columns:1fr;} }
+  .card{background:var(--paper-raised);border:1px solid var(--line-strong);border-radius:12px;padding:20px 20px;}
+  .card .kicker{display:flex;align-items:center;gap:9px;font:800 12px/1 var(--mono);color:var(--orange-deep);text-transform:uppercase;letter-spacing:.04em;margin-bottom:11px;}
+  .card .kicker .n{background:var(--orange);color:#fff;width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-size:12px;}
+  .card strong.h{display:block;font-size:16px;line-height:1.4;margin-bottom:7px;color:var(--ink);}
+  .card p{margin:0;font-size:14px;color:var(--ink-soft);line-height:1.6;}
+
+  /* ---------- tables ---------- */
+  .tbl-wrap{overflow-x:auto;margin:24px 0;border:1px solid var(--line-strong);border-radius:12px;background:var(--paper-raised);}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px;}
+  caption{caption-side:top;text-align:left;font:700 12px/1.4 var(--mono);color:var(--ink-faint);padding:14px 18px 0;text-transform:uppercase;letter-spacing:.04em;}
+  th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;}
+  thead th{background:var(--paper-sunk);font-weight:750;color:var(--ink);border-bottom:2px solid var(--line-strong);white-space:nowrap;position:sticky;top:0;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:var(--orange-tint);}
+  td strong{color:var(--ink);}
+  .col-em{background:var(--orange-tint);}
+  th.col-em{background:var(--orange-soft);}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .yes{color:var(--good);font-weight:700;}
+  .no{color:var(--bad);font-weight:700;}
+  .mid{color:var(--warn);font-weight:700;}
+
+  /* ---------- value tree ---------- */
+  .tree{background:var(--ink);border-radius:16px;padding:34px 26px;margin:28px 0;color:#EDEBE3;}
+  .tree .apex{text-align:center;margin-bottom:8px;}
+  .tree .apex .lbl{font:800 13px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#fff;}
+  .tree .apex .eq{color:var(--orange);font-size:22px;font-weight:800;margin:6px 0;}
+  .tree .branches{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px;position:relative;}
+  @media (max-width:640px){ .tree .branches{grid-template-columns:1fr;} }
+  .tree .branch{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:16px;text-align:center;}
+  .tree .branch .mult{font:800 15px/1 var(--sans);color:var(--orange);margin-bottom:10px;}
+  .tree .branch .items{font-size:13px;color:#C9C7BD;line-height:1.9;}
+
+  /* ---------- stat row ---------- */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);border-radius:12px;overflow:hidden;margin:24px 0;}
+  .stat{background:var(--paper-raised);padding:18px 20px;}
+  .stat .v{font:800 26px/1 var(--sans);color:var(--orange-deep);letter-spacing:-.02em;}
+  .stat .k{font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.4;}
+
+  /* ---------- board embed ---------- */
+  .embed-shell{border:2px solid var(--ink);border-radius:16px;overflow:hidden;background:var(--paper-raised);margin:26px 0;box-shadow:0 18px 40px -24px rgba(30,32,26,.5);}
+  .embed-bar{display:flex;align-items:center;gap:12px;padding:12px 18px;background:var(--ink);color:#fff;}
+  .embed-bar .dots{display:flex;gap:6px;}
+  .embed-bar .dots i{width:11px;height:11px;border-radius:50%;display:block;}
+  .embed-bar .dots i:nth-child(1){background:#FF5F57;}
+  .embed-bar .dots i:nth-child(2){background:#FEBC2E;}
+  .embed-bar .dots i:nth-child(3){background:#28C840;}
+  .embed-bar .ttl{font:600 13px/1 var(--mono);letter-spacing:.02em;}
+  .embed-bar .open{margin-left:auto;font:600 12px/1 var(--sans);color:#fff;text-decoration:none;background:var(--orange);padding:7px 13px;border-radius:7px;transition:.15s;}
+  .embed-bar .open:hover{background:var(--orange-deep);}
+  .embed-shell iframe{width:100%;height:78vh;min-height:520px;border:0;display:block;background:#F2F3EF;}
+
+  /* ---------- prototype links ---------- */
+  .proto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:24px 0;}
+  .proto{display:block;text-decoration:none;background:var(--paper-raised);border:1px solid var(--line-strong);border-radius:12px;padding:18px 20px;transition:.18s;color:inherit;}
+  .proto:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 12px 26px -18px rgba(255,89,0,.6);}
+  .proto .ic{font-size:22px;margin-bottom:10px;}
+  .proto strong{display:block;font-size:15px;margin-bottom:4px;}
+  .proto span{font-size:13px;color:var(--ink-soft);}
+  .proto .arrow{color:var(--orange-deep);font-weight:700;margin-top:10px;font-size:13px;}
+
+  /* ---------- footer ---------- */
+  footer{max-width:1080px;margin:0 auto;padding:40px 24px 60px;border-top:1px solid var(--line);color:var(--ink-faint);font-size:13px;}
+  footer .fbrand{font-weight:800;color:var(--ink);font-size:15px;}
+
+  /* ---------- misc ---------- */
+  .divider{height:1px;background:var(--line);margin:40px 0;border:0;}
+  .footnote{font-size:13px;color:var(--ink-faint);line-height:1.6;}
+  .to-top{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;border:0;font-size:18px;cursor:pointer;opacity:0;pointer-events:none;transition:.25s;z-index:90;box-shadow:0 8px 20px -8px rgba(0,0,0,.5);}
+  .to-top.show{opacity:1;pointer-events:auto;}
+  .to-top:hover{background:var(--orange);}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="dot"></span>Dylign<span class="sub">Strategy Memo</span></div>
+    <nav class="secnav" id="secnav">
+      <a href="#summary">摘要</a>
+      <a href="#goals">目标</a>
+      <a href="#p1">切哪个市场</a>
+      <a href="#p2">凭什么赢</a>
+      <a href="#p3">赚不赚得到</a>
+      <a href="#p4">怎么落地</a>
+      <a href="#gtm">获客</a>
+      <a href="#decisions">决策</a>
+      <a href="#board">交互看板</a>
+      <a href="#appendix">附录</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Dylign · 美国市场进入策略 · 2026 年 7 月</div>
+      <h1>定制贴纸/标签产品线<br><span class="accent">美国市场进入策略建议</span></h1>
+      <p class="lede">这不是一门"把贴纸做得更快更便宜"的生意，而是一门"用小批量、规格深度与免费标签工具，服务被大厂起订量挡在门外的小 CPG 品牌，靠复购赚钱"的生意。</p>
+      <div class="hero-meta">
+        <span><b>市场</b> · 美国定制标签</span>
+        <span><b>滩头</b> · 小批量 CPG 品牌</span>
+        <span><b>供应</b> · 中国批量为主</span>
+        <span><b>方法</b> · 12 家竞品实测 + 关键词级成本</span>
+      </div>
+      <div class="hero-note">
+        本报告基于对 12 家竞品购买流程与规格维度的实测、关键词级获客成本数据（Google Keyword Planner）、竞品自然流量与广告投放实扫（Ubersuggest 及 Meta / Google / TikTok 广告库），以及公开行业基准。凡依赖 Dylign 内部数据的估算（如对既有客户的交叉销售）均标注为方向性判断，建议以内部实际数据校准。
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 0 · 执行摘要 ===================== -->
+  <section id="summary">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">0</span><div><h2>执行摘要</h2><span class="sec-tag">情境 · 冲突 · 核心问题</span></div></div>
+
+      <p>美国定制贴纸/标签是一片成熟红海，中国供应链握有显著的单位成本优势。但关税重构后，"中国直邮免税价差"这条老路已经走不通；与此同时，若把这门生意理解成一场<strong>贴纸速度战</strong>——比谁交货更快、起订量更低——就会瞄错客户，并把自己推入最不该进入的战场：那里 Sticker Mule（域名权重 77）等玩家以 4 天交期和海量广告牢牢占位，Dylign 以中国批量履约（数周交期）正面对抗毫无胜算。</p>
+
+      <p>因此，摆在 Dylign 面前的问题有三层：<strong>该不该做这条产品线？若做，凭什么赢？赚不赚得到钱？</strong></p>
+
+      <div class="callout big">
+        <span class="tag">核心建议</span>
+        <strong>做——但重新定义战场。</strong> 以「<strong>小批量卷标 + 规格深度</strong>」切入美国<strong>小批量 CPG 消耗品品牌</strong>——横跨家居个护（蜡烛、手工皂、护肤/化妆）与食品饮料包装（咖啡、精酿、酱料，定位为容器外侧非食品接触标签）；以<strong>中国批量为主</strong>的履约，对齐这些客户"能等数周"的交期容忍度；沿用 Dylign 既有的"直接下单收款、proof 作为下单后工序"的成熟流程；<strong>不打"50 张起订"的贴纸价格战</strong>。
+      </div>
+
+      <p>换言之，我们建议把重心从"通用定制贴纸"移向<strong>小批量 CPG 品牌的产品标签</strong>（家居个护 + 食品饮料外侧非食品接触标签）——这一取舍由数据驱动，理由贯穿全篇，并在 §6 用关键词与竞争数据支撑。</p>
+
+      <h3>五个非显然判断</h3>
+      <div class="cards c2">
+        <div class="card"><div class="kicker"><span class="n">1</span>战场</div><strong class="h">题目是 Custom Sticker，但主战场不应是通用贴纸。</strong><p>通用贴纸已经是速度、低价、广告和品牌预算战；Dylign 更应切入小批量 CPG 消耗品卷标（家居个护 + 食品饮料外侧非食品接触标签）。</p></div>
+        <div class="card"><div class="kicker"><span class="n">2</span>供应链</div><strong class="h">中国供应链不是天然优势，只有匹配"能等待、会复购、多 SKU"的 B2B 客户时才是优势。</strong><p>对个人贴纸买家，4–5 周交期是劣势；对有计划补货的小 CPG 品牌，它可以换来更好的成本结构。</p></div>
+        <div class="card"><div class="kicker"><span class="n">3</span>起订量</div><strong class="h">100–300 张是切入能力，不是付费流量的主价格锚点。</strong><p>可以承接低于对手 MOQ 的小批量订单，但付费获客页面应默认引导 300 / 500 / 1,000 张阶梯和多 SKU 套餐，以提高客单与回本速度。</p></div>
+        <div class="card"><div class="kicker"><span class="n">4</span>差异化</div><strong class="h">差异化不是更多规格，而是帮客户做对规格选择。</strong><p>尺寸、材质、形状、工艺必须做全；真正能提高转化和复购的是场景材质导购、无稿下单路径、proof 预期管理和 B2B 规格深度。</p></div>
+        <div class="card"><div class="kicker"><span class="n">5</span>广告</div><strong class="h">付费广告不能按一次性首购 ROAS 来投。</strong><p>广告应获取可复购的 label account，并用 AOV、转化率、二单率和 60–120 天 cohort 回收曲线判断是否放量。</p></div>
+      </div>
+
+      <h3>三条支撑论点</h3>
+      <div class="callout"><span class="tag">① 真正的空位在卷标侧，不在贴纸侧</span>我们对 12 家竞品的实测显示，"无最低起订量"只是贴纸侧的故事；在卷标（roll label）这一侧，竞品的真实门槛普遍在 <strong>250 张以上</strong>（noissue 1,000、Avery 千张档、EcoEnclose / StickerYou / CustomStickers 均为 250）。Dylign 的 <strong>100–300 张覆盖了对手门槛下方及附近的小批量首单需求</strong>——这是一个可以干净接单、无需正面价格厮杀的空位。</div>
+      <div class="callout"><span class="tag">② 差异化靠产品深度，不靠噱头</span>在竞品规格维度矩阵中，仅有极少数玩家覆盖三个"真空格"：<strong>可变数据</strong>（批号/效期，12 家中仅 2 家）、<strong>卷规格自助</strong>（机贴方向/卷径，仅 2 家）、<strong>按使用场景导购材质</strong>（无人涉足）。这三格叠加小批量与垂直深度，构成护城河；而尺寸、材质、工艺等核心规格是<strong>入场门槛，而非卖点</strong>。</div>
+      <div class="callout"><span class="tag">③ 利润的主要杀手不是关税，而是能否把获客变成可复购账户</span>稳态毛利率约 <strong>65%</strong>，由中国采购实价（走量 / 复购返批档低至每张 $0.02–0.07）支撑；100–300 张首单毛利更薄，但扣除获客成本前的正单位经济仍有成立空间。真正的不确定性在付费获客质量：关键词级成本数据推算，冷启动付费获客约为<strong>每客 $150–250</strong>。若买来的是一次性低客单贴纸订单，广告很难成立；若买来的是会补货、会扩 SKU 的标签账户，则可以逐步跑正。</div>
+
+      <div class="pullquote">这不是一门"把贴纸做得更快更便宜"的生意，而是一门"用小批量、规格深度与免费标签工具，服务被大厂起订量挡在门外的小 CPG 品牌，靠复购赚钱"的生意。</div>
+    </div>
+  </section>
+
+  <!-- ===================== 1 · 商业目标 ===================== -->
+  <section id="goals">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">1</span><div><h2>商业目标与价值驱动框架</h2></div></div>
+
+      <h3>1.1 定义成功：一条可持续、可复购的产品线</h3>
+      <p>成功标准不是接一次性代工，而是建立<strong>可持续获利、有复购</strong>的定制标签业务。下表给出 12 个月的三档目标，采用双向交叉估算——自底向上的获客漏斗与自顶向下的市场份额两条独立路径推算，结果落在同一量级，互为验证：</p>
+
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>指标</th><th>保守</th><th class="col-em">基准</th><th>乐观</th><th>依据</th></tr></thead>
+        <tbody>
+          <tr><td>首年营收</td><td class="num">$25–40k</td><td class="col-em num"><strong>$50–90k</strong></td><td class="num">$120–150k</td><td>依赖付费 cohort 健康度与混合获客结构</td></tr>
+          <tr><td>月末月营收</td><td class="num">~$4–5k</td><td class="col-em num"><strong>~$7–9k</strong></td><td class="num">~$12–18k</td><td>随漏斗爬坡</td></tr>
+          <tr><td>12 个月复购率</td><td class="num">30%</td><td class="col-em num"><strong>35%</strong></td><td class="num">45%</td><td>消耗品品类基准，三来源交叉</td></tr>
+          <tr><td>毛利率（扣获客成本前）</td><td class="num">60%</td><td class="col-em num"><strong>65%</strong></td><td class="num">70%</td><td>稳态口径；小批首单更薄，见 §4.3</td></tr>
+          <tr><td>首年 LTV:CAC</td><td class="num">0.6</td><td class="col-em num"><strong>~0.8</strong></td><td class="num">1.2</td><td>受获客成本主导（见 §4.3）</td></tr>
+          <tr><td>多年 LTV:CAC</td><td class="num">1.5</td><td class="col-em num"><strong>~2.2</strong></td><td class="num">3.0</td><td>消耗品复购复利</td></tr>
+        </tbody>
+      </table></div>
+
+      <p>这张表真正想传达的是三点：</p>
+      <p><strong>其一，扣除获客成本前的正单位经济有扎实基础。</strong> 约 65% 的稳态毛利由中国走量 / 复购返批采购实价支撑；100–300 张首单更薄，但这正是需要数量阶梯、复购返批与规格溢价的原因。</p>
+      <p><strong>其二，这门生意的钱在第二单以后才真正释放。</strong> 标签是消耗品，复购率按消耗品基准取 35%（而非一次性 novelty 贴纸的约 10%），使多年 LTV:CAC 达到约 2.2:1。<strong>首年 LTV:CAC 小于 1（约 0.8）是正常且预期之内的</strong>——前提是用品牌资产库、一键复购、补货提醒和多 SKU 扩展，把"一次下单"运营成"长期标签账户"。</p>
+      <p><strong>其三，获客结构是决定成败的单一最软变量。</strong> 冷启动付费获客约 $150–250。营收基准 $50–90k 的成立，<strong>前提不是用 SEO 掩盖广告亏损，而是每个付费 cohort 都按 60 / 90 / 120 天追踪回收曲线与健康信号</strong>，同时让自然搜索与既有客户交叉销售降低整体现金压力。因此 §6 的搜索引擎策略并非"可选加分项"，而是降低获客风险的承重梁。</p>
+
+      <h3>1.2 价值驱动树：全篇的分析骨架</h3>
+      <p>我们把"可持续利润"拆解为三个互斥且穷尽的乘数，本报告的每个模块都对应其中之一：</p>
+
+      <div class="tree">
+        <div class="apex"><div class="lbl">可持续利润</div><div class="eq">=</div></div>
+        <div class="branches">
+          <div class="branch"><div class="mult">订单量</div><div class="items">切对市场<br>客户画像<br>获客渠道</div></div>
+          <div class="branch"><div class="mult">× 每单毛利</div><div class="items">规格与定价<br>成本与供应链</div></div>
+          <div class="branch"><div class="mult">× 复购乘数</div><div class="items">品质与交付信任<br>多 SKU / 品牌库<br>销售组合</div></div>
+        </div>
+      </div>
+
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>利润变量</th><th>对应模块</th><th>核心逻辑</th></tr></thead>
+        <tbody>
+          <tr><td><strong>订单量</strong></td><td>Pillar 1（§2）+ 获客（§6）</td><td>切对市场、找对客户、用对渠道，才有单量</td></tr>
+          <tr><td><strong>每单毛利</strong></td><td>Pillar 2（§3）+ Pillar 3（§4）</td><td>靠规格深度支撑定价、靠中国供应链压低成本</td></tr>
+          <tr><td><strong>复购乘数</strong></td><td>Pillar 2（§3）+ Pillar 4（§5）</td><td>靠品质信任、多 SKU 品牌库、销售组合，把一次印刷变成持续关系</td></tr>
+        </tbody>
+      </table></div>
+      <p class="footnote">下文四个 Pillar 依此展开——切哪个市场（Where to Play）→ 凭什么赢（How to Win）→ 赚不赚得到（Can We Make Money）→ 怎么落地（How to Execute）——最后接获客策略与关键决策。</p>
+    </div>
+  </section>
+
+  <!-- ===================== 2 · Pillar 1 ===================== -->
+  <section id="p1">
+    <div class="wrap">
+      <div class="sec-head pillar"><span class="sec-num">2</span><div><h2>Pillar 1｜切哪个市场</h2><span class="sec-tag">Where to Play · 对应利润变量：订单量</span></div></div>
+
+      <h3>2.1 市场定义与排除</h3>
+      <p>我们建议 Dylign 聚焦<strong>主流小批量标签</strong>，并明确排除两类诱人但错误的方向：</p>
+      <ul>
+        <li><strong>排除纯 novelty 贴纸</strong>：笔记本、水杯、潮流贴纸等一次性个人消费品——价格敏感、几乎零复购，且被 Sticker Mule 等大厂以规模与品牌牢牢占据。</li>
+        <li><strong>排除押注单一窄 niche</strong>：早期设想的"极速交付站""无起订量站"等单点打法，均因与 Dylign 的中国批量履约相冲突（数周交期打不了速度战）而不成立。</li>
+      </ul>
+      <p>美国定制标签与包装印刷是一个数亿美元级的成熟市场，需求充沛且高度分散。"小批量 CPG 标签"这一<strong>可服务细分</strong>的精确测算取决于产能与定价档位，建议作为上线前补充分析；但 §2.3 的竞争空白证据，已足以支撑"这里存在一个结构性空位"的判断。</p>
+
+      <h3>2.2 客户画像（ICP）</h3>
+      <div class="callout"><span class="tag">真实客户</span><strong>小批量 CPG 消耗品品牌</strong>——单款订购 <strong>100–300 张</strong>、拥有<strong>多个 SKU</strong>（蜡烛、手工皂、护肤/化妆，以及酱料、果酱、瓶饮等）、<strong>高频复购</strong>（消耗品属性）、且<strong>能容忍数周交期</strong>。</div>
+      <p>这一画像的每个特征都指向同一个结论：这是一个<strong>被系统性忽视</strong>的客户。他被大厂的高起订量挡在门外，又被快速 DTC 玩家的高价与 novelty 定位错配。两条滩头（家居个护 / 食品饮料外侧标签）共享"小批量·多 SKU·复购·容忍交期"的同一画像，Dylign 的规格深度最有用武之地。</p>
+
+      <h3>2.3 为什么是这里：竞争空白的实证</h3>
+      <p>我们对 12 家竞品逐一实测其真实起订门槛——<strong>门槛按品类分层，而卷标侧存在结构性空位</strong>：</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>竞品</th><th>卷标真实起订门槛</th></tr></thead>
+        <tbody>
+          <tr><td>noissue</td><td class="num">1,000 张</td></tr>
+          <tr><td>Avery</td><td class="num">千张档</td></tr>
+          <tr><td>EcoEnclose / StickerYou / CustomStickers</td><td class="num">250 张</td></tr>
+          <tr class="col-em"><td><strong>Dylign（建议）</strong></td><td class="num"><strong>100–300 张</strong></td></tr>
+        </tbody>
+      </table></div>
+      <p>"无最低起订量"是贴纸侧的营销话术；一旦进入卷标，门槛普遍抬到 250 张以上。<strong>Dylign 的 100–300 张覆盖了对手门槛下方及附近的小批量首单需求</strong>——不必比谁更便宜、更快，只需接住那些"想订 150 张、却被要求最少订 250 或 1,000 张"的订单，并把 300 张以上的客户引导到更健康的数量阶梯。</p>
+
+      <h3>2.4 竞品体验：值得借鉴的 vs 待解决的痛点</h3>
+      <div class="cards c2">
+        <div class="card"><div class="kicker">✓ 值得借鉴</div>
+          <p style="margin-bottom:10px"><strong>配置即设计、即时价</strong>：StickerApp / StickerYou 把配置器嵌在产品页，上传即出 live 刀线预览、价格实时刷新。</p>
+          <p style="margin-bottom:10px"><strong>信任前置</strong>：StickerApp 把 Trustpilot 高分放首屏；多家把"免费 proof"作显性承诺。</p>
+          <p><strong>强制设计批准</strong>：StickerYou 结账前强制"I Approve My Design"，把 proof 风险前移。</p>
+        </div>
+        <div class="card" style="border-color:var(--warn)"><div class="kicker" style="color:var(--warn)">△ 待解决痛点＝机会</div>
+          <p style="margin-bottom:10px"><strong>"没有设计稿怎么开始"</strong>：多数站假设用户已有印刷级文件；真实小品牌常只有一个想法——这是最大进入门槛。</p>
+          <p style="margin-bottom:10px"><strong>"proof 怎么确认、不回复怎么推进"</strong>：proof 环节沟通与状态追踪普遍粗糙，是购买阻力集中点。</p>
+          <p><strong>规格选择无人引导</strong>：没有一家在下单流程里帮小品牌把材质、规格与条码/可变数据字段做对。</p>
+        </div>
+      </div>
+      <p>这三个痛点正是 Dylign 的机会所在——它们如何转化为具体的产品取舍，见 §5.3。</p>
+    </div>
+  </section>
+
+  <!-- ===================== 3 · Pillar 2 ===================== -->
+  <section id="p2">
+    <div class="wrap">
+      <div class="sec-head pillar"><span class="sec-num">3</span><div><h2>Pillar 2｜凭什么赢</h2><span class="sec-tag">How to Win · 对应利润变量：每单毛利 + 复购乘数</span></div></div>
+
+      <h3>3.1 竞争地形：三种打法</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>打法</th><th>代表</th><th>特征</th><th>对 Dylign 的意义</th></tr></thead>
+        <tbody>
+          <tr><td><strong>速度型 DTC</strong></td><td>Sticker Mule 群</td><td>4 天交期、海量广告、通用贴纸</td><td>不正面竞争（打不过速度）</td></tr>
+          <tr class="col-em"><td><strong>B2B 标签厂</strong></td><td>Sttark、Blue Label</td><td>规格专业、询价制、面向品牌</td><td><strong>真正的对手</strong></td></tr>
+          <tr><td><strong>中国直发站</strong></td><td>Vograce、GS-JJ</td><td>低价、长交期、跨境</td><td>同供应模式，靠体验区隔</td></tr>
+        </tbody>
+      </table></div>
+      <p>真正的对手是 <strong>B2B 标签厂</strong>——但它们大多起订量偏高、流程偏重（询价、报价、邮件来回）。Dylign 的机会，正是在同等专业度下，用<strong>更低的起订量</strong>与<strong>更顺的自助下单体验</strong>切入。</p>
+
+      <h3>3.2 差异化支点：三个"真空格"</h3>
+      <div class="cards c3">
+        <div class="card"><div class="kicker"><span class="n">1</span>可变数据</div><strong class="h">批号、生产/有效日期、序列号</strong><p>消耗品标签的刚需（批次追溯/效期），12 家中仅 2 家支持。</p></div>
+        <div class="card"><div class="kicker"><span class="n">2</span>卷规格自助</div><strong class="h">机贴方向、卷芯内径、每卷数量</strong><p>品牌方上产线的刚需，仅 2 家开放自助配置。</p></div>
+        <div class="card"><div class="kicker"><span class="n">3</span>场景材质导购</div><strong class="h">冷藏、防油、防水、可回收按用途推荐</strong><p>无人涉足；纸质材质还可打真实的 FSC 认证 / 可持续纸源标。</p></div>
+      </div>
+
+      <div class="callout teal"><span class="tag">关键洞察 · 三线合流</span>一个<strong>免费标签工具</strong>同时是三样东西——<strong>产品差异化功能</strong>（帮客户把条码/可变数据一次做对）、<strong>最强的免费获客引擎</strong>（<code>barcode generator</code> 月搜 <strong>368,000</strong>、免费变体难度仅 <strong>13</strong>）、<strong>把获客成本压向零的钩子</strong>。一物三用，是全案最高杠杆的资产。（食品线的营养成分标签生成器 6,600 / 难度 19 是同一打法的 <strong>Phase-2 延伸</strong>。）</div>
+
+      <h3>3.3 规格策略：分三层，别把门槛当卖点</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>层级</th><th>内容</th><th>沟通策略</th></tr></thead>
+        <tbody>
+          <tr><td><strong>必备（入场门槛）</strong></td><td>尺寸、数量、形状、材质、工艺、即时报价</td><td>做到位即可，<strong>不当卖点宣传</strong></td></tr>
+          <tr><td><strong>加分</strong></td><td>卷标形态、特殊工艺、双面、proof 选项、交期、设计协助</td><td>提升体验与客单</td></tr>
+          <tr class="col-em"><td><strong>优势（差异化）</strong></td><td>可变数据、卷规格自助、场景材质导购</td><td><strong>主打，重点传播</strong></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>3.4 产品与销售组合：把一次印刷变成持续关系</h3>
+      <ul>
+        <li><strong>品牌资产库</strong>：保存 logo、刀线、材质、尺寸、卷向、色值、proof 版本和上次供应商参数，让第二单不再重新沟通。</li>
+        <li><strong>一键复购</strong>：reorder same label、duplicate for new flavor、change batch / expiry date、upgrade to 1,000 labels 等快捷动作。</li>
+        <li><strong>多 SKU 套餐</strong>：把"一款标签"引导为"全系列 starter pack"，同时提高客单和未来复购概率。</li>
+        <li><strong>补货提醒</strong>：按上次订购数量触发 email / SMS lifecycle（如 300 张在 30 / 45 天提醒）。</li>
+        <li><strong>轻量 replenishment plan</strong>：对稳定客户提供 60 / 90 天定期提醒、确认后生产、固定 proof 和材质参数。</li>
+        <li><strong>样品包低门槛试单</strong>：保留样品包和 100 张小单能力作为验证入口；确认后引导进入 300 / 500 / 1,000 张阶梯。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== 4 · Pillar 3 ===================== -->
+  <section id="p3">
+    <div class="wrap">
+      <div class="sec-head pillar"><span class="sec-num">4</span><div><h2>Pillar 3｜赚不赚得到</h2><span class="sec-tag">Can We Make Money · 对应利润变量：每单毛利</span></div></div>
+
+      <h3>4.1 成本结构：小批量为什么贵</h3>
+      <p>小批量订单的成本被<strong>固定成本</strong>吃掉。每一票订单不论大小，都要摊销：海关手续费（MPF，每票约 $33.58）、物流与清关、proof 与制版人工；再叠加约 37.5% 的关税（视 HTS 归类，约 35%–37.5%）。<strong>单张成本对订单量高度敏感</strong>——这既解释大厂为何设高起订量，也说明 Dylign 接 100–300 张必须靠"批量返单摊薄固定成本 + 规格溢价"维持毛利。</p>
+      <div class="callout"><span class="tag">一手 RFQ 印证</span>Jiangsu OPT 3″ 异形贴（工厂价）：100 张 <strong>$0.35/张</strong>、300 张 <strong>$0.17/张</strong>、1,000 张 <strong>$0.09/张</strong>——单张成本随量下降近 4 倍。挂牌上常见的 $0.02–0.07/张只在数千张走量档成立；<strong>在目标的 100–300 张档，真实单张成本高得多、首单毛利更薄</strong>。</div>
+
+      <h3>4.2 利润空间：毛利健康，价差仍在</h3>
+      <p><strong>这不是一门低毛利的走量生意。</strong> 扣除获客成本前的<strong>稳态</strong>毛利率约 <strong>65%</strong>（走量 / 复购档），在电商品类里属健康水平——由中国采购实价支撑，而非靠压价硬挤。"直邮免税"红利虽已消失，但<strong>批量返单</strong>对标美国本地零售价仍便宜约 <strong>37%–49%</strong>。</p>
+      <p>真正决定盈亏的，<strong>不在毛利端</strong>，而在两处：<strong>付费获客 cohort 能否回本</strong>（§4.3）与<strong>复购、交叉销售、自然搜索能否降低整体风险</strong>（§4.4）。</p>
+
+      <h3>4.3 单位经济、回本与获客成本（全案最关键的不确定性）</h3>
+      <p><strong>毛利端由采购实价支撑，但对订单量高度敏感。</strong> 约 <strong>65%</strong> 是走量 / 复购返批档的稳态水平；在 <strong>100–300 张的首单档，单张成本被开机费 / 打样 / 制版主导（实报 $0.17–0.35/张），毛利明显更薄（约 35%–50%）</strong>。这不是漏洞、而是模型的一部分——毛利随数量阶梯与复购返批向 65% 收敛。</p>
+      <div class="pullquote">获客成本 = 有效点击成本 ÷ 转化率</div>
+      <p>目标标签类高意图词的有效点击成本约 <strong>$3–6</strong>；配合 1.5%–3% 的转化率，得出<strong>冷启动付费获客约每客 $150–250</strong>（自然流量与免费工具起量后，混合获客成本可降至约 $90–120）。</p>
+      <div class="stats">
+        <div class="stat"><div class="v">$150–250</div><div class="k">冷启动付费获客 / 客</div></div>
+        <div class="stat"><div class="v">~0.8</div><div class="k">首年 LTV:CAC</div></div>
+        <div class="stat"><div class="v">~2.2</div><div class="k">多年 LTV:CAC</div></div>
+        <div class="stat"><div class="v">$90–120</div><div class="k">混合获客成本（起量后）</div></div>
+      </div>
+      <div class="pullquote">Paid ROI = AOV × Gross Margin × Repeat Multiplier ÷ CAC</div>
+      <p>因此广告优化不只看 CPC 或转化率，而要同时撬动四个变量：</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>杠杆</th><th>具体动作</th><th>对 ROI 的影响</th></tr></thead>
+        <tbody>
+          <tr><td>提高 AOV</td><td>默认推荐 300 / 500 / 1,000 张阶梯、多 SKU bundle、设计协助与可变数据加购</td><td>同样 CAC 下每客首单毛利更高</td></tr>
+          <tr><td>提高转化率</td><td>每个词簇匹配垂直落地页（candle / soap / bottle labels），保留即时价、无稿入口和 proof 承诺</td><td>CAC 从 $225 向 $150 收敛</td></tr>
+          <tr><td>减少无效点击</td><td>避开 <code>custom stickers</code> 泛词，只买目标垂直标签高意图词</td><td>少买一次性 novelty 流量</td></tr>
+          <tr><td>提高复购倍数</td><td>品牌资产库、一键复购、补货提醒、批号/效期可变数据</td><td>让 paid cohort 在生命周期维度回收 CAC</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>4.4 利润的上行杠杆：复购账户、交叉销售与自然流量</h3>
+      <div class="cards c2">
+        <div class="card"><div class="kicker"><span class="n">1</span>复购账户运营</div><p>首单后沉淀品牌资产、proof、材质、尺寸、卷向和色值，用完前触发补货提醒——广告买来的不是一次性订单，而是可一键复购的 label account。</p></div>
+        <div class="card" style="border-color:var(--orange)"><div class="kicker"><span class="n">2</span>交叉销售（最高 ROI · Dylign 独有）</div><p>向既有包装客户交叉销售标签，获客成本近乎为零、转化率远高于冷流量——这是相对任何纯标签新站的<strong>结构性优势</strong>。</p></div>
+        <div class="card"><div class="kicker"><span class="n">3</span>追加销售</div><p>同一客户随时间增加 SKU、升级工艺、加购设计、下更大批量，使客单与 LTV 随复购增长。</p></div>
+        <div class="card"><div class="kicker"><span class="n">4</span>自然流量</div><p>免费工具与 SEO 带来近乎零边际成本的订单，首单即盈利、随排名成熟复利——作用是降低整体获客风险，而非替不健康的 paid cohort 补亏。</p></div>
+      </div>
+      <div class="tbl-wrap"><table>
+        <caption>首年客户来源与管理纪律（示意，待 Dylign 数据校准）</caption>
+        <thead><tr><th>客户来源</th><th>首年占比</th><th>获客成本</th><th>管理重点</th><th>放量纪律</th></tr></thead>
+        <tbody>
+          <tr><td>既有客户交叉销售</td><td class="num">~25%</td><td class="num">≈ $0</td><td>包装客户加购、多 SKU 组合</td><td>CRM 校准后优先触达</td></tr>
+          <tr><td>自然流量新客</td><td class="num">~20%↑</td><td class="num">≈ $0 边际</td><td>工具页转商业页、沉淀账户</td><td>12–24 月复利建设</td></tr>
+          <tr class="col-em"><td>付费搜索新客</td><td class="num">~45%</td><td class="num">$150–250</td><td>提高 AOV、二单率、多 SKU 扩展</td><td>看 60 / 90 / 120 天回收曲线</td></tr>
+          <tr><td>直接/口碑/推荐</td><td class="num">~10%</td><td class="num">低</td><td>复购提醒、推荐激励</td><td>稳定承接</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout warn"><span class="tag">关键洞察</span>混合获客成本可以解释整体业务风险，<strong>但不能替代 paid cohort 健康度</strong>。若某词簇买来的多是一次性低客单用户，即使整体混合 CAC 好看，也应停止；若买来的是高 AOV、可复购、多 SKU 的商业买家，则可逐步放量。</div>
+
+      <h3>4.5 Stage-gate：什么条件下该退出</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>顺序</th><th>退出条件</th><th>验证方式</th><th>不通过则</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Gate 1（首要）</strong></td><td>中国 RFQ 报价</td><td>发询价、收回 ≥3 份形式发票</td><td>成本不成立，直接停</td></tr>
+          <tr><td><strong>Gate 2</strong></td><td>付费获客 cohort 质量</td><td>首月实测 CAC / AOV / 商业买家占比，追踪 60–120 天回收曲线</td><td>CAC 远超 $250 或低 AOV / 低复购压不下，停止该词簇</td></tr>
+          <tr><td><strong>Gate 3</strong></td><td>复购率</td><td>前 90 天复购数据</td><td>若远低于 35%，商业模型需重设</td></tr>
+          <tr><td>应急项</td><td>POD 应急产能</td><td>备选供应商</td><td>仅作应急，非主路径</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- ===================== 5 · Pillar 4 ===================== -->
+  <section id="p4">
+    <div class="wrap">
+      <div class="sec-head pillar"><span class="sec-num">5</span><div><h2>Pillar 4｜怎么落地</h2><span class="sec-tag">How to Execute · 把策略转为动作</span></div></div>
+
+      <h3>5.1 供应链 0→1：为什么选方案 B（中国批量为主）</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>维度</th><th>方案 A：美国 POD</th><th class="col-em">方案 B：中国批量为主</th><th>方案 C：中美混合</th></tr></thead>
+        <tbody>
+          <tr><td>单位成本</td><td>高（美国印价）</td><td class="col-em"><strong>低（量大低至 $0.09/张）</strong></td><td>中</td></tr>
+          <tr><td>小批量灵活性</td><td>高（1 张起）</td><td class="col-em">中（MOQ ~100，靠攒批）</td><td>高</td></tr>
+          <tr><td>交期</td><td>快（数日）</td><td class="col-em">慢（4–5 周，偏海运）</td><td>分层</td></tr>
+          <tr><td>供应确定性</td><td class="no">低（4over 等需美国主体）</td><td class="col-em yes">高（成熟供应）</td><td>中</td></tr>
+          <tr><td>现金流/库存</td><td>轻</td><td class="col-em">轻（按单返货）</td><td>中</td></tr>
+          <tr><td><strong>与 ICP 匹配</strong></td><td class="no">错配</td><td class="col-em yes"><strong>匹配（客户容忍数周）</strong></td><td class="mid">部分匹配</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout good"><span class="tag">结论</span><strong>方案 B 胜出</strong>，因为它在"真正重要的维度"上占优。目标客户能容忍数周交期，因此方案 A/C 用高成本换来的"速度"是<strong>无效溢价</strong>；方案 B 的低单位成本直接支撑 §4.3 的约 65% 毛利。<strong>POD 仅作应急产能。</strong></div>
+      <p>第一个动作明确——<strong>发出 RFQ、收回至少 3 份形式发票（PI）</strong>，据此验证 Gate 1、锁定单位成本。</p>
+
+      <h3>5.2 供应商：一手 RFQ 与分级路由</h3>
+      <div class="tbl-wrap"><table>
+        <caption>一手能力对照（三家已回覆）</caption>
+        <thead><tr><th></th><th>Ningbo Skyline</th><th>Guangdong Juncheng</th><th>Jiangsu OPT / Taizhou</th></tr></thead>
+        <tbody>
+          <tr><td>食品接触</td><td class="no">❌ 做不了</td><td class="mid">⚠️ 印 BOPP，无认证</td><td class="no">❌ 无接触材料文件</td></tr>
+          <tr><td>可变数据</td><td>支持 MOQ 3,000、仅卷</td><td class="yes">✅ 数码、不加价</td><td class="yes">✅ 不影响价格</td></tr>
+          <tr><td>设计协助</td><td class="no">❌ 不设计</td><td class="yes">✅ 简单免费</td><td class="mid">⚠️ 转矢量收费、改稿 ≤3 次</td></tr>
+          <tr><td>起订</td><td>异形 100 起</td><td>≤1,000 统一价</td><td>异形 100 起；2″ MOQ 500</td></tr>
+          <tr><td>打样</td><td>—</td><td>800 元 / 3–5 天</td><td>$30/设计 / 5–7 天</td></tr>
+          <tr><td>认证</td><td>—</td><td class="yes">✅ ISO ×3 + FSC ×2 + 奖</td><td>—</td></tr>
+        </tbody>
+      </table></div>
+      <div class="tbl-wrap"><table>
+        <caption>挂牌价 vs 实际报价</caption>
+        <thead><tr><th>供应商</th><th>挂牌参考(¥/张)</th><th>实际报价（RFQ，小批量）</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Jiangsu OPT / Taizhou</strong></td><td class="num">0.135–4.05</td><td>3×3 异形 100/300/1,000＝<strong>$35 / $52 / $92</strong>；2″ 500/1,000＝$65/$73；打样 $30</td></tr>
+          <tr><td><strong>Guangdong Juncheng</strong></td><td class="num">0.0675–1.69</td><td>开机费制：异形 <strong>800 元</strong>、圆标 <strong>600 元</strong>（1,000 张≈$0.11/张）；打样 800 元</td></tr>
+          <tr><td><strong>Ningbo Skyline</strong></td><td class="num">0.0675–0.675</td><td>3″ 异形 100/300/1,000＝<strong>$65 / $85 / $140</strong>（含运费）；可变数据须 MOQ 3,000</td></tr>
+          <tr><td><strong>Shanghai Stonedoing</strong></td><td class="num">0.135–4.53</td><td>未回覆</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout warn"><span class="tag">口径提醒</span>各家报价基准不同（工厂价 / 含运费价 / 开机费统一价），不宜直接横比；但共同结论一致——<strong>100 张档真实单价（$0.35–$1.1/张）远高于挂牌低端 $0.02</strong>，被开机费/打样/制版等固定成本主导。</div>
+      <div class="cards c2">
+        <div class="card"><div class="kicker">结论一 · 食品接触认证</div><strong class="h">三家皆无</strong><p>上线不能对客户承诺随附食品安全文件（见 §7.2）。</p></div>
+        <div class="card" style="border-color:var(--good)"><div class="kicker" style="color:var(--good)">结论二 · FSC 可持续</div><strong class="h">真实可背书的卖点</strong><p>Guangdong Juncheng 持 FSC 产销监管链认证，对纸质材质可合法打"FSC 认证 / 可持续纸源"（塑料不算）。</p></div>
+      </div>
+
+      <h3>5.3 产品与原型：从体验洞察到产品决策</h3>
+      <ul>
+        <li><strong>规格（三层，见 §3.3）</strong>：必备维度做到位但不宣传；差异化维度重点呈现。</li>
+        <li><strong>材质（按场景导购）</strong>：防水 BOPP、透明 BOPP、白色乙烯基、牛皮纸、再生 PCW、全息——按用途导购而非堆清单。</li>
+        <li><strong>购买流程</strong>：配置规格 → 即时报价 → 加购物车 → 结账付款 → 付款后出免费 proof、确认后生产（生产 7–10 工作日；含跨境整体交付约 4–5 周）。全程无询价邮件。</li>
+        <li><strong>客单提升设计</strong>：100 张保留为试单能力，报价模块默认突出 300 / 500 / 1,000 张阶梯，并提供多 SKU starter pack 与加购项。</li>
+      </ul>
+      <div class="callout"><span class="tag">对三个竞品痛点的取舍</span>
+        <p style="margin:6px 0"><strong>"无稿也能开始" — 上线即做（诚实界定能力边界）</strong>：接受任何稿件状态，但清稿/矢量化能力依赖供应商、有限，口径应是"简单清稿可能免费、复杂设计明码报价、proof 阶段确认"。</p>
+        <p style="margin:6px 0"><strong>"proof 确认与追踪" — 沿用既有流程</strong>：proof 是下单后的品质工序，不在前端做成独立卖点。</p>
+        <p style="margin:6px 0 0"><strong>"合规字段引导（食品线）" — Phase-2 机会</strong>：营养/合规字段模板暂不在上线范围。</p>
+      </div>
+
+      <h3>5.4 90 天 stage-gate</h3>
+      <div class="cards c3">
+        <div class="card"><div class="kicker">Day 30</div><p>RFQ 报价回收、单位成本确认（Gate 1）；原型上线、首批投放启动。</p></div>
+        <div class="card"><div class="kicker">Day 60</div><p>首月 CAC / AOV / 商业买家占比实测（Gate 2）；SEO 地基（免费工具 + 核心商业页）上线。</p></div>
+        <div class="card"><div class="kicker">Day 90</div><p>复购信号观察（Gate 3）；据三个 Gate 决定加码、调整或退出。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 6 · GTM ===================== -->
+  <section id="gtm">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">6</span><div><h2>获客策略（GTM）</h2><span class="sec-tag">对应利润变量：订单量</span></div></div>
+
+      <h3>6.1 渠道现实：付费搜索是基本盘，但 Dylign 拼不过预算</h3>
+      <p><strong>第一，付费搜索是这个品类的基本盘。</strong> 检查的六家主要竞品无一例外都在投 Google 广告——从 Sttark（约 23 条）、Blue Label（约 30 条），到 OnlineLabels（约 3,000 条），乃至 Avery（约 800 条）。</p>
+      <p><strong>第二，渠道选择跟着商业模式走。</strong> DTC 电商型玩家双线投 Google + Meta、CTA 是"立即购买"；B2B 询价型印刷厂几乎只投 Google 搜索、CTA 是"获取报价"。</p>
+      <div class="callout"><span class="tag">对 Dylign 的含义</span>付费搜索要投，但<strong>无法在预算上与这些玩家硬拼</strong>。真正的主力杠杆，是下面的搜索引擎与免费工具策略——这个品类里资本效率最高、且能复利积累护城河的楔子。</div>
+
+      <h3>6.2 主力楔子：SEO 四支柱</h3>
+      <div class="cards c2">
+        <div class="card" style="border-color:var(--orange)"><div class="kicker">支柱一 · 免费标签工具（最高杠杆）</div><p>以 <code>barcode/UPC generator</code>（月搜 <strong>368,000</strong>、免费变体难度仅 13）为旗舰，配标签尺寸/刀线预览器。全案投入产出比最高的单点。</p></div>
+        <div class="card"><div class="kicker">支柱二 · 垂直教育长文</div><p>如何做蜡烛/手工皂/化妆品标签、BOPP 与纸标怎么选、瓶标尺寸指南——照搬竞品验证过的"教育长文"打法。</p></div>
+        <div class="card"><div class="kicker">支柱三 · 商业长尾产品页</div><p>candle / soap / cosmetic / bottle / jar labels，难度普遍 21–34、无强占位者，同性质合并优化落地页。</p></div>
+        <div class="card"><div class="kicker">支柱四 · 节奏与预期</div><p>对手域名权重 32–65，以"工具 + 内容 + 反链"飞轮，12–24 个月达到 30–40 是现实的。</p></div>
+      </div>
+
+      <h3>6.3 关键词地图：双轨长尾</h3>
+      <ul>
+        <li><strong>中尾（流量主力）</strong>：barcode generator（368K；免费变体 27.1K / 难度 13）、candle labels（2,900 / 26）、waterproof labels（2,400 / 31）、custom bottle labels（1,300 / 27）、soap labels（880 / 21）、cosmetic labels（320 / 22）；食品词作 Phase-2。</li>
+        <li><strong>超长尾（程序化聚合）</strong>：custom [垂直] labels 等，单词量近零但难度极低（约 4）——用批量模板页 + FAQ 聚合，价值在"量大取胜 + 撑起主题权威"。</li>
+      </ul>
+
+      <h3>6.4 投入产出：付费渠道如何跑正</h3>
+      <p class="footnote">共同假设：客单 $100、扣获客成本前稳态毛利 65%（即每单毛利 $65）。</p>
+      <div class="tbl-wrap"><table>
+        <caption>先看首单：付费搜索不能按一次性订单模型放量（点击成本 $4.5，转化 2%，CAC ≈ $225）</caption>
+        <thead><tr><th>投入广告费</th><th>点击</th><th>订单</th><th>首单营收</th><th>首单毛利</th><th>减广告费</th><th>首单净额</th></tr></thead>
+        <tbody>
+          <tr><td class="num">$10,000</td><td class="num">~2,200</td><td class="num">~44</td><td class="num">~$4,400</td><td class="num">~$2,860</td><td class="num">−$10,000</td><td class="num no"><strong>≈ −$7,140</strong></td></tr>
+        </tbody>
+      </table></div>
+      <p>单看首单，每投入 $1 广告约亏 $0.7。这不代表"广告不能投"，而是说明<strong>不能用低客单、一次性 novelty sticker 的逻辑投</strong>。</p>
+      <div class="tbl-wrap"><table>
+        <caption>转化率每抬高一点，付费的账就好看一截</caption>
+        <thead><tr><th>转化率</th><th>每客获客成本</th><th>首单净额（毛利 $65 − CAC）</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1.5%</td><td class="num">$300</td><td class="num no">−$235</td></tr>
+          <tr class="col-em"><td class="num"><strong>2%（基准）</strong></td><td class="num"><strong>$225</strong></td><td class="num no"><strong>−$160</strong></td></tr>
+          <tr><td class="num">3%</td><td class="num">$150</td><td class="num no">−$85</td></tr>
+          <tr><td class="num">5%</td><td class="num">$90</td><td class="num mid">−$25</td></tr>
+          <tr><td class="num">~7%</td><td class="num">~$65</td><td class="num yes">≈ $0（首单打平）</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout warn"><span class="tag">两个回本门槛，别混淆</span><strong>首单打平</strong>需要约 <strong>7%</strong> 转化——对冷流量偏高，不能作早期唯一标准。真正相关的是 <strong>cohort 生命周期健康度</strong>：看 AOV、二单率、多 SKU 扩展和 60 / 90 / 120 天毛利回收曲线。</div>
+      <div class="tbl-wrap"><table>
+        <caption>付费策略：从"首购型广告"转为"复购账户型广告"</caption>
+        <thead><tr><th>维度</th><th>首购型广告</th><th class="col-em">复购账户型广告（建议）</th></tr></thead>
+        <tbody>
+          <tr><td>目标</td><td>获得一次 sticker 订单</td><td class="col-em">获得一个可复购的 label account</td></tr>
+          <tr><td>主推 offer</td><td>低价、小单、低门槛</td><td class="col-em">Starter bundle / 多 SKU / 300–500 张起</td></tr>
+          <tr><td>落地页</td><td>泛 custom sticker 页</td><td class="col-em">candle / soap / bottle / jar 垂直页</td></tr>
+          <tr><td>起订量设计</td><td>尽量压低 MOQ</td><td class="col-em">100 张保留试单，默认推荐 300 / 500 / 1,000</td></tr>
+          <tr><td>AOV 杠杆</td><td>只卖单款标签</td><td class="col-em">多 SKU、设计协助、可变数据、材质包、卷规格</td></tr>
+          <tr><td>复购机制</td><td>等客户自己回来</td><td class="col-em">品牌资产库、一键复购、补货提醒</td></tr>
+          <tr><td>核心指标</td><td>首单 ROAS、CPA</td><td class="col-em">60–120 天回收曲线、二单率、AOV、商业买家占比</td></tr>
+        </tbody>
+      </table></div>
+      <div class="tbl-wrap"><table>
+        <caption>SEO / 免费工具（成熟期示意）：最高资本效率渠道</caption>
+        <thead><tr><th>渠道</th><th>订单/月</th><th>获客成本</th><th>每月毛利</th></tr></thead>
+        <tbody>
+          <tr><td>免费工具页（barcode 生成器等）</td><td class="num">~34–68</td><td class="num">≈ $0</td><td class="num">~$2,200–4,400</td></tr>
+          <tr><td>商业长尾产品页（candle / soap / bottle…）</td><td class="num">~15–30</td><td class="num">≈ $0</td><td class="num">~$1,000–2,000</td></tr>
+        </tbody>
+      </table></div>
+      <p class="footnote">SEO 订单首单即盈利，且随时间复利；但它的作用不是"替广告补亏"，而是降低整体获客风险。付费渠道自身仍必须按 cohort 回收曲线管理。</p>
+
+      <h3>6.5 广告投放实扫的启示</h3>
+      <ul>
+        <li><strong>最值得借鉴的样板是 noissue</strong>：Google 搜索/购物 × Meta 社群按垂直定向，跨渠道口径高度一致。借鉴"同一垂直人群、同一主张、同一落地页"的协同方式。</li>
+        <li><strong>可直接复用的素材角度</strong>：低起订量、免费 proof、按垂直定向、多 SKU / 大单咨询钩子。唯一打不了的是<strong>速度</strong>——应诚实避开。</li>
+        <li><strong>关于 TikTok</strong>：建议作为低成本、后期的内容/creator 实验，而非早期重点；以"复购率 / 商业买家占比"为成败标准。</li>
+      </ul>
+
+      <h3>6.6 为什么不以通用贴纸为主攻方向</h3>
+      <div class="cards c3">
+        <div class="card" style="border-color:var(--bad)"><div class="kicker" style="color:var(--bad)">自然搜索打不赢</div><p><code>custom stickers</code> 月搜 90,500、难度 65，是 Sticker Mule（DR 77）的地盘，新站排不上。</p></div>
+        <div class="card" style="border-color:var(--bad)"><div class="kicker" style="color:var(--bad)">付费太贵</div><p>该词簇 CPC 高达 $7–15（目标垂直标签词才 $1.4–3.5）。</p></div>
+        <div class="card" style="border-color:var(--bad)"><div class="kicker" style="color:var(--bad)">客户是错的</div><p>搜这些词的是个人 novelty 买家与价格/速度猎人——一次性、零复购，与"靠复购赚钱"正好相反。</p></div>
+      </div>
+      <p>但贴纸仍留在产品目录中；对少数"包装意图"的贴纸措辞（如 candle stickers、food packaging stickers），作为标签落地页的次要别名顺带承接即可。</p>
+
+      <h3>6.7 首轮小预算投流测试与核心指标</h3>
+      <ul>
+        <li><strong>预算与渠道</strong>：$1,500–3,000，全部投 Google 搜索，不碰社群冷启。</li>
+        <li><strong>关键词</strong>：只买高意图垂直标签词（candle / soap / bottle / jar labels）。</li>
+        <li><strong>落地页</strong>：每个词簇对应一个专门落地页，报价模块默认突出 300 / 500 / 1,000 张阶梯与加购项。</li>
+        <li><strong>kill 标准</strong>：实测 CAC 远超 $250 且压不下，停止该词簇；CAC 可接受但首单 AOV 过低、商业买家占比低、60–120 天无二单，也不放量。</li>
+      </ul>
+      <div class="tbl-wrap"><table>
+        <caption>GTM 核心指标</caption>
+        <thead><tr><th>层级</th><th>指标</th><th>健康信号</th></tr></thead>
+        <tbody>
+          <tr><td>获客</td><td>各渠道获客成本、混合获客成本</td><td class="yes">混合 ≤ $120</td></tr>
+          <tr><td>付费质量</td><td>商业买家占比、首单 AOV、多 SKU 占比</td><td>AOV 随数量阶梯上移，非 novelty 买家为主</td></tr>
+          <tr><td>复购</td><td>二单率、补货提醒点击率、可变数据/新 SKU 复购</td><td class="yes">12 个月复购 ≥ 35%</td></tr>
+          <tr><td>效率</td><td>LTV:CAC（多年）、60 / 90 / 120 天回收曲线</td><td class="yes">多年 LTV:CAC ≥ 2</td></tr>
+          <tr><td>SEO</td><td>免费工具页流量、自然订单占比</td><td class="yes">逐月上升</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>6.8 社媒内容与 KOL / UGC：展示使用场景</h3>
+      <ul>
+        <li><strong>内容主题</strong>：小 CPG 品牌"贴标前后"改造、开箱、材质选择小知识短视频——对标 noissue。</li>
+        <li><strong>KOL / UGC 对象</strong>：小 CPG 创始人（蜡烛/手工皂/护肤、精酿/咖啡/酱料垂直微网红），既是内容源也是潜在客户。</li>
+        <li><strong>平台与方式</strong>：Instagram / TikTok 以有机内容为主，用 Spark Ads 放大表现好的素材。</li>
+        <li><strong>衡量</strong>：不看点击，看商业买家占比与复购。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== BOARD EMBED ===================== -->
+  <section id="board">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">◆</span><div><h2>交互看板：12 家竞品购买流程实测</h2><span class="sec-tag">嵌入子页面 · 可逐步拆解</span></div></div>
+      <p>下方为可交互的竞品购买流程看板——对 12 家竞品的购买流程、规格维度、真实起订量与截图逐步拆解，支撑 §2–§3 的所有结论。可直接在内嵌窗口中操作，或点击右上角在新标签页全屏打开。</p>
+    </div>
+    <div class="embed-shell">
+      <div class="embed-bar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="ttl">競品購買流程交互看板 · 12 家逐步拆解</span>
+        <a class="open" href="竞品购买流程交互看板.html" target="_blank" rel="noopener">在新标签页全屏打开 ↗</a>
+      </div>
+      <iframe src="竞品购买流程交互看板.html" title="竞品购买流程交互看板" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- ===================== 7 · 关键决策 ===================== -->
+  <section id="decisions">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">7</span><div><h2>关键决策与后续</h2></div></div>
+
+      <h3>7.1 已明确的关键决策</h3>
+      <ol>
+        <li><strong>商业目标</strong>：首年营收 $50–90k、复购率 ≥35%、稳态毛利率约 65%、多年 LTV:CAC 约 2.2。</li>
+        <li><strong>供应模式</strong>：以方案 B（中国批量为主），POD 仅作应急产能。</li>
+        <li><strong>市场滩头</strong>：小批量 CPG 消耗品品牌，横跨家居个护与食品饮料外侧非食品接触标签；食品接触认证与营养工具列 Phase-2。</li>
+        <li><strong>交期口径</strong>：对客户明确"生产 7–10 天 + 运输 3–4 周 ≈ 总计 4–5 周"。</li>
+        <li><strong>下单模型</strong>：直接下单收款；proof 作为下单后既有品质工序、不设为付款前关卡；差异化由产品承载，而非付款花招。</li>
+        <li><strong>付费获客模型</strong>：不按一次性首购 ROAS 放量，而按可复购 label account 投放；付费落地页默认推荐 300 / 500 / 1,000 张阶梯。</li>
+        <li><strong>复购机制</strong>：首单后沉淀品牌资产库、一键复购、email / SMS 补货提醒和批号/效期可变数据更新。</li>
+        <li><strong>合规工具</strong>：作为第二阶段可选投资，非上线前提；上线先以"上传稿 + 免责确认 + 自动印前检查"承接。</li>
+      </ol>
+
+      <h3>7.2 上线前待验证（诚实清单）</h3>
+      <div class="cards c2">
+        <div class="card"><div class="kicker">转化率、AOV 与回收曲线</div><p>只能由原型上线后首月实投和 60–120 天 cohort 追踪测得（Gate 2），直接决定真实获客成本与是否放量。</p></div>
+        <div class="card"><div class="kicker">既有客户基数与交叉销售率</div><p>可能是 Dylign 独有、成本最低的获客来源，但需内部 CRM 数据支撑，本报告仅作方向性假设。</p></div>
+        <div class="card"><div class="kicker">可服务市场（SAM/SOM）</div><p>小批量 CPG 标签的可服务盘，需结合产能与定价档细化。</p></div>
+        <div class="card" style="border-color:var(--warn)"><div class="kicker" style="color:var(--warn)">食品接触材质合规文件</div><p>已确认三家<strong>均无</strong>食品接触/迁移检测认证文件。上线<strong>不能承诺随附食品安全文件</strong>；若要提供须另找有认证的供应商。</p></div>
+      </div>
+
+      <h3>7.3 收束</h3>
+      <div class="pullquote">做——但重新定义战场。以小批量卷标 + 规格深度切入小批量 CPG 消耗品品牌，用中国批量履约对齐数周交期，靠消耗品复购的复利赚钱；付费搜索只按可复购 label account 的 cohort 回收曲线受控放量，同时把"免费标签工具 + 自然搜索 + 既有客户交叉销售"作为降低获客风险的复利路径，而非与大厂拼广告预算、或拼一场注定输的速度战。</div>
+    </div>
+  </section>
+
+  <!-- ===================== 原型链接 ===================== -->
+  <section id="proto">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">▣</span><div><h2>配套原型与工具</h2><span class="sec-tag">已 Dylign 化的可点击 demo</span></div></div>
+      <div class="proto-grid">
+        <a class="proto" href="index.html" target="_blank" rel="noopener"><div class="ic">🛒</div><strong>下单原型</strong><span>核心购买流程 · 配置器 + 即时报价</span><div class="arrow">打开 →</div></a>
+        <a class="proto" href="labels-home-care.html" target="_blank" rel="noopener"><div class="ic">🕯️</div><strong>家居个护标签页</strong><span>蜡烛 / 手工皂 / 护肤垂直落地页</span><div class="arrow">打开 →</div></a>
+        <a class="proto" href="labels-food-bev.html" target="_blank" rel="noopener"><div class="ic">🍯</div><strong>食品饮料标签页</strong><span>容器外侧非食品接触标签</span><div class="arrow">打开 →</div></a>
+        <a class="proto" href="barcode-generator.html" target="_blank" rel="noopener"><div class="ic">▮▮▮</div><strong>Barcode 生成器</strong><span>最高杠杆的免费获客工具 · 月搜 368K</span><div class="arrow">打开 →</div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 附录 ===================== -->
+  <section id="appendix">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">§</span><div><h2>附录 · AI 与自动化方法</h2><span class="sec-tag">研究是怎么做出来的</span></div></div>
+      <p>本报告的研究与分析大量借助 AI 与自动化，重点不在"用 AI 生成内容"，而在"用 AI 更快地拆解问题、抓取一手数据、并交叉验证"。</p>
+      <h4>用在哪、提效多少</h4>
+      <ul>
+        <li><strong>竞品实测</strong>：以浏览器自动化 + 多智能体并行，抓取 12 家竞品的购买流程、规格维度、真实起订量与截图——把数天人工调研压缩到数小时。</li>
+        <li><strong>一手数据抓取</strong>：通过登录态浏览器实拉 Google Keyword Planner 真实 CPC、Ubersuggest 竞品 SEO 与关键词难度、以及 Meta / Google / TikTok 三大广告库的竞品投放。</li>
+        <li><strong>成本与费米建模</strong>：用结构化推算搭建单位经济与三档营收模型。</li>
+      </ul>
+      <h4>哪些做了人工验证</h4>
+      <ul>
+        <li>广告投放结论（"付费是基本盘"）由三个平台的广告库<strong>交叉核对</strong>得出。</li>
+        <li>供应商与成本以 Alibaba <strong>实价逐条核对</strong>，不采信二手名单。</li>
+        <li>所有依赖 Dylign 内部数据的估算均标为方向性。</li>
+      </ul>
+      <div class="callout"><span class="tag">如何复用到新品类</span>"多智能体竞品扫描 → 登录态一手数据抓取 → 广告库交叉验证 → 费米建模"是一套可复用模板——换一个消费品包装/供应链品类，只需替换竞品名单与关键词种子，即可在数小时内产出同级别的市场 + 供应链 + GTM 判断。</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><span style="color:var(--orange)">●</span> Dylign · 美国市场进入策略建议</div>
+    <p>2026 年 7 月 · 基于 12 家竞品实测、关键词级获客成本与三渠道广告库实扫。凡依赖内部数据的估算均标注为方向性判断，建议以内部实际数据校准。</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var progress=document.getElementById('progress');
+  var toTop=document.getElementById('toTop');
+  var navLinks=[].slice.call(document.querySelectorAll('#secnav a'));
+  var sections=navLinks.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+
+  function onScroll(){
+    var h=document.documentElement;
+    var scrolled=h.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    progress.style.width=(max>0?(scrolled/max*100):0)+'%';
+    toTop.classList.toggle('show',scrolled>600);
+
+    // active section
+    var idx=0, mid=scrolled+h.clientHeight*0.28;
+    for(var i=0;i<sections.length;i++){
+      if(sections[i] && sections[i].offsetTop<=mid) idx=i;
+    }
+    navLinks.forEach(function(a,i){a.classList.toggle('active',i===idx);});
+  }
+  document.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+</body>
+</html>
