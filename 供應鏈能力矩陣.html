@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>供應鏈能力矩陣 · 找齊供應商之前，先把「名單」拆成「矩陣」</title>
+<style>
+  body { margin: 0; background: #F2F3EF; }
+  #dossier {
+    --paper: #F2F3EF;
+    --paper-raised: #FFFFFF;
+    --ink: #181C1A;
+    --ink-soft: #57605A;
+    --ink-faint: #8B928C;
+    --rule: #D7DAD2;
+    --rule-strong: #B7BCB1;
+    --accent: #0A7EA6;
+    --accent-soft: #E3F0F4;
+    --good: #3F7A5C;
+    --good-soft: #E3EEE7;
+    --warn: #B9791A;
+    --warn-soft: #F6ECD9;
+    --bad: #AE4130;
+    --bad-soft: #F5E3DE;
+    --gap: #6B716B;
+    --gap-soft: #E7E8E4;
+
+    --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, "Courier New", monospace;
+
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.75;
+    font-size: 15.5px;
+    -webkit-font-smoothing: antialiased;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  #dossier * { box-sizing: border-box; }
+  #dossier h1, #dossier h2, #dossier h3 { text-wrap: balance; font-family: var(--sans); }
+  #dossier ::selection { background: var(--accent-soft); color: var(--ink); }
+
+  #dossier .rail { display: flex; flex-direction: column; gap: 0; }
+
+  /* ---- Title block ---- */
+  #dossier .titleblock {
+    border: 1.5px solid var(--ink);
+    background: var(--paper-raised);
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+  #dossier .titleblock-main {
+    padding: 28px 26px 24px;
+    border-right: 1.5px solid var(--ink);
+  }
+  #dossier .titleblock-eyebrow {
+    font: 700 11px/1 var(--mono);
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  #dossier .titleblock-main h1 {
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+    line-height: 1.3;
+  }
+  #dossier .titleblock-main p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 46ch;
+  }
+  #dossier .titleblock-meta {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    min-width: 168px;
+    justify-content: center;
+  }
+  #dossier .titleblock-meta dl { margin: 0; display: flex; justify-content: space-between; gap: 10px; }
+  #dossier .titleblock-meta dt { color: var(--ink-faint); letter-spacing: 0.04em; }
+  #dossier .titleblock-meta dd { margin: 0; color: var(--ink); font-weight: 600; text-align: right; }
+
+  /* ---- Diagnosis callout ---- */
+  #dossier .diagnosis {
+    margin-top: 18px;
+    padding: 18px 22px;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  #dossier .diagnosis strong { color: var(--ink); font-weight: 700; }
+
+  /* ---- Mini nav ---- */
+  #dossier .mininav {
+    display: flex;
+    gap: 0;
+    margin: 22px 0 0;
+    border: 1px solid var(--rule);
+    background: var(--paper-raised);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  #dossier .mininav a {
+    flex: 1;
+    text-align: center;
+    padding: 11px 8px;
+    font: 700 12.5px/1 var(--mono);
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-right: 1px solid var(--rule);
+    letter-spacing: 0.01em;
+  }
+  #dossier .mininav a:last-child { border-right: none; }
+  #dossier .mininav a:hover { background: var(--accent-soft); color: var(--accent); }
+
+  /* ---- Section header ---- */
+  #dossier .sheet-section { margin-top: 56px; scroll-margin-top: 60px; }
+  #dossier .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1.5px solid var(--ink);
+    margin-bottom: 22px;
+  }
+  #dossier .section-num {
+    font: 800 13px/1 var(--mono);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 8px;
+    letter-spacing: 0.03em;
+  }
+  #dossier .section-head h2 { font-size: 21px; font-weight: 800; margin: 0; flex: 1; }
+  #dossier .section-sub { font: 500 12px/1 var(--mono); color: var(--ink-faint); }
+  #dossier .section-intro { color: var(--ink-soft); font-size: 14.5px; margin: -8px 0 24px; max-width: 62ch; }
+
+  /* ---- Dimension cards (Section 01) ---- */
+  #dossier .dim-grid { display: flex; flex-direction: column; gap: 14px; }
+  #dossier .dim-card {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    padding: 16px 20px 18px;
+  }
+  #dossier .dim-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  #dossier .dim-card-head h3 { font-size: 15.5px; font-weight: 700; margin: 0; }
+  #dossier .dim-tag {
+    font: 600 10.5px/1 var(--mono);
+    color: var(--ink-faint);
+    border: 1px solid var(--rule-strong);
+    padding: 2px 6px;
+    white-space: nowrap;
+  }
+  #dossier .dim-card ul { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  #dossier .dim-card li {
+    font-size: 13.8px;
+    color: var(--ink-soft);
+    padding-left: 16px;
+    position: relative;
+  }
+  #dossier .dim-card li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    opacity: 0.55;
+  }
+  #dossier .dim-card li b { color: var(--ink); font-weight: 600; }
+  #dossier .refcite {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 1px 5px;
+    white-space: nowrap;
+  }
+
+  /* ---- Matrix table (Section 02) ---- */
+  #dossier .table-wrap { overflow-x: auto; border: 1px solid var(--rule-strong); background: var(--paper-raised); }
+  #dossier table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 12.8px; }
+  #dossier thead th {
+    font: 700 11px/1.3 var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 10px 10px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  #dossier thead th:first-child { position: sticky; left: 0; z-index: 2; }
+  #dossier tbody td {
+    padding: 10px 10px;
+    border-top: 1px solid var(--rule);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+  #dossier tbody td:first-child {
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--paper-raised);
+    position: sticky;
+    left: 0;
+    box-shadow: 1px 0 0 var(--rule);
+  }
+  #dossier tbody tr:nth-child(even) td { background: #FAFAF8; }
+  #dossier tbody tr:nth-child(even) td:first-child { background: #FAFAF8; }
+  #dossier td.verdict { min-width: 210px; font-size: 12.5px; }
+  #dossier .status { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; font-weight: 600; }
+  #dossier .status .dot { width: 7px; height: 7px; flex: none; }
+  #dossier .status.s-good .dot { background: var(--good); }
+  #dossier .status.s-warn .dot { background: var(--warn); }
+  #dossier .status.s-bad  .dot { background: var(--bad); }
+  #dossier .status.s-gap  .dot { background: var(--gap); }
+  #dossier .status.s-good { color: var(--good); }
+  #dossier .status.s-warn { color: var(--warn); }
+  #dossier .status.s-bad  { color: var(--bad); }
+  #dossier .status.s-gap  { color: var(--gap); }
+  #dossier .status-detail { display: block; color: var(--ink-faint); font-weight: 400; font-size: 11.5px; margin-top: 2px; }
+
+  #dossier .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; font-size: 12px; color: var(--ink-faint); font-family: var(--mono); }
+  #dossier .legend span { display: inline-flex; align-items: center; gap: 5px; }
+  #dossier .legend .dot { width: 7px; height: 7px; }
+
+  /* ---- Gap panel ---- */
+  #dossier .gap-panel { margin-top: 30px; }
+  #dossier .gap-panel-title { font: 700 13px/1 var(--mono); color: var(--bad); letter-spacing: 0.02em; margin-bottom: 14px; text-transform: uppercase; }
+  #dossier .gap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  @media (max-width: 640px) { #dossier .gap-grid { grid-template-columns: 1fr; } }
+  #dossier .gap-card {
+    background: var(--bad-soft);
+    border: 1px dashed var(--bad);
+    padding: 14px 16px;
+  }
+  #dossier .gap-card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+  #dossier .gap-card h4 { font-size: 13.8px; font-weight: 700; color: var(--ink); margin: 0; }
+  #dossier .gap-count { font: 700 11px/1 var(--mono); color: var(--bad); white-space: nowrap; }
+  #dossier .gap-card p { margin: 0 0 6px; font-size: 12.8px; color: var(--ink-soft); }
+  #dossier .gap-card .action { font-size: 12.5px; color: var(--ink); font-weight: 600; }
+  #dossier .gap-card .action::before { content: "→ "; color: var(--bad); font-weight: 800; }
+
+  #dossier .footnote {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: var(--gap-soft);
+    border-left: 3px solid var(--gap);
+    font-size: 12.8px;
+    color: var(--ink-soft);
+  }
+
+  /* ---- Section 03 additions table ---- */
+  #dossier .addn-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--rule-strong); background: var(--paper-raised); }
+  #dossier .addn-row { display: grid; grid-template-columns: 200px 1fr; gap: 18px; padding: 16px 18px; border-top: 1px solid var(--rule); }
+  #dossier .addn-row:first-child { border-top: none; }
+  @media (max-width: 640px) { #dossier .addn-row { grid-template-columns: 1fr; gap: 6px; } }
+  #dossier .addn-name { font-weight: 700; font-size: 13.8px; color: var(--ink); }
+  #dossier .addn-name .gate { display: block; margin-top: 5px; }
+  #dossier .gate-tag { font: 700 10px/1 var(--mono); padding: 2px 6px; letter-spacing: 0.02em; }
+  #dossier .gate-tag.veto { background: var(--bad-soft); color: var(--bad); }
+  #dossier .gate-tag.score { background: var(--accent-soft); color: var(--accent); }
+  #dossier .addn-why { font-size: 13.3px; color: var(--ink-soft); }
+  #dossier .addn-why b { color: var(--ink); font-weight: 600; }
+
+  #dossier .brcgs-callout {
+    margin-top: 16px;
+    padding: 16px 18px;
+    background: var(--warn-soft);
+    border: 1px solid var(--warn);
+  }
+  #dossier .brcgs-callout h4 { margin: 0 0 6px; font-size: 13.8px; font-weight: 700; color: var(--ink); }
+  #dossier .brcgs-callout p { margin: 0 0 6px; font-size: 13px; color: var(--ink-soft); }
+  #dossier .brcgs-callout a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); }
+
+  /* existing scorecard recap */
+  #dossier .scorecard-recap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  #dossier .score-chip { font: 600 12px/1 var(--mono); background: var(--paper-raised); border: 1px solid var(--rule-strong); padding: 6px 10px; display: flex; gap: 6px; }
+  #dossier .score-chip b { color: var(--accent); }
+
+  /* ---- Closing ---- */
+  #dossier .closing {
+    margin-top: 56px;
+    padding: 26px 24px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  #dossier .closing h2 { font-size: 18px; font-weight: 800; margin: 0 0 4px; color: #fff; }
+  #dossier .closing .closing-sub { font: 500 12px/1 var(--mono); color: #A9B0A6; margin-bottom: 18px; }
+  #dossier .closing ol { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  #dossier .closing li { display: flex; gap: 14px; align-items: baseline; font-size: 13.8px; line-height: 1.65; }
+  #dossier .closing li .n { font: 800 13px/1 var(--mono); color: var(--accent); flex: none; min-width: 20px; }
+  #dossier .closing li span.body { color: #DADFD7; }
+  #dossier .closing li b { color: #fff; }
+
+  #dossier .dieline { border: none; border-top: 1.5px dashed var(--rule-strong); margin: 48px 0 0; }
+</style>
+</head>
+<body>
+
+<div id="dossier">
+
+  <div class="titleblock">
+    <div class="titleblock-main">
+      <p class="titleblock-eyebrow">供應鏈能力矩陣 · 補充框架</p>
+      <h1>找齊供應商之前，先把「名單」拆成「矩陣」</h1>
+      <p>回應你的三個問題：完整的思考維度有哪些、現有名單是否覆蓋這些維度、以及找供應商時該用什麼標準評估。基於〈報告-線上同步版〉的既有研究補全前兩步。</p>
+    </div>
+    <div class="titleblock-meta">
+      <dl><dt>依據</dt><dd>報告-線上同步版.md</dd></dl>
+      <dl><dt>日期</dt><dd>2026-07-03</dd></dl>
+      <dl><dt>現狀</dt><dd style="color:var(--bad)">第 3 步已有</dd></dl>
+      <dl><dt>缺口</dt><dd style="color:var(--bad)">第 1／2 步待補</dd></dl>
+    </div>
+  </div>
+
+  <div class="diagnosis">
+    你的判斷是對的。報告的 <span class="refcite">E 章</span> 給了一張很完整的評分卡（認證合規／MOQ／報價透明⋯），但那是「<strong>拿到名單之後怎麼打分</strong>」——它預設了名單已經是對的。報告 <span class="refcite">A4</span> 實核的 12 家供應商，全部來自 Alibaba／GlobalSources 的自然搜尋結果，<strong>沒有一步是先把「我需要哪些能力」窮舉出來，再回頭檢查名單有沒有漏掉哪一格</strong>。下面把這兩步補上。
+  </div>
+
+  <nav class="mininav">
+    <a href="#s1">01 完整問題清單</a>
+    <a href="#s2">02 名單完整嗎</a>
+    <a href="#s3">03 評估維度</a>
+  </nav>
+
+  <!-- ============ SECTION 01 ============ -->
+  <section class="sheet-section" id="s1">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>先想清楚：完整的問題清單長什麼樣</h2>
+      <span class="section-sub">7 個維度</span>
+    </div>
+    <p class="section-intro">客製化包裝貼紙的供應商能力，天然就會在下面 7 個維度上分裂——同一家工廠很少同時強在所有維度。把每個維度先列出來，才知道自己要拼一張「能力矩陣」，而不是一份「名單」。</p>
+
+    <div class="dim-grid">
+
+      <div class="dim-card">
+        <div class="dim-card-head"><h3>① 工藝能力（Process）</h3><span class="dim-tag">決定能不能做小單</span></div>
+        <ul>
+          <li><b>印刷技術</b>：數碼印刷（HP Indigo / UV 數碼）vs 傳統（柔印 / 絲網 / 膠印）—— 只有數碼路線能做到 100 張級別的經濟性 <span class="refcite">A4</span>；傳統工藝廠（如 hxcustomlabel 的 UV 輪轉凸印）本質上做不了你的核心單量。</li>
+          <li><b>成型工藝</b>：die-cut／kiss-cut／sticker sheet／roll label（需能指定放捲方向）／transfer decal／static cling —— 不是每家都全做，卷標尤其需要額外的分切收捲設備。</li>
+          <li><b>白墨與特殊後道</b>：透明／深色基材必需白墨；燙金／擊凸需要實體開模，等於變相有 MOQ 門檻 <span class="refcite">A3</span>。</li>
+        </ul>
+      </div>
+
+      <div class="dim-card">
+        <div class="dim-card-head"><h3>② 材質能力（Material）</h3><span class="dim-tag">決定能接哪些場景訂單</span></div>
+        <ul>
+          <li>白 vinyl／透明 vinyl（需白墨）／<b>BOPP</b>（食品接觸默認材質，比 vinyl 便宜 15–25%）／kraft（不防水）／holographic／glitter／mirror／戶外 cast vinyl／可堆肥面材。</li>
+          <li>膠水系統：永久胶 vs 可移胶——冷藏冷凍場景（如食品包裝）需要額外驗證低溫服帖性，報告目前完全沒測這項。</li>
+          <li>一家廠報「材質最全」（如 Best4U）不等於每個材質都有對應認證——材質廣度和認證深度是兩件事，見 03。</li>
+        </ul>
+      </div>
+
+      <div class="dim-card">
+        <div class="dim-card-head"><h3>③ 認證與合規（Certification）</h3><span class="dim-tag">報告目前最弱的一格</span></div>
+        <ul>
+          <li>環保類：FSC（紙漿鏈）、BPI／ASTM D6400（可堆肥，全美在證定制膠粘標籤現為零 <span class="refcite">A1.5</span>）。</li>
+          <li>食品接觸類：FDA 遷移測試報告（要編號＋出具實驗室）。</li>
+          <li><b>設施層認證 BRCGS Packaging Materials／SQF Food Packaging Code</b>——這是報告完全沒提到的一塊，見 03 的專門說明。</li>
+          <li>品質管理類：ISO 9001／14001。化學合規類：REACH（涉歐盟時）、Prop 65（加州對消費品標籤常見）。</li>
+          <li><b>易忽略的坑</b>：認證要看「範圍」——BPI 認證需覆蓋含油墨/塗層的印刷成品，不是原紙；FDA 遷移測試也要看測的是面材還是印刷後成品 <span class="refcite">A1.5③</span>。</li>
+        </ul>
+      </div>
+
+      <div class="dim-card">
+        <div class="dim-card-head"><h3>④ 量級與經濟性（Scale）</h3><span class="dim-tag">決定該找哪一層供應商</span></div>
+        <ul>
+          <li>起訂量門檻與「數碼／傳統」的臨界點——通常 500–2,000 張以下只有數碼路線划算 <span class="refcite">A4.5</span>。</li>
+          <li>階梯價格曲線：500→2,000 張總價可能幾乎持平（成本結構是固定成本主導），這決定了報價要逐檔要而不是要區間價。</li>
+          <li>模具／開模費是一次性支出，攤銷邏輯要單獨問清楚（不是每張單價都含這項）。</li>
+        </ul>
+      </div>
+
+      <div class="dim-card">
+        <div class="dim-card-head"><h3>⑤ 系統與技術對接（Ops）</h3><span class="dim-tag">因為你是「線上自助下單」，這格特別重要</span></div>
+        <ul>
+          <li><b>文件自動化處理能力</b>：能不能接受批量、自動生成的印刷檔案，而不是每單都要人工一對一溝通規格——自助下單的訂單量級遲早會超過人工能承受的量，這一步卡住了，網站端做得再自動也沒用。</li>
+          <li><b>下單/查產能對接</b>：有沒有結構化介面（哪怕只是規範化 Excel/Webhook），能不能配合訂單按量級自動路由到中國層 vs 美國 POD 層 <span class="refcite">A4.5 三層拓撲</span>。</li>
+          <li><b>Proof 自動化配合度</b>：能否配合「批准前不扣款＋3 天無回應自動通過」這種前端邏輯，而不是所有 proof 都要人工跟進 <span class="refcite">B 模組設計</span>。</li>
+        </ul>
+      </div>
+
+      <div class="dim-card">
+        <div class="dim-card-head"><h3>⑥ 商業條款與風險（Commercial）</h3><span class="dim-tag">合同層，容易被漏問</span></div>
+        <ul>
+          <li>付款條款（Trade Assurance／30% 訂金+見提單／絕不接受 100% 前 TT <span class="refcite">E 階段 6</span>）與 Incoterms 靈活度（首單 DDP，量產轉 FOB）。</li>
+          <li><b>知識產權保護</b>：客戶上傳的是自己的品牌設計稿，供應商若留底/轉售/外流，是信任事故不是品質問題——現有評分卡完全沒有這一項。</li>
+          <li>財務健康度：是否依賴單一大客戶、應收帳款風險、成立年份與規模是否匹配自報的「經驗」。</li>
+        </ul>
+      </div>
+
+      <div class="dim-card">
+        <div class="dim-card-head"><h3>⑦ 履約與物流適配（Fulfillment）</h3><span class="dim-tag">量級門檻已有結論，供應商要對得上</span></div>
+        <ul>
+          <li>交期是否匹配三層拓撲的量級分工——&lt;100 張不歸中國層，100–10,000 張走空運，≥5 萬張才走海運 <span class="refcite">E 階段 7</span>。</li>
+          <li>報關歸類（HTS 4821.10）與關稅承擔方式是否寫進 PI（防低報貨值連帶收貨人 <span class="refcite">E 階段 6</span>）。</li>
+          <li>退貨/售後/索賠條款——是否已寫死色差與刀線公差，缺陷是補印還是折讓。</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="dieline" />
+
+  <!-- ============ SECTION 02 ============ -->
+  <section class="sheet-section" id="s2">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>現有 12 家名單，覆蓋了矩陣的哪幾格？</h2>
+      <span class="section-sub">結論：不完整，且是系統性不完整</span>
+    </div>
+    <p class="section-intro">把 A4 實核過的供應商放進上面的維度矩陣裡看，會發現「能發盤」跟「能覆蓋你要的能力」是兩件事——12 家幾乎全部擠在同一格（通用 vinyl die-cut），矩陣裡至少 4 格是空的。</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>供應商</th>
+            <th>數碼印刷</th>
+            <th>食品接觸材質</th>
+            <th>環保／可堆肥</th>
+            <th>特殊效果</th>
+            <th>認證證據強度</th>
+            <th>Playbook 階段</th>
+            <th>判定</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Stickerhome<br/>／Singhong</td>
+            <td><span class="status s-good"><span class="dot"></span>實測</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-warn"><span class="dot"></span>TÜV 評估報告<span class="status-detail">FSC/FDA 未見編號</span></span></td>
+            <td>3｜待發 RFQ</td>
+            <td class="verdict">唯一可直接發盤；但年化規模僅 ~$60 萬，能力邊界未知</td>
+          </tr>
+          <tr>
+            <td>華鑫美<br/>hxmpackge.com</td>
+            <td><span class="status s-warn"><span class="dot"></span>自相矛盾<span class="status-detail">稱 Indigo 但設備清單無</span></span></td>
+            <td><span class="status s-warn"><span class="dot"></span>自報無編號</span></td>
+            <td><span class="status s-warn"><span class="dot"></span>自報無編號</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-bad"><span class="dot"></span>域名/成立年矛盾</span></td>
+            <td>2｜待補證據</td>
+            <td class="verdict">唯一食品級數碼卷標候選，但紅旗未清，先補三項編號再發盘</td>
+          </tr>
+          <tr>
+            <td>hxcustomlabel<br/>（深圳金之彩）</td>
+            <td><span class="status s-bad"><span class="dot"></span>傳統凸印</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>3M 未注 FDA</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未評估</span></td>
+            <td>候補｜未發盤</td>
+            <td class="verdict">工藝不對口，做不了經濟的 &lt;100 張短單</td>
+          </tr>
+          <tr>
+            <td>Best4U</td>
+            <td><span class="status s-gap"><span class="dot"></span>未註明</span></td>
+            <td><span class="status s-good"><span class="dot"></span>含 BOPP/牛皮</span></td>
+            <td><span class="status s-warn"><span class="dot"></span>含 kraft 非認證</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未評估</span></td>
+            <td>候補｜未發盤</td>
+            <td class="verdict">材質面廣，資質全部待驗證</td>
+          </tr>
+          <tr>
+            <td>BookPrintingChina</td>
+            <td><span class="status s-bad"><span class="dot"></span>主業圖書膠印</span></td>
+            <td><span class="status s-bad"><span class="dot"></span>無食品接觸資質</span></td>
+            <td><span class="status s-good"><span class="dot"></span>FSC+BSCI+SMETA+G7</span></td>
+            <td><span class="status s-bad"><span class="dot"></span>不做</span></td>
+            <td><span class="status s-good"><span class="dot"></span>四項可查</span></td>
+            <td>合規備選｜未發盤</td>
+            <td class="verdict">認證最強，但工藝不對口——印不了食品標籤</td>
+          </tr>
+          <tr>
+            <td>Canfei 燦飛</td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-good"><span class="dot"></span>全息防偽專項</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未評估</span></td>
+            <td>僅專項詢價</td>
+            <td class="verdict">單點能力，非全能供應商</td>
+          </tr>
+          <tr>
+            <td>上海宇才</td>
+            <td><span class="status s-warn"><span class="dot"></span>聲稱未證實</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-gap"><span class="dot"></span>未提</span></td>
+            <td><span class="status s-bad"><span class="dot"></span>無</span></td>
+            <td>未進 RFQ 池</td>
+            <td class="verdict">$0.009 報價系起批噱頭，需重新議價驗證</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legend">
+      <span><span class="dot" style="background:var(--good)"></span>已覆蓋／確證</span>
+      <span><span class="dot" style="background:var(--warn)"></span>有條件／證據矛盾</span>
+      <span><span class="dot" style="background:var(--bad)"></span>不對口／排除</span>
+      <span><span class="dot" style="background:var(--gap)"></span>未提及／未驗證</span>
+    </div>
+
+    <div class="footnote">
+      連名單本身的「實體去重」都還沒做完：A4 原文特別提醒 Shenzhen Gathe（GlobalSources 上的全息 die-cut 價格錨點）與 Gathe 嘉特（不發盤名單，主業包裝盒）「勿混」；上海宇才與 Shenzhen Yucai Packing 同樣系統性易混。這不只是矩陣裡少了幾格，是連現有格子裡的「身份」都要先核實——名單成熟度比看起來更早期。
+    </div>
+
+    <div class="gap-panel">
+      <p class="gap-panel-title">矩陣裡完全空白的 4 格</p>
+      <div class="gap-grid">
+        <div class="gap-card">
+          <div class="gap-card-head"><h4>BPI 認證可堆肥標籤材料</h4><span class="gap-count">0／12</span></div>
+          <p>全美在證定制膠粘標籤本身為零 <span class="refcite">A1.5</span>，中國供應鏈這塊完全沒人驗證過。</p>
+          <p class="action">先用歐洲認證（EN13432）＋ASTM 自我聲明材料試賣，驗證付費意願再評估，非急優先級。</p>
+        </div>
+        <div class="gap-card">
+          <div class="gap-card-head"><h4>食品/飲品級 HP Indigo 數碼卷標</h4><span class="gap-count">0／12 確證</span></div>
+          <p>華鑫美是唯一候選，但設備宣稱與清單自相矛盾，尚未過關。</p>
+          <p class="action">華南 Indigo 裝機圈層實地 RFQ——A4.5 已列為行動項，但還沒有第二個候選。</p>
+        </div>
+        <div class="gap-card">
+          <div class="gap-card-head"><h4>BRCGS／SQF 設施認證</h4><span class="gap-count">0／12 被問過</span></div>
+          <p>不是「供應商沒有」，是報告本身沒問這道題——屬於本輪分析的盲區，見 03。</p>
+          <p class="action">併入階段 5 資質核驗清單，成本幾乎為零（多問一句話）。</p>
+        </div>
+        <div class="gap-card">
+          <div class="gap-card-head"><h4>美國本土 POD 白牌（4over 等）</h4><span class="gap-count">獨立賽道</span></div>
+          <p>完全不在中國供應鏈 12 家名單內；三層拓撲下 &lt;100 張的永久履約層全靠它。</p>
+          <p class="action">4over 註冊拿實價是毛利能否閉環的唯一 go/no-go <span class="refcite">E2</span>，應與中國寻源並行、不要排後面。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="dieline" />
+
+  <!-- ============ SECTION 03 ============ -->
+  <section class="sheet-section" id="s3">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>找到供應商後，用什麼維度評估</h2>
+      <span class="section-sub">在既有評分卡上做加法</span>
+    </div>
+    <p class="section-intro">報告 <span class="refcite">E 階段 2</span> 的評分卡已經是不錯的通用起點，滿分 100，閾值 ≥75 直接發盤／55–74 補盡調／&lt;55 弃：</p>
+
+    <div class="scorecard-recap">
+      <span class="score-chip">認證合規 <b>20</b></span>
+      <span class="score-chip">MOQ 匹配 <b>15</b></span>
+      <span class="score-chip">報價透明 <b>15</b></span>
+      <span class="score-chip">打樣政策 <b>10</b></span>
+      <span class="score-chip">響應速度 <b>10</b></span>
+      <span class="score-chip">平台信用 <b>10</b></span>
+      <span class="score-chip">跨境經驗 <b>10</b></span>
+      <span class="score-chip">產能交期 <b>5</b></span>
+      <span class="score-chip">風險減分 <b>−5</b></span>
+    </div>
+
+    <p class="section-intro" style="margin-top:0">但這張卡是為「通用供應商」設計的。針對「線上自助下單＋客製化包裝」這個具體業務形態，有 6 項要追加或提高權重——多數是一票否決或前置門檻，不是加分項：</p>
+
+    <div class="addn-list">
+      <div class="addn-row">
+        <div class="addn-name">文件自動化處理能力
+          <span class="gate"><span class="gate-tag score">計分項</span></span>
+        </div>
+        <div class="addn-why">自助下單的訂單量遲早超過人工一對一溝通能承受的量級。<b>測法已在報告裡</b>——發一份故意埋 3 個問題的印刷文件（RGB 色彩模式／出血不足／刀線未單獨圖層），能逐項指出的才有 prepress 能力 <span class="refcite">E 階段 3</span>；但這項測試的結果要單獨計分，不能被「回覆速度」這種模糊分項蓋過去。</div>
+      </div>
+      <div class="addn-row">
+        <div class="addn-name">API／系統對接能力
+          <span class="gate"><span class="gate-tag score">計分項</span></span>
+        </div>
+        <div class="addn-why">三層拓撲要求訂單按量級自動路由到中國層／美國 POD 層。若供應商端沒有結構化介面（哪怕只是規範化 Webhook/Excel），路由邏輯只能靠人工，「自動」就名存實亡。現有評分卡完全沒有這一項。</div>
+      </div>
+      <div class="addn-row">
+        <div class="addn-name">認證的「範圍」而非「有無」
+          <span class="gate"><span class="gate-tag score">計分項細化</span></span>
+        </div>
+        <div class="addn-why">報告自己點出過這個坑：BPI 認證要覆蓋含油墨/塗層的印刷成品，不是原紙；FDA 遷移測試也要看測的是面材還是印刷後成品 <span class="refcite">A1.5③</span>。索證時要求證書/報告寫明「測試對象」，不能只認一個 logo。</div>
+      </div>
+      <div class="addn-row">
+        <div class="addn-name">BRCGS／SQF 設施認證
+          <span class="gate"><span class="gate-tag veto">面向食品客戶時前置門檻</span></span>
+        </div>
+        <div class="addn-why">美國食品品牌買家做盡調時，常把「印刷廠有沒有 BRCGS 或 SQF」當作比 FDA 遷移測試報告更進一步的門檻——這是設施/管理體系認證，不是材料認證。詳見下方說明。</div>
+      </div>
+      <div class="addn-row">
+        <div class="addn-name">供應商集中度風險
+          <span class="gate"><span class="gate-tag veto">結構性缺口</span></span>
+        </div>
+        <div class="addn-why">12 家裡目前只有 1 家（Stickerhome）真正可發盤，年化規模僅 ~$60 萬——實質上是單一供應商風險。<span class="refcite">E 階段 8</span> 要求「主力 70%＋備份 30%」，但目前無備份可用，這件事本身該進評分卡的風險減分項。</div>
+      </div>
+      <div class="addn-row">
+        <div class="addn-name">客戶設計保密條款
+          <span class="gate"><span class="gate-tag veto">DTC 信任底線</span></span>
+        </div>
+        <div class="addn-why">客戶上傳的是自己的品牌設計稿，供應商若留底/轉售/外流是信任事故，不是單純「貨不對版」的品質問題。現有評分卡完全沒有這一項，建議寫進 RFQ 信與 PI 條款。</div>
+      </div>
+    </div>
+
+    <div class="brcgs-callout">
+      <h4>為什麼 BRCGS／SQF 值得單獨拿出來說</h4>
+      <p>這兩個是食品接觸包裝行業最主流的設施層認證（GFSI 認可），核心要求是文件化的 HACCP 風險評估＋產品安全與品質管理體系，且供應鏈上游（含代工印刷廠）也要能追溯。跟報告已有的「FDA 遷移測試報告」不同——後者證的是<b>材料本身</b>安全，BRCGS/SQF 證的是<b>整個生產設施</b>的管理體系，通常需要現場審核。美國食品品牌客戶在正式簽約前，經常直接問這一句。報告 A4 實核的 12 家供應商裡沒有一家的資質清單提到這兩項，也不是報告漏抄——是這一輪分析本身沒把它列進檢查項。建議直接補進 <span class="refcite">E 階段 5</span> 資質核驗清單。</p>
+    </div>
+  </section>
+
+  <div class="closing">
+    <h2>下一步</h2>
+    <p class="closing-sub">把這份文件變成動作，而不是停在「知道了」</p>
+    <ol>
+      <li><span class="n">01</span><span class="body"><b>把「名單」升級成「矩陣」</b>——飛書表格已有「供應商×白空間匹配」頁籤，把本文件的 7×12 矩陣原樣建進去；之後每來一家新供應商，先歸類填格子，不要繼續往同一份線性清單加名字。</span></li>
+      <li><span class="n">02</span><span class="body"><b>給 4 個空格各指派一個具體動作</b>——尤其 BRCGS/SQF 這條幾乎零成本（階段 5 索證時多問一句），優先併入；4over 註冊要與中國寻源並行推進，不要等中國那邊收斂了才啟動。</span></li>
+      <li><span class="n">03</span><span class="body"><b>對現有 7 家裡認證證據強度標 ✗ 或 ? 的</b>，在階段 3 發 RFQ 信（E1 模板）時直接加一行索證要求，不要等階段 5 單獨再跑一輪。</span></li>
+    </ol>
+  </div>
+
+</div>
+</body>
+</html>
